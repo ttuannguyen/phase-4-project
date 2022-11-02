@@ -2,7 +2,10 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <h2>Welcome to Phase 4 Project</h2>
+    <div>
+        <h2>NYC Adventures</h2>
+        <p>Discover fun secret spots in NYC</p>
+    </div>
   )
 }
 
