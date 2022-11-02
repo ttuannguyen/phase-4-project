@@ -1,4 +1,4 @@
-# Phase 3 Project using React/Rails API
+# Phase 4 Project using React/Rails API
 
 ## Description
 
