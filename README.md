@@ -1,4 +1,4 @@
-# Project Template: React/Rails API
+# Phase 3 Project using React/Rails API
 
 ## Description
 
