@@ -3,7 +3,6 @@ class CreateVisits < ActiveRecord::Migration[6.1]
     create_table :visits do |t|
       t.string :comment
 
-
       t.timestamps
     end
   end
