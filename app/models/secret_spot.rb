@@ -1,0 +1,2 @@
+class SecretSpot < ApplicationRecord
+end

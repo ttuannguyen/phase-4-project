@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
         <h2>NYC Adventures</h2>
-        <p>Discover fun secret spots in NYC</p>
+        <p>Discover the secret spots in NYC like a true New Yorker!</p>
     </div>
   )
 }
