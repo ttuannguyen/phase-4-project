@@ -1,4 +1,4 @@
 class Visit < ApplicationRecord
-    belongs_to :users
-    belongs_to :secret_spots
+    belongs_to :user
+    belongs_to :secret_spot
 end
