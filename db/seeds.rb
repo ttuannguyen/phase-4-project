@@ -15,3 +15,5 @@ u3 = User.create(name: "Anne")
 s1 = SecretSpot.create(name: "Fountain", location: "Manhattan", description: "A fun place to cool off", cost: 0)
 s2 = SecretSpot.create(name: "Abandoned Subway", location: "Brooklyn", description: "Good for pictures", cost: 0)
 s3 = SecretSpot.create(name: "Food Court", location: "Queens", description: "food heaven", cost: 0)
+
+# v1 = Visit.create(comment: "First visit", user: u1, secret_spot: s1)
