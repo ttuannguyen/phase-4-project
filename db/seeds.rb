@@ -9,7 +9,7 @@
 
 u1 = User.create(name: "Jace")
 u2 = User.create(name: "Luke")
-u3 = User.create(name: "Anne")
+u3 = User.create(name: "Baela")
 
 
 s1 = SecretSpot.create(name: "Fountain", location: "Manhattan", description: "A fun place to cool off", cost: 5.50)
