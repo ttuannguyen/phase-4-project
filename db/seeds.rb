@@ -16,4 +16,7 @@ s1 = SecretSpot.create(name: "Fountain", location: "Manhattan", description: "A 
 s2 = SecretSpot.create(name: "Abandoned Subway", location: "Brooklyn", description: "Good for pictures", cost: 10)
 s3 = SecretSpot.create(name: "Food Court", location: "Queens", description: "food heaven", cost: 8)
 
-# v1 = Visit.create(comment: "First visit", user: u1, secret_spot: s1)
+v1 = Visit.create(date: "11/30/2022", comment: "First visit", secret_spot: s1, user: u1)
+v2 = Visit.create(date: "12/1/2022", comment: "Exciting!", secret_spot: s2, user: u1)
+
+puts "✅ Done seeding!"
