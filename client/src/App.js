@@ -1,11 +1,11 @@
 // import './App.css';
-import AddForm from './AddForm';
-import Auth from './Auth';
-import Home from './Home';
-import ItemCard from './ItemCard';
-import ItemsContainer from './ItemsContainer';
-import LogIn from './LogIn';
-import Navbar from './Navbar';
+import Auth from './Components/Auth';
+import VisitAddForm from './Components/VisitAddForm';
+import Home from './Components/Home';
+import ItemCard from './Components/ItemCard';
+import ItemsContainer from './Components/ItemsContainer';
+import LogIn from './Components/LogIn';
+import Navbar from './Components/Navbar';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <Navbar />
       <ItemsContainer />
       <ItemCard />
-      <AddForm />
+      <VisitAddForm />
     </div>
   );
 }

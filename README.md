@@ -9,7 +9,7 @@ The MVP of this application includes the following feature:
 - Sign up for a new accoun
 - Log in and log out of the site
 - View a list of secret spots 
-- Create a visit note
+- Create a visit (with date and comment)
 - Modify or delete the revist 
 
 
