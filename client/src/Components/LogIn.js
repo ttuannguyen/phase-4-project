@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { UserContext } from '../context/user';
 
 const LogIn = () => {
+
+  const { user, setUser } = useContext(UserContext);
+
+  const handleLogin = () => {
+    if (user) {
+      // setUser(null)
+    } else {
+      // setUser(defaultUser)
+    }
+  }
   return (
     <div>
       <header>NYC Adventures</header>
