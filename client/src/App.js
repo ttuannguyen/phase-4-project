@@ -1,5 +1,5 @@
 // import './App.css';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Auth from './components/Auth';
 import VisitAddForm from './components/VisitAddForm';
 import Home from './components/Home';
@@ -10,9 +10,6 @@ import Navbar from './components/Navbar';
 // import { UserProvider } from './context/user';
 
 function App() {
-
-  const [user, setUser] = useState(null)
-
 
   return (
     <div className="App">
