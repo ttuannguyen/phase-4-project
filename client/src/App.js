@@ -1,4 +1,5 @@
 // import './App.css';
+import { useState, useEffect } from 'react';
 import Auth from './components/Auth';
 import VisitAddForm from './components/VisitAddForm';
 import Home from './components/Home';
@@ -6,16 +7,21 @@ import ItemCard from './components/ItemCard';
 import ItemsContainer from './components/ItemsContainer';
 import LogIn from './components/LogIn';
 import Navbar from './components/Navbar';
-import { UserProvider } from './context/user';
+// import { UserProvider } from './context/user';
 
 function App() {
+
+  const [user, setUser] = useState(null)
+
+
   return (
     <div className="App">
       <Home />
       <Auth />
-      <UserProvider>
+      <LogIn />
+      {/* <UserProvider>
         <LogIn />
-      </UserProvider>
+      </UserProvider> */}
       <Navbar />
       <ItemsContainer />
       <ItemCard />

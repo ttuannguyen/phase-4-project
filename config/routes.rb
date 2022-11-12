@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   get "visits", to: "visits#index"
 
-  get "/login" to: "sessions#login"
+  get "/login", to: "sessions#login"
 
   
   # Routing logic: fallback requests for React Router.
