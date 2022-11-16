@@ -11,8 +11,10 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create!(params)
+        # session[:user_id] = user.id # to login a user, take the user id and make it persist 
+        user = User.create!(user_params)
         render json: user, status: :created
+        # to add error handling with if/else
     end
 
     def update

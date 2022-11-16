@@ -5,16 +5,14 @@ function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
  
-  const [errors, setErrors] = useState([])
-
-  function onSubmit(e){
+  const handleSubmit = (e) => {
       e.preventDefault()
       const user = {
           username: username,
           password
       }
      
-      fetch(`http://localhost:3000/login`,{
+      fetch('/login',{
         method:'POST',
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify(user)
@@ -22,15 +20,14 @@ function Login() {
       .then(res => res.json())
       .then(json => {
           console.log(json)
-          if(json.errors) setErrors(json.errors)
       })
   }
   return (
       <> 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
       <label>
         Username
- 
+
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
       </label>
       <label>
@@ -41,8 +38,7 @@ function Login() {
      
       <input type="submit" value="Login!" />
     </form>
-    {errors?errors.map(e => <div>{e}</div>):null}
-      </>
+    </>
   )
 }
 
