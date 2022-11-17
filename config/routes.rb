@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
 
   get "secret_spots", to: "secret_spots#index"
-  resources :users
+  resources :users, only:[:show, :create]
   get "visits", to: "visits#index"
 
   # route to handle sessions login

@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Auth = () => {
 
-    const handleSubmit = () => {
-        const user = {
-        }
+    // const [username, setUsername] = useState('')
+    // const [password, setPassword] = useState('')
+    // const [login, setLogin] = useState('')
+    // const [errors, setErrors] = useState([])
 
-        fetch('/me',{
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        // const user = {
+        //     username,
+        //     password
+        // }
+
+        fetch('/users',{
             method:'POST',
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(user)
@@ -24,11 +33,11 @@ const Auth = () => {
   
           <input type="text"/>
         </label>
-        <label>
+        {/* <label>
           Email
   
           <input type="text"/>
-        </label>
+        </label> */}
         <label>
          Password
     
