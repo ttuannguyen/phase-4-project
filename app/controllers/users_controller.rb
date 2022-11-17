@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     end
 
 
+    # GET "/users/:id"
     def show 
         user = User.find_by(id: params[:id])
         render json: user
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
     def create
         # session[:user_id] = user.id # to login a user, take the user id and make it persist 
         user = User.create!(user_params)
+        # byebug
         render json: user, status: :created
         # to add error handling with if/else
     end

@@ -2,18 +2,20 @@ import React, { useState } from 'react'
 
 const Auth = () => {
 
-    // const [username, setUsername] = useState('')
-    // const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     // const [login, setLogin] = useState('')
-    // const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([])
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        // const user = {
-        //     username,
-        //     password
-        // }
+        const user = {
+            name: username,
+            email,
+            password
+        }
 
         fetch('/users',{
             method:'POST',
@@ -21,30 +23,33 @@ const Auth = () => {
             body:JSON.stringify(user)
         })
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then(json => {
+            console.log(json)
+            if(json.errors) setErrors(Object.entries(json.errors))
+        })
     }
 
     return (
         <> 
         <h4>Signup</h4>
-        <form>
+        <form onSubmit={handleSubmit}>
         <label>
           Username
   
-          <input type="text"/>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
         </label>
-        {/* <label>
+        <label>
           Email
   
-          <input type="text"/>
-        </label> */}
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        </label>
         <label>
          Password
     
-        <input type="password" />
+        <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </label>
        
-        <input type="submit" value="Login!" />
+        <input type="submit" value="Sign up!" />
       </form>
       </>
     )
