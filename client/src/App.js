@@ -1,5 +1,5 @@
 // import './App.css';
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Auth from './components/Auth';
 import VisitAddForm from './components/VisitAddForm';
 import Home from './components/Home';
@@ -11,16 +11,36 @@ import Navbar from './components/Navbar';
 
 function App() {
 
+  const [secretSpots, setSecretSpots] = useState([])
+
+  useEffect(() => {
+    fetch('/secret_spots')
+    .then(res => res.json())
+    .then(json => console.log(json))
+  }, [])
+
+  const handlePost = () => {
+    fetch('/secret_spots', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify()
+    })
+    .then(res => res.json())
+    .then(json => console.log(json))
+  }
   
+
 
   return (
     <div className="App">
       <Home />
-      <Auth />
       <LogIn />
       {/* <UserProvider>
         <LogIn />
       </UserProvider> */}
+      <Auth />
       <Navbar />
       <ItemsContainer />
       <ItemCard />
