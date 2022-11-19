@@ -6,11 +6,20 @@ class VisitsController < ApplicationController
 
     def show
         visit = Visit.find(params[:id]) 
+        render json: visit
     end
 
     def create
         visit = Visit.create(params)
         render json: visit
+    end
+
+    def update
+        #
+    end
+
+    def destroy
+        #
     end
 
 end
