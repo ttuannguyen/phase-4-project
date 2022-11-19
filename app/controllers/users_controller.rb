@@ -7,19 +7,22 @@ class UsersController < ApplicationController
 
     # GET "/users/:id"
     def show 
-        current_user = User.find(session[:current_user]) #with find we don't have to include a bang operator for the exception to be raised
-        render json: user
+        # current_user = User.find(session[:current_user]) 
+        # render json: user
+        render json: current_user # because we have current_user inhertied from App controller
     end
 
+    # POST "/users"
     def create
         # session[:user_id] = user.id # to login a user, take the user id and make it persist 
-        # user = User.create!(user_params)
-        session[:current_user] = user.id
+        user = User.create!(user_params) # create the user using the params passed in
+        session[:current_user] = user.id #associate that user with our session
         # byebug
         render json: user, status: :created
         # to add error handling with if/else
     end
 
+    # PUT "/users:id"
     # def update
     #     user = User.find_by(id: params[:id])
     #     user.update(params)

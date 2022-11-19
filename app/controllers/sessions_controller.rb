@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
             # set login attempts to 0 if undefined/falsy
             session[:login_attempts] ||= 0
             session[:login_attempts] += 1
-
             render json: { errors: "Invalid username or password!"}, status: :unprocessable_entity
         end
     end
