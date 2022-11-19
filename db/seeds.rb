@@ -11,9 +11,9 @@ u2 = User.create(name: "Luke", email: "luke@gmail.com", password: "abc")
 u3 = User.create(name: "Baela", email: "baela@gmail.com", password: "abc")
 
 
-s1 = SecretSpot.create(name: "Fountain", location: "Manhattan", description: "A fun place to cool off", cost: 5.50)
-s2 = SecretSpot.create(name: "Abandoned Subway", location: "Brooklyn", description: "Good for pictures", cost: 10)
-s3 = SecretSpot.create(name: "Food Court", location: "Queens", description: "food heaven", cost: 8)
+s1 = SecretSpot.create(name: "The floating map on Green street", location: "110 Greene Street", description: "A work of art by Belgian artist and architect Françoise Schein", cost: 0.00)
+s2 = SecretSpot.create(name: "Freedom Tunnel", location: "St. Claire Place west to the Hudson Parkway off-ramp", description: "the graffiti artist Chris 'Freedom' Pape used the tunnel walls to create some of his most notable artwork", cost: 0.00)
+s3 = SecretSpot.create(name: "Chinese Garden Tunnel", location: "Staten Island", description: "Beautiful garden!", cost: 8.00)
 
 v1 = Visit.create(date: "11/30/2022", comment: "First visit", secret_spot: s1, user: u1)
 v2 = Visit.create(date: "12/1/2022", comment: "Exciting!", secret_spot: s2, user: u1)

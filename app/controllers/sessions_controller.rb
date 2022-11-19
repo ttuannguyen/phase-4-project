@@ -5,11 +5,10 @@ class SessionsController < ApplicationController
 
     def login 
         user = User.find_by!(name: params[:username])
-        
 
         # render json: user
         if user&.authenticate(params[:password])
-            byebug
+            # byebug
             # session[:user_id] = user.id
             session[:current_user] = user.id
             session[:login_attempts] = 0

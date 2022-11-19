@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   
 
-  get "secret_spots", to: "secret_spots#index"
-  resources :users, only:[:show, :create]
-  get "visits", to: "visits#index"
+  resources :secret_spots, only:[:index, :show, :create]
+  resources :users, only:[:index, :show, :create]
+  resources :visits
 
   # route to handle sessions login
   post "/login", to: "sessions#login"
-  delete "/logout", to "sessions#logout"
+  delete "/logout", to: "sessions#logout"
 
   
   # Routing logic: fallback requests for React Router.
