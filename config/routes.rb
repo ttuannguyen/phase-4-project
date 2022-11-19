@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # route to handle sessions login
   post "/login", to: "sessions#login"
+  delete "/logout", to "sessions#logout"
 
   
   # Routing logic: fallback requests for React Router.
