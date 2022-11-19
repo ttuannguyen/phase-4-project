@@ -33,26 +33,17 @@ const Auth = () => {
         <> 
         <h4>Signup</h4>
         <form onSubmit={handleSubmit}>
-        <label>
-          Username
-  
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-        </label>
-        <label>
-          Email
-  
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        </label>
-        <label>
-         Password
-    
-        <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        </label>
-       
-        <input type="submit" value="Sign up!" />
+        <label>Username</label>
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/><br/>
+        <label>Email</label>
+        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/><br/>
+        <label>Password</label>
+        <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/><br/>
+        <button type="submit">Sign up!</button>
       </form>
       </>
     )
+
 }
 
 export default Auth

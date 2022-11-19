@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # route to handle sessions login
   post "/login", to: "sessions#login"
 
-
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

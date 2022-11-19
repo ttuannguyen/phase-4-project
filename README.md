@@ -6,7 +6,7 @@ This project is scaffolded so that you can build a React frontend and Rails
 backend together, and easily deploy them to Render.
 
 The MVP of this application includes the following feature:
-- Sign up for a new accoun
+- Sign up for a new account
 - Log in and log out of the site
 - View a list of secret spots 
 - Create a visit (with date and comment)

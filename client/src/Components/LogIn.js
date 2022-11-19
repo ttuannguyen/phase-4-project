@@ -26,18 +26,11 @@ function Login() {
       <> 
       <h4>Login</h4>
       <form onSubmit={handleSubmit}>
-      <label>
-        Username
-
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label>
-       Password
-  
-      <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-     
-      <input type="submit" value="Login!" />
+      <label>Username</label>
+      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} /><br/>
+      <label>Password</label>
+      <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} /><br/>
+      <button type="submit">Login!</button>
     </form>
     </>
   )

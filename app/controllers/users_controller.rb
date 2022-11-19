@@ -5,16 +5,16 @@ class UsersController < ApplicationController
         render json: users
     end
 
-
     # GET "/users/:id"
     def show 
-        user = User.find_by(id: params[:id])
+        current_user = User.find_by(id: session[:current_user])
         render json: user
     end
 
     def create
         # session[:user_id] = user.id # to login a user, take the user id and make it persist 
         user = User.create!(user_params)
+        session[:current_user] = user.id
         # byebug
         render json: user, status: :created
         # to add error handling with if/else
