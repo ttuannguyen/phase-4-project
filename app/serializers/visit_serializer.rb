@@ -1,3 +1,3 @@
 class VisitSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :date, :comment
 end

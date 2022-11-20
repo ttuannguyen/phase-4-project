@@ -1,3 +1,3 @@
 class SecretSpotSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :location, :description, :cost
 end
