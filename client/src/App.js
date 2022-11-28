@@ -39,17 +39,17 @@ const App = () => {
   return (
     <>
       <Router>
-      <Navbar />
-          {/* <UserProvider>
-            <LogIn />
-          </UserProvider> */}
-        <Routes>
-          <Route exact path="/vendors/new" element={ <VisitAddForm />}/>
-          <Route exact path="/secret_spots" element={ <SecretSpotsContainer secretSpots={secretSpots} /> }/>
-          <Route exact path="/signup" element={ <Auth />} />
-          <Route exact path="/login" element={ <LogIn />} />
-          <Route exact path="/" element={ <Home />} />
-        </Routes>
+            {/* <UserProvider>
+              <LogIn />
+            </UserProvider> */}
+          <Navbar />
+          <Routes>
+            <Route exact path="/vendors/new" element={ <VisitAddForm />}/>
+            <Route exact path="/secret_spots" element={ <SecretSpotsContainer secretSpots={secretSpots} /> }/>
+            <Route exact path="/signup" element={ <Auth />} />
+            <Route exact path="/login" element={ <LogIn />} />
+            <Route exact path="/" element={ <Home />} />
+          </Routes>
       </Router>
     </>
   );
