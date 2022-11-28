@@ -1,5 +1,6 @@
 // import './App.css';
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from './components/Auth';
 import VisitAddForm from './components/VisitAddForm';
 import Home from './components/Home';
@@ -9,7 +10,7 @@ import SecretSpotsContainer from './components/SecretSpotsContainer';
 import SecretSpot from './components/SecretSpot';
 // import { UserProvider } from './context/user';
 
-function App() {
+const App = () => {
 
   const [secretSpots, setSecretSpots] = useState([])
 
@@ -35,19 +36,22 @@ function App() {
   }
   
 
-
   return (
-    <div className="App">
-      <Home />
+    <>
+      <Router>
       <Navbar />
-      <LogIn />
-      {/* <UserProvider>
-        <LogIn />
-      </UserProvider> */}
-      <Auth />
-      <SecretSpotsContainer secretSpots={secretSpots}/>
-      <VisitAddForm />
-    </div>
+          {/* <UserProvider>
+            <LogIn />
+          </UserProvider> */}
+        <Routes>
+          <Route exact path="/vendors/new" element={ <VisitAddForm />}/>
+          <Route exact path="/secret_spots" element={ <SecretSpotsContainer secretSpots={secretSpots} /> }/>
+          <Route exact path="/signup" element={ <Auth />} />
+          <Route exact path="/login" element={ <LogIn />} />
+          <Route exact path="/" element={ <Home />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

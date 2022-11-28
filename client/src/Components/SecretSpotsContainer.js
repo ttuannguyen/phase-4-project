@@ -5,11 +5,11 @@ const SecretSpotsContainer = ({ secretSpots }) => {
 
   // console.log(secretSpots)
   // const allSecretSpots = secretSpots.map(secretSpot => <h4>{secretSpot.location}</h4>)
-  const allSecretSpots = secretSpots.map(secretSpot => <SecretSpot secretSpot={secretSpot} key={secretSpot.key}/>)
+  const allSecretSpots = secretSpots.map(secretSpot => <SecretSpot secretSpot={secretSpot} key={secretSpot.id}/>)
 
   return (
     <div>
-      SecretSpotsContainer
+      <h3>Secret Spots</h3>
       {allSecretSpots}
     </div>
   )
