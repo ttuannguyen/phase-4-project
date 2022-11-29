@@ -12,8 +12,21 @@ import SecretSpot from './components/SecretSpot';
 
 const App = () => {
 
-  const [secretSpots, setSecretSpots] = useState([])
+  const [secretSpots, setSecretSpots] = useState([]);
+  const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    //login
+    fetch('/me').then(res => {
+      if (res.ok) {
+        res.json()
+        .then(user => {
+          console.log(user)
+          setUser(user)})
+      }
+    })
+  })
+  
   useEffect(() => {
     fetch('/secret_spots')
     .then(res => res.json())

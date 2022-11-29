@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
 
 
   def current_user
-    User.find(session[:current_user]) # with find we don't have to include a bang operator for the exception to be raised
+    @current_user ||= User.find(session[:current_user]) if session[:user_id] # with find we don't have to include a bang operator for the exception to be raised
   end
 
   def authorized_user
