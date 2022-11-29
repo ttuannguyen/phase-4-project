@@ -13,6 +13,7 @@ import SecretSpot from './components/SecretSpot';
 const App = () => {
 
   const [secretSpots, setSecretSpots] = useState([]);
+  const [visits, setVisits] = useState([]);
   const [user, setUser] = useState(null)
 
   useEffect(() => {
@@ -39,7 +40,16 @@ const App = () => {
     })
   }, [])
 
-  const handlePost = () => {
+  useEffect(() => {
+    fetch('/visits')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      setSecretSpots(data)
+    })
+  }, [])
+
+  const AddSecretSpot = () => {
     fetch('/secret_spots', {
       method: "POST",
       headers: {
@@ -51,7 +61,6 @@ const App = () => {
     .then(json => console.log(json))
   }
   
-
   return (
     <>
       <Router>

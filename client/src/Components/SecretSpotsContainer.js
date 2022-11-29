@@ -1,5 +1,6 @@
 import React from 'react'
 import SecretSpot from './SecretSpot'
+import SecretSpotAddForm from './SecretSpotAddForm'
 
 const SecretSpotsContainer = ({ secretSpots }) => {
 
@@ -11,6 +12,7 @@ const SecretSpotsContainer = ({ secretSpots }) => {
     <div>
       <h3>Secret Spots</h3>
       {allSecretSpots}
+      <SecretSpotAddForm />
     </div>
   )
 }
