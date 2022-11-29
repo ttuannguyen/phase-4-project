@@ -16,8 +16,14 @@ class SecretSpotsController < ApplicationController
     end
 
     def create
-        secret_spot = SecretSpot.create(params)
-        render json: secret_spot
+        secret_spot = SecretSpot.create(secret_spot_params)
+        render json: secret_spot, status: :created
+    end
+
+    private 
+
+    def secret_spot_params
+        params.permit(:name, :location, :description, :cost)
     end
 
 end

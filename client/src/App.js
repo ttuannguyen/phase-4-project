@@ -21,11 +21,14 @@ const App = () => {
       if (res.ok) {
         res.json()
         .then(user => {
-          console.log(user)
+          // console.log(user)
           setUser(user)})
       }
     })
-  })
+  }, []);
+
+  // if (!user) return <LogIn />
+
   
   useEffect(() => {
     fetch('/secret_spots')
