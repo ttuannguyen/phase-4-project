@@ -7,24 +7,27 @@ class UsersController < ApplicationController
 
     # GET "/users/:id"
     def show 
-        # byebug
-        current_user = User.find(session[:user_id]) 
-        if current_user 
-            render json: current_user
+        user = User.find_by(id: session[:user_id])
+        if user
+            render json: user
         else 
-            render json: { error: "Not Authorized" }, status: :unauthorized 
+            render json: { error: "Not authorized" }, status: :unauthorized
         end
-        # render json: current_user # because we have current_user inhertied from App controller
     end
 
     # POST "/users"
     def create
         # session[:user_id] = user.id # to login a user, take the user id and make it persist 
-        user = User.create!(user_params) # create the user using the params passed in
-        session[:current_user] = user.id #associate that user with our session
+        user = User.create(user_params) # create the user using the params passed in
         # byebug
-        render json: user, status: :created
-        # to add error handling with if/else
+        if user.valid?
+            # session[:current_user] = user.id #associate that user with our session, key inside sess hash can be anything 
+            session[:user_id] = user.id
+            render json: user, status: :created
+        else
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+        end
+
     end
 
     # PUT "/users:id"
@@ -43,6 +46,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
+        # params.permit(:name, :email, :password)
         params.permit(:name, :email, :password, :password_confirmation)
     end
 

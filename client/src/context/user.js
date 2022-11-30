@@ -12,6 +12,7 @@ const UserProvider = ({ children }) => {
         fetch('/me')
         .then(res => res.json())
         .then(json => {
+            console.log(json)
             setUser(json)
         })
     }, [])
@@ -24,8 +25,8 @@ const UserProvider = ({ children }) => {
 
     }
 
-    const signup = () => {
-
+    const signup = (user) => {
+        setUser(user)
     }
 
 

@@ -9,7 +9,7 @@ const Home = () => {
   } else {
     return (
       <div>
-        <h4>{ user.name }'s Home Page</h4>
+        <h4>Welcome to { user.name }'s Home Page</h4>
       </div>
     ) 
   }
