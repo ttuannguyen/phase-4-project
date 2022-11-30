@@ -7,9 +7,14 @@ class UsersController < ApplicationController
 
     # GET "/users/:id"
     def show 
-        # current_user = User.find(session[:current_user]) 
-        # render json: user
-        render json: current_user # because we have current_user inhertied from App controller
+        # byebug
+        current_user = User.find(session[:user_id]) 
+        if current_user 
+            render json: current_user
+        else 
+            render json: { error: "Not Authorized" }, status: :unauthorized 
+        end
+        # render json: current_user # because we have current_user inhertied from App controller
     end
 
     # POST "/users"
