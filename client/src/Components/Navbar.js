@@ -13,7 +13,7 @@ const Navbar = () => {
       headers: { 'Content-Type': 'application/json'}
     }) 
     .then(() => {
-      logout() //call logout over in context
+      logout() //call logout over in context, setting loggedIn to false
       navigate('/')
     })
   }

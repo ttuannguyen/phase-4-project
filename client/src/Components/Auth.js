@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react'
-import { UserContext } from '../context/user'
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../context/user';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
 
@@ -10,6 +11,7 @@ const Auth = () => {
     // const [login, setLogin] = useState('')
     const [errorsList, setErrorsList] = useState([])
     const {signup} = useContext(UserContext)
+    const nagivate = useNavigate()
 
 
     const handleSubmit = (e) => {
@@ -37,10 +39,12 @@ const Auth = () => {
                 setPassword('')
                 setPasswordConfirmation('')
                 // get the errors
+                // look at issue: unique id 
                 const errorItems = user.errors.map(e => <p key={e.id}>{e}</p>) 
                 setErrorsList(errorItems) 
             } else {
                 signup(user)
+                nagivate('/')
             }
         })
     }

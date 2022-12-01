@@ -1,14 +1,17 @@
 import React, { useState, useContext } from 'react';
-// import { UserContext } from '../context/user';
+import { UserContext } from '../context/user';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useContext(UserContext);
+  const nagivate = useNavigate();
  
   const handleSubmit = (e) => {
       e.preventDefault()
       
-      const user = {
+      const obj = {
           username: username,
           password
       }
@@ -16,12 +19,13 @@ function Login() {
       fetch('/login',{
         method:'POST',
         headers:{'Content-Type': 'application/json'},
-        body:JSON.stringify(user)
+        body:JSON.stringify(obj)
       })
       .then(res => res.json())
-      .then(json => {
-          console.log(json)
-          //login(user)
+      .then(user => {
+          // console.log(user)
+          login(user)
+          nagivate('/')
       })
   }
   return (

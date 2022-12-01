@@ -5,7 +5,7 @@ const UserContext = React.createContext();
 
 //any child hooked to the global will have access to the stateful variable(s); in our case we have user in state
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null); 
+    const [user, setUser] = useState({}); 
     const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
 
     useEffect(() => {
