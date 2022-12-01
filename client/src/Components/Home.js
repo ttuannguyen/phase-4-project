@@ -10,7 +10,7 @@ const Home = () => {
     return (
       // This section is no longer needed as we have the "if (user)" logic in Navbar
       <div>
-        <h4>Welcome to {user.name}'s Home Page</h4>
+        <h4>This is {user.name}'s Home Page</h4>
       </div>
     ) 
   }

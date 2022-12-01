@@ -1,23 +1,28 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../context/user'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
-  const {user, logout} = useContext(UserContext)
+  const {user, logout, loggedIn} = useContext(UserContext)
+  const navigate = useNavigate()
 
   const logoutUser = () => {
-    fetch('/logout') 
+    fetch('/logout', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json'}
+    }) 
     .then(() => {
-      logout()
+      logout() //call logout over in context
+      navigate('/')
     })
   }
   
-  if (user) {
+  if (loggedIn) {
     return (
       <div>
-        <h4>Hello there, {user.name}</h4><br/>
-        <button>Logout!</button>
+        <h4>This is {user.name}'s navbar</h4><br/>
+        <button onClick={logoutUser}>Logout!</button>
       </div>
     )
   } else {
