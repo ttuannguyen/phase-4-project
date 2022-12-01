@@ -21,6 +21,7 @@ function Login() {
       .then(res => res.json())
       .then(json => {
           console.log(json)
+          //login(user)
       })
   }
   return (

@@ -22,9 +22,14 @@ const Navbar = () => {
     )
   } else {
     return (
-      <NavLink className='navlink' to='/login'>
-        <button>Login</button>
-      </NavLink>
+      <>
+        <NavLink className='navlink' to='/login'>
+          <button>Login</button>
+        </NavLink>
+        <NavLink className='navlink' to='/signup'>
+          <button>Signup</button>
+        </NavLink>
+      </>
     )
   }
 
