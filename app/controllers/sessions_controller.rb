@@ -14,13 +14,14 @@ class SessionsController < ApplicationController
             # session[:current_user] = user.id
             render json: user, status: :ok
         else
-            render json: { errors: "Invalid username or password!"}, status: :unprocessable_entity
+            render json: { error: "Invalid username or password!"}, status: :unauthorized
         end
     end
 
     # logging out
     def logout
-        session.delete :current_user
+        # session.delete :current_user
+        session.clear
     end
 
 end
