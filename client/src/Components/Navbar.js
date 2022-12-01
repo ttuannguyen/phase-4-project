@@ -21,7 +21,7 @@ const Navbar = () => {
   if (loggedIn) {
     return (
       <div>
-        <h4>This is {user.name}'s navbar</h4><br/>
+        <h4>This is your navbar, {user.name}</h4><br/>
         <button onClick={logoutUser}>Logout!</button>
       </div>
     )
