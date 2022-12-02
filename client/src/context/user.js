@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { json } from "react-router-dom";
-
 
 const UserContext = React.createContext();
 
@@ -9,6 +7,7 @@ const UserProvider = ({ children }) => {
     const [user, setUser] = useState({}); 
     const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
     const [secretSpots, setSecretSpots] = useState([]);
+    const [visits, setVisits] = useState([]);
 
     useEffect(() => {
         fetch('/me')
@@ -21,6 +20,7 @@ const UserProvider = ({ children }) => {
             } else {
                 setLoggedIn(true)
                 fetchSecretSpots() // calling the function below
+                fetchVisits() // calling the function below
             }
             // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
@@ -52,27 +52,40 @@ const UserProvider = ({ children }) => {
         })
     }
 
+    // get all visits
+    const fetchVisits = () => {
+        fetch('/visits')
+        .then(res => res.json())
+        .then(json => {
+        // console.log(json)
+        setVisits(json)
+        })
+    }
+
+    // helper functions for managing a user's session
+    const signup = (user) => { 
+        setUser(user)
+        fetchSecretSpots()
+        fetchVisits()
+        setLoggedIn(true)
+    }
+    
     const login = (user) => {
         setUser(user)
         fetchSecretSpots()
+        fetchVisits()
         setLoggedIn(true)
     }
 
     const logout = () => {
         setUser({})
         setSecretSpots([])
+        fetchVisits([])
         setLoggedIn(false)
     }
 
-    const signup = (user) => { 
-        setUser(user)
-        fetchSecretSpots()
-        setLoggedIn(true)
-    }
-
-
     return (
-        <UserContext.Provider value={{user, login, logout, signup, loggedIn, secretSpots, addSecretSpot}}>
+        <UserContext.Provider value={{user, login, logout, signup, loggedIn, secretSpots, visits, addSecretSpot}}>
             {children}
         </UserContext.Provider>
     )

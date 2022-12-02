@@ -13,8 +13,8 @@ import { UserProvider } from './context/user';
 
 const App = () => {
 
-  const [secretSpots, setSecretSpots] = useState([]);
-  const [visits, setVisits] = useState([]);
+  // const [secretSpots, setSecretSpots] = useState([]);
+  // const [visits, setVisits] = useState([]);
   const [user, setUser] = useState(null);
   
   // useEffect(() => {
@@ -26,26 +26,26 @@ const App = () => {
   //   })
   // }, [])
 
-  useEffect(() => {
-    fetch('/visits')
-    .then(res => res.json())
-    .then(data => {
-      // console.log(data)
-      setSecretSpots(data)
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetch('/visits')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     // console.log(data)
+  //     setSecretSpots(data)
+  //   })
+  // }, [])
 
-  const AddSecretSpot = () => {
-    fetch('/secret_spots', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify()
-    })
-    .then(res => res.json())
-    .then(json => console.log(json))
-  }
+  // const AddSecretSpot = () => {
+  //   fetch('/secret_spots', {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify()
+  //   })
+  //   .then(res => res.json())
+  //   .then(json => console.log(json))
+  // }
 
   const addVisit = () => {
     fetch('/visits', {
@@ -67,8 +67,8 @@ const App = () => {
           <p>Discover the secret spots in NYC like a true New Yorker!</p>
           <Navbar />
           <Routes>
-            <Route exact path="/vendors/new" element={ <VisitAddForm />}/>
-            <Route exact path="/secret_spots" element={ <SecretSpotsContainer secretSpots={secretSpots} /> }/>
+            <Route exact path="/visits" element={ <VisitAddForm />}/>
+            <Route exact path="/secret_spots" element={ <SecretSpotsContainer /> }/>
             <Route exact path="/signup" element={ <Auth />} />
             <Route exact path="/login" element={ <LogIn />} />
             <Route exact path="/" element={ <Home />} />
