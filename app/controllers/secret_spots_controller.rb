@@ -1,6 +1,6 @@
 class SecretSpotsController < ApplicationController
 
-    before_action: authorize
+    before_action :authorize
 
     def index
         secret_spots = current_user.secret_spots

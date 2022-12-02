@@ -26,12 +26,14 @@ class VisitsController < ApplicationController
     end
 
     def update
+        # to revisit
         visit = Visit.find_by(id: params[:id])
         visit.update(params)
         render json: visit
     end
 
     def destroy
+        # to revisit
         visit = Visit.find_by(id: params[:id])
         visit.destroy
         head :no_content 

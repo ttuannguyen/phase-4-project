@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { json } from "react-router-dom";
 
 
 const UserContext = React.createContext();
@@ -7,6 +8,7 @@ const UserContext = React.createContext();
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState({}); 
     const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
+    const [secretSpots, setSecretSpots] = useState([]);
 
     useEffect(() => {
         fetch('/me')
@@ -14,9 +16,39 @@ const UserProvider = ({ children }) => {
         .then(json => {
             // console.log(json)
             setUser(json)
-            json.error ? setLoggedIn(false) : setLoggedIn(true)
+            if (json.error) {
+                setLoggedIn(false)
+            } else {
+                setLoggedIn(true)
+                fetchSecretSpots() // calling the function below
+            }
+            // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
     }, [])
+
+    // get all spots
+    const fetchSecretSpots = () => {
+        fetch('/secret_spots')
+        .then(res => res.json())
+        .then(json => {
+            setSecretSpots(json)
+        })
+    }
+
+    // add a spot
+    const addSecretSpot = () => {
+        fetch('/secret_spots', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify()
+        })
+        .then(res => res.json())
+        .then(newSecretSpot => {
+            setSecretSpots([...secretSpots, newSecretSpot])
+        })
+    }
 
     const login = (user) => {
         setUser(user)
@@ -28,14 +60,14 @@ const UserProvider = ({ children }) => {
         setLoggedIn(false)
     }
 
-    const signup = (user) => {
+    const signup = (user) => { 
         setUser(user)
         setLoggedIn(true)
     }
 
 
     return (
-        <UserContext.Provider value={{user, login, logout, signup, loggedIn }}>
+        <UserContext.Provider value={{user, login, logout, signup, loggedIn, secretSpots, addSecretSpot}}>
             {children}
         </UserContext.Provider>
     )

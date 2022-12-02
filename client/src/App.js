@@ -15,30 +15,16 @@ const App = () => {
 
   const [secretSpots, setSecretSpots] = useState([]);
   const [visits, setVisits] = useState([]);
-  const [user, setUser] = useState(null)
-
-  // useEffect(() => {
-  //   //login
-  //   fetch('/me').then(res => {
-  //     if (res.ok) {
-  //       res.json()
-  //       .then(user => {
-  //         // console.log(user)
-  //         setUser(user)})
-  //     }
-  //   })
-  // }, []);
-
-
+  const [user, setUser] = useState(null);
   
-  useEffect(() => {
-    fetch('/secret_spots')
-    .then(res => res.json())
-    .then(data => {
-      // console.log(data)
-      setSecretSpots(data)
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetch('/secret_spots')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     // console.log(data)
+  //     setSecretSpots(data)
+  //   })
+  // }, [])
 
   useEffect(() => {
     fetch('/visits')
