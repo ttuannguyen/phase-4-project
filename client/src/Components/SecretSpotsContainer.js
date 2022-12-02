@@ -4,22 +4,32 @@ import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
 import { UserContext  } from '../context/user';
 
-const SecretSpotsContainer = ({ secretSpots }) => {
+const SecretSpotsContainer = () => {
 
-  const {} = useContext(UserContext);
-  const {formFlag, setFormFlag} = useState(false); 
+  const { secretSpots, loggedIn } = useContext(UserContext);
+  const [formToggle, setFormToggle] = useState(false); // to expose the form
   
   // console.log(secretSpots)
-  // const allSecretSpots = secretSpots.map(secretSpot => <h4>{secretSpot.location}</h4>)
-  const allSecretSpots = secretSpots.map(secretSpot => <SecretSpot secretSpot={secretSpot} key={secretSpot.id}/>)
-
-  return (
-    <div>
-      <h3>Secret Spots</h3>
-      {allSecretSpots}
-      <SecretSpotAddForm />
-    </div>
-  )
+  const allSecretSpots = secretSpots.map(secretSpot => <li key={secretSpot.id}>{secretSpot.name}</li>)
+  // const allSecretSpots = secretSpots.map(secretSpot => <SecretSpot secretSpot={secretSpot} key={secretSpot.id}/>)
+  
+  // hide the form away after adding a spot
+  const afterAddSpot = () => {
+    setFormToggle(false)
+  }
+  
+  if (loggedIn) {
+    return (
+      <div>
+        <h3>Here are your Secret Spots</h3>
+        {allSecretSpots}
+        <br/>
+        {formToggle ? <SecretSpotAddForm afterAddSpot={afterAddSpot}/> : <button onClick={() => setFormToggle(true)}>Add a Spot!</button>}
+      </div>
+    )
+  } else {
+    return (<h4>Please login or create an Account</h4>)
+  }
 }
 
 export default SecretSpotsContainer

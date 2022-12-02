@@ -22,13 +22,14 @@ class SecretSpotsController < ApplicationController
         if secret_spot.valid?
             render json: secret_spot, status: :created
         else
-            render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
+            render json: { errors: secret_spot.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
     private 
 
     def current_user
+        # byebug
         User.find_by(id: session[:user_id])
     end
 

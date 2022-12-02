@@ -31,37 +31,42 @@ const UserProvider = ({ children }) => {
         fetch('/secret_spots')
         .then(res => res.json())
         .then(json => {
+            // console.log(json)
             setSecretSpots(json)
         })
     }
 
     // add a spot
-    const addSecretSpot = () => {
+    const addSecretSpot = (formData) => {
         fetch('/secret_spots', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify()
+          body: JSON.stringify(formData)
         })
         .then(res => res.json())
         .then(newSecretSpot => {
+            // console.log(newSecretSpot)
             setSecretSpots([...secretSpots, newSecretSpot])
         })
     }
 
     const login = (user) => {
         setUser(user)
+        fetchSecretSpots()
         setLoggedIn(true)
     }
 
     const logout = () => {
         setUser({})
+        setSecretSpots([])
         setLoggedIn(false)
     }
 
     const signup = (user) => { 
         setUser(user)
+        fetchSecretSpots()
         setLoggedIn(true)
     }
 

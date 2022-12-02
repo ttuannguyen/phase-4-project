@@ -21,7 +21,10 @@ const Navbar = () => {
   if (loggedIn) {
     return (
       <div>
-        <h4>This is your navbar, {user.name}</h4><br/>
+        <h4>This is your navbar, {user.name}</h4>
+        <NavLink className='navlink' to='/secret_spots'>
+          <button>Your Secret Spots</button>
+        </NavLink>
         <button onClick={logoutUser}>Logout!</button>
       </div>
     )
