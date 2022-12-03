@@ -13,30 +13,9 @@ import { UserProvider } from './context/user';
 
 const App = () => {
 
-  // const [secretSpots, setSecretSpots] = useState([]);
-  // const [visits, setVisits] = useState([]);
-  const [user, setUser] = useState(null);
   
-  // useEffect(() => {
-  //   fetch('/secret_spots')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     // console.log(data)
-  //     setSecretSpots(data)
-  //   })
-  // }, [])
-
-  // useEffect(() => {
-  //   fetch('/visits')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     // console.log(data)
-  //     setSecretSpots(data)
-  //   })
-  // }, [])
-
-  // const AddSecretSpot = () => {
-  //   fetch('/secret_spots', {
+  // const addVisit = () => {
+  //   fetch('/visits', {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -46,18 +25,6 @@ const App = () => {
   //   .then(res => res.json())
   //   .then(json => console.log(json))
   // }
-
-  const addVisit = () => {
-    fetch('/visits', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify()
-    })
-    .then(res => res.json())
-    .then(json => console.log(json))
-  }
   
   return (
     <>

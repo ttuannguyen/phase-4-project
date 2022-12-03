@@ -2,6 +2,11 @@ class SecretSpotsController < ApplicationController
 
     before_action :authorize
 
+    def all 
+        render json: SecretSpot.all
+    end
+    
+    
     def index
         secret_spots = current_user.secret_spots
         render json: secret_spots

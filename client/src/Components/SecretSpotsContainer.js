@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 // import { Route, useParams } from 'react-router-dom';
 import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
+import VisitAddForm from './VisitAddForm';
 import { UserContext  } from '../context/user';
 
 const SecretSpotsContainer = () => {
@@ -19,7 +20,7 @@ const SecretSpotsContainer = () => {
   const afterAddSpot = () => {
     setFormToggle(false)
   }
-  
+
   if (loggedIn) {
     return (
       <div>
@@ -29,6 +30,7 @@ const SecretSpotsContainer = () => {
         {allVisits}
         <br/>
         {formToggle ? <SecretSpotAddForm afterAddSpot={afterAddSpot}/> : <button onClick={() => setFormToggle(true)}>Add a Spot!</button>}
+        <VisitAddForm />
       </div>
     )
   } else {

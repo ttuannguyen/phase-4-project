@@ -21,7 +21,9 @@ class SessionsController < ApplicationController
     # logging out
     def logout
         # session.delete :current_user
-        session.clear
+        # session.clear
+        session.delete(:user_id)
+        head :no_content
     end
 
 end

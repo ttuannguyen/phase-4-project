@@ -6,7 +6,8 @@ const UserContext = React.createContext();
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState({}); 
     const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
-    const [secretSpots, setSecretSpots] = useState([]);
+    const [allSecretSpots, setAllSecretSpots] = useState([]); // all the spots in db
+    const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
     const [visits, setVisits] = useState([]);
 
     useEffect(() => {
@@ -19,7 +20,8 @@ const UserProvider = ({ children }) => {
                 setLoggedIn(false)
             } else {
                 setLoggedIn(true)
-                fetchSecretSpots() // calling the function below
+                fetchAllSecretSpots() // calling the function below
+                fetchUserSecretSpots() // calling the function below
                 fetchVisits() // calling the function below
             }
             // json.error ? setLoggedIn(false) : setLoggedIn(true)
@@ -27,12 +29,22 @@ const UserProvider = ({ children }) => {
     }, [])
 
     // get all spots
-    const fetchSecretSpots = () => {
+    const fetchAllSecretSpots = () => {
+        fetch('/all')
+        .then(res => res.json())
+        .then(json => {
+            // console.log(json)
+            setAllSecretSpots(json)
+        })
+    }
+    
+    // get user's spots
+    const fetchUserSecretSpots = () => {
         fetch('/secret_spots')
         .then(res => res.json())
         .then(json => {
             // console.log(json)
-            setSecretSpots(json)
+            setUserSecretSpots(json)
         })
     }
 
@@ -48,7 +60,7 @@ const UserProvider = ({ children }) => {
         .then(res => res.json())
         .then(newSecretSpot => {
             // console.log(newSecretSpot)
-            setSecretSpots([...secretSpots, newSecretSpot])
+            setUserSecretSpots([...userSecretSpots, newSecretSpot])
         })
     }
 
@@ -65,27 +77,30 @@ const UserProvider = ({ children }) => {
     // helper functions for managing a user's session
     const signup = (user) => { 
         setUser(user)
-        fetchSecretSpots()
+        fetchAllSecretSpots()
+        fetchUserSecretSpots()
         fetchVisits()
         setLoggedIn(true)
     }
     
     const login = (user) => {
         setUser(user)
-        fetchSecretSpots()
+        fetchAllSecretSpots()
+        fetchUserSecretSpots()
         fetchVisits()
         setLoggedIn(true)
     }
 
     const logout = () => {
         setUser({})
-        setSecretSpots([])
+        fetchAllSecretSpots([])
+        fetchUserSecretSpots([])
         fetchVisits([])
         setLoggedIn(false)
     }
 
     return (
-        <UserContext.Provider value={{user, login, logout, signup, loggedIn, secretSpots, visits, addSecretSpot}}>
+        <UserContext.Provider value={{user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot}}>
             {children}
         </UserContext.Provider>
     )
