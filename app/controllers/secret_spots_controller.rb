@@ -6,7 +6,6 @@ class SecretSpotsController < ApplicationController
         render json: SecretSpot.all
     end
     
-    
     def index
         secret_spots = current_user.secret_spots
         render json: secret_spots
@@ -23,7 +22,7 @@ class SecretSpotsController < ApplicationController
     end
 
     def create
-        secret_spot = current_user.secret_spots.create(secret_spot_params)
+        secret_spot = SecretSpot.create(secret_spot_params)
         if secret_spot.valid?
             render json: secret_spot, status: :created
         else

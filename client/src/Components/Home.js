@@ -1,27 +1,28 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../context/user';
 import SecretSpotAddForm from './SecretSpotAddForm';
 import VisitAddForm from './VisitAddForm';
 
 const Home = () => {
   const { user, loggedIn, allSecretSpots } = useContext(UserContext);
-  const [formToggle, setFormToggle] = useState(false); // to expose the form
+  const [formToggle, setFormToggle] = useState(false); // to expose the secret spot add form
+  const [visitFormToggle, setVisitFormToggle] = useState(false); // to expose the visit add form
 
+  // hide the form away after adding a spot
+  const afterAddSpot = () => setFormToggle(false)
 
   // console.log(allSecretSpots)
   const allSecretSpotsList = allSecretSpots.map(s => {
     return (
         <div key={s.id}>
           <p>{s.name}</p>
-          <button>Visit</button>
+          <Link to={"/visits/new"}>
+            <button>Visit</button>
+          </Link>
         </div>
     )
   })
-
-    // hide the form away after adding a spot
-    const afterAddSpot = () => {
-      setFormToggle(false)
-    }
 
   if (loggedIn) {
     return (
@@ -31,7 +32,6 @@ const Home = () => {
         {allSecretSpotsList}
         <p>Don't see one? Add a new spot!</p>
         {formToggle ? <SecretSpotAddForm afterAddSpot={afterAddSpot}/> : <button onClick={() => setFormToggle(true)}>Add a Spot!</button>}
-        <VisitAddForm />
       </div>
     )
   } else {

@@ -10,7 +10,7 @@ const SecretSpotsContainer = () => {
   const { userSecretSpots, visits, loggedIn } = useContext(UserContext);
   
   console.log(visits)
-  const allVisits = visits.map(visit => <li key={visit.id}>Secret spot: {visit.secret_spot} | On: {visit.date} | Comment: {visit.comment}</li>)
+  const allVisits = visits.map(visit => <li key={visit.id}>Secret spot: {visit.secret_spot} | On: {visit.date} | Comment: {visit.note}</li>)
   
   const allSecretSpots = userSecretSpots.map(secretSpot => <li key={secretSpot.id}>{secretSpot.name}</li>)
   // const allSecretSpots = secretSpots.map(secretSpot => <SecretSpot secretSpot={secretSpot} key={secretSpot.id}/>)

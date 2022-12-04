@@ -34,7 +34,7 @@ const App = () => {
           <p>Discover the secret spots in NYC like a true New Yorker!</p>
           <Navbar />
           <Routes>
-            <Route exact path="/visits" element={ <VisitAddForm />}/>
+            <Route exact path="/visits/new" element={ <VisitAddForm /> }/>
             <Route exact path="/secret_spots" element={ <SecretSpotsContainer /> }/>
             <Route exact path="/signup" element={ <Auth />} />
             <Route exact path="/login" element={ <LogIn />} />

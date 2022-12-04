@@ -44,7 +44,7 @@ const VisitAddForm = () => {
   
   return (
     <>
-      <h3>Add a Visit</h3>
+      <h4>Add a Visit</h4>
       <form onSubmit={handleSubmit}>
       <label>Date</label>
       <input type='text' name='date' value={formData.date} onChange={handleChange} required /><br/>

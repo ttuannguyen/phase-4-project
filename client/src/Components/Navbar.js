@@ -27,7 +27,7 @@ const Navbar = () => {
         <NavLink className='navlink' to='/secret_spots'>
           <button>Your Secret Spots</button>
         </NavLink>
-        <button onClick={logoutUser}>Logout!</button>
+        <button onClick={logoutUser}>Logout</button>
       </div>
     )
   } else {

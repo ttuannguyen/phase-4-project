@@ -25,7 +25,7 @@ function Login() {
       .then(user => {
           // console.log(user)
           login(user)
-          nagivate('/')
+          nagivate('/home')
       })
   }
   return (

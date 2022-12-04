@@ -60,7 +60,7 @@ const UserProvider = ({ children }) => {
         .then(res => res.json())
         .then(newSecretSpot => {
             // console.log(newSecretSpot)
-            setUserSecretSpots([...userSecretSpots, newSecretSpot])
+            setAllSecretSpots([...allSecretSpots, newSecretSpot])
         })
     }
 
@@ -73,6 +73,8 @@ const UserProvider = ({ children }) => {
         setVisits(json)
         })
     }
+
+    // TODO: need a function to add a new visit
 
     // helper functions for managing a user's session
     const signup = (user) => { 
