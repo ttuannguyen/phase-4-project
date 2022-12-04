@@ -93,9 +93,9 @@ const UserProvider = ({ children }) => {
 
     const logout = () => {
         setUser({})
-        fetchAllSecretSpots([])
-        fetchUserSecretSpots([])
-        fetchVisits([])
+        setAllSecretSpots([])
+        setUserSecretSpots([])
+        setVisits([])
         setLoggedIn(false)
     }
 

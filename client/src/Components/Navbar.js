@@ -21,7 +21,9 @@ const Navbar = () => {
   if (loggedIn) {
     return (
       <div>
-        <h4>This is your navbar, {user.name}</h4>
+        <NavLink className='navlink' to='/home'>
+          <button>Home</button>
+        </NavLink>
         <NavLink className='navlink' to='/secret_spots'>
           <button>Your Secret Spots</button>
         </NavLink>
@@ -40,15 +42,6 @@ const Navbar = () => {
       </>
     )
   }
-
-  // return (
-  //   <div>
-  //     <NavLink className='navlink' to='/'>Home</NavLink>
-  //     <NavLink className='navlink' to='/login'>Login</NavLink>
-  //     <NavLink className='navlink' to='/signup'>Sign Up</NavLink>
-  //     <button onClick={logoutUser}>Logout</button>
-  //   </div>
-  // )
 }
 
 export default Navbar

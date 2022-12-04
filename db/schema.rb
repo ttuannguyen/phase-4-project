@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_11_11_201703) do
 
   create_table "visits", force: :cascade do |t|
     t.string "date"
-    t.string "comment"
+    t.string "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "secret_spot_id", null: false

@@ -38,7 +38,7 @@ const App = () => {
             <Route exact path="/secret_spots" element={ <SecretSpotsContainer /> }/>
             <Route exact path="/signup" element={ <Auth />} />
             <Route exact path="/login" element={ <LogIn />} />
-            <Route exact path="/" element={ <Home />} />
+            <Route exact path="/home" element={ <Home />} />
           </Routes>
         </Router>
       </UserProvider>

@@ -5,9 +5,9 @@ class User < ApplicationRecord
     has_many :visits
     has_many :secret_spots, through: :visits
 
-    validates :name, presence: true, uniqueness: true
-    validates :email, presence: true, uniqueness: true
-    validates :password, presence: true
-    validates :password, :password_confirmation, presence: true
+    # validates :name, presence: true, uniqueness: true
+    # validates :email, presence: true, uniqueness: true
+    # validates :password, presence: true
+    # validates :password, :password_confirmation, presence: true
     
 end

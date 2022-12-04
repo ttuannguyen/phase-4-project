@@ -5,7 +5,7 @@ const VisitAddForm = () => {
 
   const [formData, setFormData] = useState({
     date:'',
-    comment:'',   
+    note:'',   
   });
 
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const VisitAddForm = () => {
     // reset form
     setFormData({
       date:'',
-      comment:''
+      note:''
     })
 
 
@@ -48,8 +48,8 @@ const VisitAddForm = () => {
       <form onSubmit={handleSubmit}>
       <label>Date</label>
       <input type='text' name='date' value={formData.date} onChange={handleChange} required /><br/>
-      <label>Comment</label>
-      <textarea type="text" name='comment' value={formData.comment} onChange={handleChange} required /><br/>
+      <label>Note</label>
+      <textarea type="text" name='note' value={formData.note} onChange={handleChange} required /><br/>
       <button type="submit">Visit!</button>
     </form>
     </>

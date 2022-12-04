@@ -46,7 +46,7 @@ class VisitsController < ApplicationController
     end
     
     def visit_params
-        params.permit(:date, :comment)
+        params.permit(:date, :note)
     end
 
     def authorize
