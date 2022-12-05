@@ -14,12 +14,12 @@ const SecretSpotsContainer = () => {
   
   const allSecretSpots = userSecretSpots.map(secretSpot => <li key={secretSpot.id}>{secretSpot.name}</li>)
   // const allSecretSpots = secretSpots.map(secretSpot => <SecretSpot secretSpot={secretSpot} key={secretSpot.id}/>)
-  
 
   if (loggedIn) {
     return (
       <div>
         <h3>Here are your Secret Spots</h3>
+        {/* TODO: render only distinct spots (refer to this resource: https://www.lugolabs.com/articles/distinct-active-records-in-has_many-through-associations)  */}
         {allSecretSpots}
         <h3>Here are your Visits</h3>
         {allVisits}

@@ -75,6 +75,21 @@ const UserProvider = ({ children }) => {
     }
 
     // TODO: need a function to add a new visit
+    const addVisit = (formData) => {
+        // console.log(formData)
+        fetch('/visits', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(newVisit => {
+            // console.log(newSecretSpot)
+            setVisits([...visits, newVisit])
+        })
+    }
 
     // helper functions for managing a user's session
     const signup = (user) => { 
@@ -102,7 +117,7 @@ const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot}}>
+        <UserContext.Provider value={{user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot, addVisit}}>
             {children}
         </UserContext.Provider>
     )

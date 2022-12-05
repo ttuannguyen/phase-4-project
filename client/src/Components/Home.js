@@ -13,10 +13,14 @@ const Home = () => {
   const afterAddSpot = () => setFormToggle(false)
 
   // console.log(allSecretSpots)
+
+  // TODO: fix the button on each spot to toggle only the form of the spot in question
+
   const allSecretSpotsList = allSecretSpots.map(s => {
     return (
         <div key={s.id}>
           <p>{s.name}</p>
+          {/* TODO: Design button to toggle the visit add form (i.e. expose the form upon click and hide it after submission) */}
           <Link to={"/visits/new"}>
             <button>Visit</button>
           </Link>
