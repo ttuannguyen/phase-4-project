@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/user';
 import SecretSpotAddForm from './SecretSpotAddForm';
+import VisitAddButton from './VisitAddButton';
 import VisitAddForm from './VisitAddForm';
 
 const Home = () => {
@@ -15,15 +16,15 @@ const Home = () => {
   // console.log(allSecretSpots)
 
   // TODO: fix the button on each spot to toggle only the form of the spot in question
+  const allSecretSpotsList = allSecretSpots.map(spot => {
 
-  const allSecretSpotsList = allSecretSpots.map(s => {
+  
     return (
-        <div key={s.id}>
-          <p>{s.name}</p>
-          {/* TODO: Design button to toggle the visit add form (i.e. expose the form upon click and hide it after submission) */}
-          <Link to={"/visits/new"}>
-            <button>Visit</button>
-          </Link>
+        <div key={spot.id}>
+          <h4>{spot.name}</h4>
+          {/* TODO: Design the button to toggle the visit add form (i.e. expose the form upon click and hide it after submitting) */}
+          {/* {visitFormToggle ? <VisitAddForm spot={spot} /> : <button onClick={() => setVisitFormToggle(true)}>Add a Visit!</button>}  */}
+          {/* <VisitAddForm spot={spot}/> */}
         </div>
     )
   })
@@ -31,8 +32,8 @@ const Home = () => {
   if (loggedIn) {
     return (
       <div>
-        <h4>Welcome to your Secret NYC, {user.name}</h4>
-        <h4>Here is the list of all the Secret Spots in NYC</h4>
+        <h2>Welcome to your Secret NYC, {user.name}</h2>
+        <h3>Here is the list of all the Secret Spots in NYC</h3>
         {allSecretSpotsList}
         <p>Don't see one? Add a new spot!</p>
         {formToggle ? <SecretSpotAddForm afterAddSpot={afterAddSpot}/> : <button onClick={() => setFormToggle(true)}>Add a Spot!</button>}

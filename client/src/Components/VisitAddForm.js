@@ -2,14 +2,15 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
 import { useNavigate } from 'react-router-dom';
 
-const VisitAddForm = () => {
+const VisitAddForm = ({ spot }) => {
 
   const { user, addVisit } = useContext(UserContext);
+  // console.log(spot.id)
   // const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
-    // TODO: indiciate the id of the spot in question as the value of the secret_spot key below
-    secret_spot:'',
+    // TODO: indicate id of the spot in question as the value of the secret_spot key below
+    secret_spot_id: spot.id,
     date:'',
     note:'',   
   });
@@ -26,7 +27,6 @@ const VisitAddForm = () => {
     addVisit(formData)
     // reset form
     setFormData({
-      secret_spot:'',
       date:'',
       note:''
     })
@@ -50,15 +50,13 @@ const VisitAddForm = () => {
   
   return (
     <>
-      <h4>Add a Visit</h4>
+      <p>Add a Visit</p>
       <form onSubmit={handleSubmit}>
-      <label>Secret Spot</label>
-      <input type='text' name='secret_spot' value={formData.secret_spot} onChange={handleChange} required /><br/>  
       <label>Date</label>
       <input type='text' name='date' value={formData.date} onChange={handleChange} required /><br/>
       <label>Note</label>
       <textarea type="text" name='note' value={formData.note} onChange={handleChange} required /><br/>
-      <button type="submit">Visit!</button>
+      <button type="submit">Submit</button>
     </form>
     </>
   )

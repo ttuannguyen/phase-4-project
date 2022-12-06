@@ -24,6 +24,7 @@ function Login() {
       .then(res => res.json())
       .then(user => {
           // console.log(user)
+          // if errors render errors and stay on form 
           login(user)
           nagivate('/home')
       })

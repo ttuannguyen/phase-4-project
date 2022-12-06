@@ -30,7 +30,7 @@ const App = () => {
     <>
       <UserProvider>
         <Router>
-          <h2>NYC Adventures</h2>
+          <h1>NYC Adventures</h1>
           <p>Discover the secret spots in NYC like a true New Yorker!</p>
           <Navbar />
           <Routes>
