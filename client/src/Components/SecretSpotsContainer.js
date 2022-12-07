@@ -9,7 +9,7 @@ const SecretSpotsContainer = () => {
 
   const { userSecretSpots, visits, loggedIn } = useContext(UserContext);
   
-  console.log(visits)
+  // console.log(visits)
   const allVisits = visits.map(visit => <li key={visit.id}>Secret spot: {visit.secret_spot} | On: {visit.date} | Comment: {visit.note}</li>)
   
   const allSecretSpots = userSecretSpots.map(secretSpot => <li key={secretSpot.id}>{secretSpot.name}</li>)
@@ -19,7 +19,6 @@ const SecretSpotsContainer = () => {
     return (
       <div>
         <h3>Here are your Secret Spots</h3>
-        {/* TODO: render only distinct spots (refer to this resource: https://www.lugolabs.com/articles/distinct-active-records-in-has_many-through-associations)  */}
         {allSecretSpots}
         <h3>Here are your Visits</h3>
         {allVisits}

@@ -74,7 +74,6 @@ const UserProvider = ({ children }) => {
         })
     }
 
-    // TODO: need a function to add a new visit
     const addVisit = (formData) => {
         // console.log(formData)
         fetch('/visits', {
@@ -94,18 +93,18 @@ const UserProvider = ({ children }) => {
     // helper functions for managing a user's session
     const signup = (user) => { 
         setUser(user)
+        setLoggedIn(true)
         fetchAllSecretSpots()
         fetchUserSecretSpots()
         fetchVisits()
-        setLoggedIn(true)
     }
     
     const login = (user) => {
         setUser(user)
+        setLoggedIn(true)
         fetchAllSecretSpots()
         fetchUserSecretSpots()
         fetchVisits()
-        setLoggedIn(true)
     }
 
     const logout = () => {

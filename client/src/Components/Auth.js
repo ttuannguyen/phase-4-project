@@ -10,8 +10,8 @@ const Auth = () => {
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     // const [login, setLogin] = useState('')
     const [errorsList, setErrorsList] = useState([])
-    const {signup} = useContext(UserContext)
-    const nagivate = useNavigate()
+    const { signup } = useContext(UserContext)
+    const navigate = useNavigate()
 
 
     const handleSubmit = (e) => {
@@ -44,7 +44,7 @@ const Auth = () => {
                 setErrorsList(errorItems) 
             } else {
                 signup(user)
-                nagivate('/')
+                navigate('/')
             }
         })
     }

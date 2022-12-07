@@ -9,7 +9,6 @@ const VisitAddForm = ({ spot }) => {
   // const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
-    // TODO: indicate id of the spot in question as the value of the secret_spot key below
     secret_spot_id: spot.id,
     date:'',
     note:'',   

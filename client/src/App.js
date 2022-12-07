@@ -36,9 +36,10 @@ const App = () => {
           <Routes>
             <Route exact path="/visits/new" element={ <VisitAddForm /> }/>
             <Route exact path="/secret_spots" element={ <SecretSpotsContainer /> }/>
-            <Route exact path="/signup" element={ <Auth />} />
-            <Route exact path="/login" element={ <LogIn />} />
-            <Route exact path="/home" element={ <Home />} />
+            <Route exact path="/secret_spots/:id" element={ <SecretSpot /> }/>
+            <Route exact path="/signup" element={ <Auth /> } />
+            <Route exact path="/login" element={ <LogIn /> } />
+            <Route exact path="/home" element={ <Home /> } />
           </Routes>
         </Router>
       </UserProvider>

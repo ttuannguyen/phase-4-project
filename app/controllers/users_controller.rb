@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     def create
         # session[:user_id] = user.id # to login a user, take the user id and make it persist 
         user = User.create(user_params) # create the user using the params passed in
-        # byebug
         if user.valid?
             # session[:current_user] = user.id #associate that user with our session, key inside sess hash can be anything 
             session[:user_id] = user.id
@@ -28,6 +27,11 @@ class UsersController < ApplicationController
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
 
+    #     session[:user_id] = user.id
+    #     render json: user, status: :accepted
+    # rescue ActiveRecord::RecordInvalid => invalid
+    #     byebug
+    #     render json: { error: invalid.record.errors }, status: :unprocessable_entity
     end
 
     # PUT "/users:id"
