@@ -64,7 +64,7 @@ const UserProvider = ({ children }) => {
         })
     }
 
-    // get all visits
+    /* Visit CRUD */
     const fetchVisits = () => {
         fetch('/visits')
         .then(res => res.json())
@@ -74,6 +74,7 @@ const UserProvider = ({ children }) => {
         })
     }
 
+    
     const addVisit = (formData) => {
         // console.log(formData)
         fetch('/visits', {
@@ -88,6 +89,25 @@ const UserProvider = ({ children }) => {
             // console.log(newSecretSpot)
             setVisits([...visits, newVisit])
         })
+    }
+
+    const deleteVisit = (visit) => {
+        // console.log("hitting delete in user context")
+        // console.log(visit.id)
+        fetch(`/visits/${visit.id}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            }
+        })
+        const updatedVisits = visits.filter(v => v.id !== visit.id) 
+        setVisits(updatedVisits)
+        // .then(res => res.json()) 
+        // .then(deletedVisit => {
+        //     // console.log(visit)
+        //     const updatedVisits = visits.filter(visit => visit.id !== deletedVisit.id)
+        //     setVisits(updatedVisits)
+        // })
     }
 
     // helper functions for managing a user's session
@@ -116,7 +136,7 @@ const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot, addVisit}}>
+        <UserContext.Provider value={{user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot, addVisit, deleteVisit}}>
             {children}
         </UserContext.Provider>
     )

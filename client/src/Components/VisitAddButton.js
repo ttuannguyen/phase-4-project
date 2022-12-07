@@ -3,7 +3,7 @@ import React from 'react'
 const VisitAddButton = () => {
 
     return (
-        <button>Visit</button>
+        <button>Visit Add Button</button>
     )
 }
 

@@ -48,7 +48,15 @@ class VisitsController < ApplicationController
         # TODO: add condition logic for error handling 
         visit = current_user.visits.find_by(id: params[:id])
         visit.destroy
-        head :no_content 
+        head :no_content # indicating a successful request
+        
+        # if visit 
+        #     visit.destroy
+        #     head :no_content # indicating a successful request
+        # else
+        #     render json: {error: "visit not found"}, status: :not_found
+        # end
+        
     end
 
     private 

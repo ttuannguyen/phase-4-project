@@ -14,7 +14,7 @@ const SecretSpotsContainer = () => {
   const allVisits = visits.map(visit => {
     return (
       <>
-        <Visit key={visit.id} spot={visit.secret_spot} date={visit.date} note={visit.note} />
+        <Visit key={visit.id} visit={visit} spot={visit.secret_spot} date={visit.date} note={visit.note} />
       </>
     )
   })
