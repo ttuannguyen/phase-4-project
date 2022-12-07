@@ -4,13 +4,20 @@ import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
 import VisitAddForm from './VisitAddForm';
 import { UserContext  } from '../context/user';
+import Visit from './Visit';
 
 const SecretSpotsContainer = () => {
 
   const { userSecretSpots, visits, loggedIn } = useContext(UserContext);
   
   // console.log(visits)
-  const allVisits = visits.map(visit => <li key={visit.id}>Secret spot: {visit.secret_spot} | On: {visit.date} | Comment: {visit.note}</li>)
+  const allVisits = visits.map(visit => {
+    return (
+      <>
+        <Visit key={visit.id} spot={visit.secret_spot} date={visit.date} note={visit.note} />
+      </>
+    )
+  })
   
   const allSecretSpots = userSecretSpots.map(secretSpot => <li key={secretSpot.id}>{secretSpot.name}</li>)
   // const allSecretSpots = secretSpots.map(secretSpot => <SecretSpot secretSpot={secretSpot} key={secretSpot.id}/>)
