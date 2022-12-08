@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../context/user';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const VisitEditForm = () => {
 
     const { updateVisit } = useContext(UserContext);
     const { id } = useParams(); // accessing the id in the route/path 
     const [note, setNote] = useState('');
+    const navigate = useNavigate('');
 
     // console.log(visits)
     // const obj = {note: note}
@@ -27,6 +28,7 @@ const VisitEditForm = () => {
         .then(res => res.json())
         .then(data => {
             updateVisit(data)
+            navigate('/secret_spots')
         })
     }
 
