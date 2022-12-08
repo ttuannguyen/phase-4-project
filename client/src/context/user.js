@@ -91,6 +91,19 @@ const UserProvider = ({ children }) => {
         })
     }
 
+    const updateVisit = (updatedVisit) => {
+        // console.log(updatedVisit.id)
+        // const updatedVisits = visits.map(v => {
+        //     if (v.id === updatedVisit.id) {
+        //         return updatedVisit;
+        //     } else {
+        //         return v;
+        //     }
+        // })
+        const updatedVisits = visits.map(v => v.id === updatedVisit.id ? updatedVisit : v)
+        setVisits(updatedVisits)
+    }
+
     const deleteVisit = (visit) => {
         // console.log("hitting delete in user context")
         // console.log(visit.id)
@@ -102,12 +115,6 @@ const UserProvider = ({ children }) => {
         })
         const updatedVisits = visits.filter(v => v.id !== visit.id) 
         setVisits(updatedVisits)
-        // .then(res => res.json()) 
-        // .then(deletedVisit => {
-        //     // console.log(visit)
-        //     const updatedVisits = visits.filter(visit => visit.id !== deletedVisit.id)
-        //     setVisits(updatedVisits)
-        // })
     }
 
     // helper functions for managing a user's session
@@ -136,7 +143,7 @@ const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot, addVisit, deleteVisit}}>
+        <UserContext.Provider value={{user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot, addVisit, updateVisit, deleteVisit}}>
             {children}
         </UserContext.Provider>
     )

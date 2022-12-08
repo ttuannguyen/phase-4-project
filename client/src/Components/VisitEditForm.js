@@ -4,12 +4,11 @@ import { useParams } from 'react-router-dom';
 
 const VisitEditForm = () => {
 
-    // const { visits } = useContext(UserContext);
-    // console.log(visits)
-
+    const { updateVisit } = useContext(UserContext);
     const { id } = useParams(); // accessing the id in the route/path 
     const [note, setNote] = useState('');
 
+    // console.log(visits)
     // const obj = {note: note}
     // console.log(obj)
     // console.log(note)
@@ -26,7 +25,9 @@ const VisitEditForm = () => {
             })
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            updateVisit(data)
+        })
     }
 
     return (
