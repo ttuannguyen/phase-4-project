@@ -1,13 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import VisitDeleteButton from './VisitDeleteButton'
-import VisitEditButton from './VisitEditButton'
 
 const Visit = ({visit}) => {
+
+    // console.log(visit)
     
     return (
         <div>
             <p>Visit: {visit.secret_spot} | {visit.date} | {visit.note}</p>
-            <VisitEditButton visit={visit}/>
+            <Link to={`/visits/${visit.id}/edit`} visit={visit}>
+                <button>Edit</button>
+            </Link>
             <VisitDeleteButton visit={visit}/>
         </div>
     )
