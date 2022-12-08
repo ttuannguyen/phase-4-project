@@ -10,6 +10,7 @@ import SecretSpotsContainer from './components/SecretSpotsContainer';
 import SecretSpot from './components/SecretSpot';
 import { UserProvider } from './context/user';
 import VisitEditForm from './components/VisitEditForm';
+import SecretSpotDetails from './components/SecretSpotDetails';
 // import { UserProvider } from './context/user';
 
 const App = () => {
@@ -38,7 +39,7 @@ const App = () => {
             <Route exact path="/visits/new" element={ <VisitAddForm /> }/>
             <Route exact path="/visits/:id/edit" element={ <VisitEditForm /> }/>
             <Route exact path="/secret_spots" element={ <SecretSpotsContainer /> }/>
-            <Route path="/secret_spots/:id" element={ <SecretSpot /> }/>
+            <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
             <Route exact path="/signup" element={ <Auth /> } />
             <Route exact path="/login" element={ <LogIn /> } />
             <Route exact path="/home" element={ <Home /> } />

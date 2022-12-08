@@ -2,18 +2,22 @@ class SecretSpotsController < ApplicationController
 
     before_action :authorize
 
+    # GET "/all"
     def all 
         render json: SecretSpot.all
     end
     
+    # GET "/secret_spots"
     def index
         secret_spots = current_user.secret_spots
         render json: secret_spots
     end
 
+    # GET "/secret_spots/:id"
     def show
-        secret_spot = current_user.secret_spots.find_by(id: params[:id])
-        render json: secret_spot
+        secret_spot = SecretSpot.find_by(id: params[:id])
+        # secret_spot = current_user.secret_spots.find_by(id: params[:id])
+        # render json: secret_spot
         if secret_spot
             render json: secret_spot, status: :ok
         else
@@ -21,6 +25,7 @@ class SecretSpotsController < ApplicationController
         end
     end
 
+    # POST "/secret_spots"
     def create
         secret_spot = SecretSpot.create(secret_spot_params)
         if secret_spot.valid?
@@ -29,6 +34,7 @@ class SecretSpotsController < ApplicationController
             render json: { errors: secret_spot.errors.full_messages }, status: :unprocessable_entity
         end
     end
+
 
     private 
 

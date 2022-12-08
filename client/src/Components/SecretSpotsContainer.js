@@ -1,8 +1,5 @@
 import React, { useState, useContext } from 'react';
 // import { Route, useParams } from 'react-router-dom';
-import SecretSpot from './SecretSpot';
-import SecretSpotAddForm from './SecretSpotAddForm';
-import VisitAddForm from './VisitAddForm';
 import { UserContext  } from '../context/user';
 import Visit from './Visit';
 

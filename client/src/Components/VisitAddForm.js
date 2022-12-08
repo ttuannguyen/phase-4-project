@@ -2,14 +2,15 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
 import { useNavigate } from 'react-router-dom';
 
-const VisitAddForm = ({ spot }) => {
+const VisitAddForm = ({ }) => {
 
   const { user, addVisit } = useContext(UserContext);
   // console.log(spot.id)
   // const navigate = useNavigate();
   
+  // TODO: fix form data 
   const [formData, setFormData] = useState({
-    secret_spot_id: spot.id,
+    secret_spot_id: 1,
     date:'',
     note:'',   
   });

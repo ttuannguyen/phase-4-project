@@ -1,22 +1,29 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const VisitEditForm = () => {
 
-    const { updateVisit } = useContext(UserContext);
-    const { id } = useParams(); // accessing the id in the route/path 
+    const { visits, updateVisit } = useContext(UserContext);
+    const params = useParams(); // accessing the id in the route/path 
     const [note, setNote] = useState('');
     const navigate = useNavigate('');
 
+
     // console.log(visits)
-    // const obj = {note: note}
-    // console.log(obj)
-    // console.log(note)
+    // console.log(params.id)
+    
+    // const isVisit = (visit) => {
+    //     return visit.id == params.id
+    // }
+    // const result = visits.find(isVisit)
+    // console.log(result)
+
+    const secretSpot = visits.find(v => v.id == params.id); // updated from ===
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`/visits/${id}`, {
+        fetch(`/visits/${params.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,6 +41,8 @@ const VisitEditForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
+            {/* Isssue: secretSpot.secret_spot cannot be read after refreshing the page */}
+            Secret Spot: {secretSpot.secret_spot}<br/>
             <label>Note</label><br/>
             <textarea type="text" name='note' value={note} onChange={e => setNote(e.target.value)} required /><br/>
             <button type="submit">Submit</button>

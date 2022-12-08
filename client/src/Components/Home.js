@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { UserContext } from '../context/user';
+import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
 import VisitAddButton from './VisitAddButton';
 import VisitAddForm from './VisitAddForm';
@@ -17,14 +18,15 @@ const Home = () => {
   // console.log(allSecretSpots)
 
   // TODO: use Link here to get to the show page for each secret spot using the id
-  const allSecretSpotsList = allSecretSpots.map(spot => {
+  const allSecretSpotsList = allSecretSpots.map(secretSpot => {
     return (
-        <div key={spot.id}>
-          <h4>{spot.name}</h4>
-          <VisitAddForm spot={spot}/>
-          {/* <Link>{spot.name}</Link> */}
-          {/* {visitFormToggle ? <VisitAddForm spot={spot} /> : <button onClick={() => setVisitFormToggle(true)}>Add a Visit!</button>}  */}
-        </div>
+        <SecretSpot key={secretSpot.id} secretSpot={secretSpot} />
+        // <div key={spot.id}>
+        //   <h4>{spot.name}</h4> */}
+        //   {/* <VisitAddForm spot={spot}/> */}
+        //   {/* <Link>{spot.name}</Link> */}
+        //   {/* {visitFormToggle ? <VisitAddForm spot={spot} /> : <button onClick={() => setVisitFormToggle(true)}>Add a Visit!</button>} 
+        // </div>
     )
   })
 
