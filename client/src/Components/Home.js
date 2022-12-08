@@ -16,7 +16,7 @@ const Home = () => {
 
   // console.log(allSecretSpots)
 
-  // TODO: fix implement a form for each spot
+  // TODO: use Link here to get to the show page for each secret spot using the id
   const allSecretSpotsList = allSecretSpots.map(spot => {
     return (
         <div key={spot.id}>

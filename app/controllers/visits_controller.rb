@@ -42,6 +42,13 @@ class VisitsController < ApplicationController
         visit = current_user.visits.find_by(id: params[:id])
         visit.update(params)
         render json: visit
+
+        # if visit 
+        #     visit.update(visit_params)
+        #     render json: visit, status: :accepted
+        # else
+        #     render json: {error: "Unable to update"}, status: :not_found
+        # end
     end
 
     def destroy
@@ -56,7 +63,7 @@ class VisitsController < ApplicationController
         # else
         #     render json: {error: "visit not found"}, status: :not_found
         # end
-        
+
     end
 
     private 
