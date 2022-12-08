@@ -40,15 +40,12 @@ class VisitsController < ApplicationController
     def update
         # TODO: add condition logic for error handling 
         visit = current_user.visits.find_by(id: params[:id])
-        visit.update(params)
-        render json: visit
-
-        # if visit 
-        #     visit.update(visit_params)
-        #     render json: visit, status: :accepted
-        # else
-        #     render json: {error: "Unable to update"}, status: :not_found
-        # end
+        if visit 
+            visit.update(visit_params)
+            render json: visit, status: :accepted
+        else
+            render json: {error: "Unable to update"}, status: :not_found
+        end
     end
 
     def destroy
