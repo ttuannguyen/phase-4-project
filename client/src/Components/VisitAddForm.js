@@ -1,16 +1,15 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
-import { useNavigate } from 'react-router-dom';
 
-const VisitAddForm = ({ }) => {
+const VisitAddForm = ({secretSpot, afterAddVisit}) => {
 
-  const { user, addVisit } = useContext(UserContext);
-  // console.log(spot.id)
+  const { addVisit } = useContext(UserContext);
+  // console.log(secretSpot)
   // const navigate = useNavigate();
   
   // TODO: fix form data 
   const [formData, setFormData] = useState({
-    secret_spot_id: 1,
+    secret_spot_id: secretSpot.id,
     date:'',
     note:'',   
   });
@@ -30,6 +29,8 @@ const VisitAddForm = ({ }) => {
       date:'',
       note:''
     })
+
+    afterAddVisit()
 
     // fetch('/visits', {
     //   method: 'POST', 

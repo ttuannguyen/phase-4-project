@@ -1,10 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { UserContext } from '../context/user';
 import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
-import VisitAddButton from './VisitAddButton';
-import VisitAddForm from './VisitAddForm';
 
 const Home = () => {
   const { user, loggedIn, allSecretSpots } = useContext(UserContext);

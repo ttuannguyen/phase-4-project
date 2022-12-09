@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import VisitAddForm from './VisitAddForm';
 
 const SecretSpotDetails = () => {
@@ -16,6 +16,8 @@ const SecretSpotDetails = () => {
     } else {
         secretSpot = allSecretSpots.find(s => s.id == params.id); 
     }
+
+    const afterAddVisit = () => setVisitFormToggle(false)
     // allSecretSpots.find(s => s.id == params.id);
     // console.log(params.id)
     // console.log(allSecretSpots)
@@ -28,7 +30,7 @@ const SecretSpotDetails = () => {
             <p>Description: {secretSpot.description}</p>
             <p>Location: {secretSpot.location}</p>
             <p>Cost: {secretSpot.cost}</p>
-            {/* {visitFormToggle ? <VisitAddForm spotId={secretSpot.id} /> : <button onClick={() => setVisitFormToggle(true)}>Add a Visit!</button>} */}
+            {visitFormToggle ? <VisitAddForm secretSpot={secretSpot} afterAddVisit={afterAddVisit} /> : <button onClick={() => setVisitFormToggle(true)}>Add a Visit!</button>}
         </div>
     )
 }
