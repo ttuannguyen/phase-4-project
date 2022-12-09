@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { useParams} from 'react-router-dom';
 import { UserContext } from '../context/user';
 import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
@@ -7,8 +6,6 @@ import SecretSpotAddForm from './SecretSpotAddForm';
 const Home = () => {
   const { user, loggedIn, allSecretSpots } = useContext(UserContext);
   const [formToggle, setFormToggle] = useState(false); // to expose the secret spot add form
-  const [visitFormToggle, setVisitFormToggle] = useState(false); // to expose the visit add form
-  const { id } = useParams();
 
   // hide the form away after adding a spot
   const afterAddSpot = () => setFormToggle(false)
@@ -32,7 +29,7 @@ const Home = () => {
     return (
       <div>
         <h2>Welcome to your Secret NYC, {user.name}</h2>
-        <h3>Here is the list of all the Secret Spots in NYC</h3>
+        <h3>Secret spots in NYC</h3>
         {allSecretSpotsList}
         <p>Don't see one? Add a new spot!</p>
         {formToggle ? <SecretSpotAddForm afterAddSpot={afterAddSpot}/> : <button onClick={() => setFormToggle(true)}>Add a Spot!</button>}

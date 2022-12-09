@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
-  const {user, logout, loggedIn} = useContext(UserContext)
+  const {logout, loggedIn} = useContext(UserContext)
   const navigate = useNavigate()
 
   const logoutUser = () => {

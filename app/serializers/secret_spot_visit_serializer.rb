@@ -1,3 +1,3 @@
 class SecretSpotVisitSerializer < ActiveModel::Serializer
-  attributes :date
+  attributes :id, :date, :note
 end

@@ -41,8 +41,8 @@ const VisitEditForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            {/* Isssue: secretSpot.secret_spot cannot be read after refreshing the page */}
             Secret Spot: {secretSpot.secret_spot}<br/>
+            <p>Date: {secretSpot.date}</p>
             <label>Note</label><br/>
             <textarea type="text" name='note' value={note} onChange={e => setNote(e.target.value)} required /><br/>
             <button type="submit">Submit</button>

@@ -1,5 +1,4 @@
 // import './App.css';
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from './components/Auth';
 import VisitAddForm from './components/VisitAddForm';
@@ -7,7 +6,6 @@ import Home from './components/Home';
 import LogIn from './components/LogIn';
 import Navbar from './components/Navbar';
 import SecretSpotsContainer from './components/SecretSpotsContainer';
-import SecretSpot from './components/SecretSpot';
 import { UserProvider } from './context/user';
 import VisitEditForm from './components/VisitEditForm';
 import SecretSpotDetails from './components/SecretSpotDetails';
