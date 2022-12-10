@@ -32,6 +32,8 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
 
     afterAddVisit()
 
+    // render error after failed validations
+
     // fetch('/visits', {
     //   method: 'POST', 
     //   headers: {
@@ -54,9 +56,9 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
       <p>Add a Visit</p>
       <form onSubmit={handleSubmit}>
       <label>Date</label>
-      <input type='text' name='date' value={formData.date} onChange={handleChange} required /><br/>
+      <input type='text' name='date' value={formData.date} onChange={handleChange} /><br/>
       <label>Note</label>
-      <textarea type="text" name='note' value={formData.note} onChange={handleChange} required /><br/>
+      <textarea type="text" name='note' value={formData.note} onChange={handleChange} /><br/>
       <button type="submit">Submit</button>
     </form>
     </>

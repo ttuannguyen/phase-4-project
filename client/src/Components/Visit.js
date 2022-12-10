@@ -8,7 +8,7 @@ const Visit = ({visit}) => {
     
     return (
         <div>
-            <p>Visit: {visit.secret_spot} | {visit.date} | {visit.note}</p>
+            <p>Visit: {visit.date} | Note: {visit.note}</p>
             <Link to={`/visits/${visit.id}/edit`}>
                 <button>Edit</button>
             </Link>

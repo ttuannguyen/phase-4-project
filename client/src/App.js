@@ -1,6 +1,6 @@
 // import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Auth from './components/Auth';
+import SignUp from './components/SignUp';
 import VisitAddForm from './components/VisitAddForm';
 import Home from './components/Home';
 import LogIn from './components/LogIn';
@@ -38,7 +38,7 @@ const App = () => {
             <Route exact path="/visits/:id/edit" element={ <VisitEditForm /> }/>
             <Route exact path="/secret_spots" element={ <UserSecretSpots /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
-            <Route exact path="/signup" element={ <Auth /> } />
+            <Route exact path="/signup" element={ <SignUp /> } />
             <Route exact path="/login" element={ <LogIn /> } />
             <Route exact path="/home" element={ <Home /> } />
           </Routes>

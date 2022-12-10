@@ -1,5 +1,5 @@
 class VisitsController < ApplicationController
-    
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity     
     before_action :authorize
 
     def index
@@ -8,24 +8,39 @@ class VisitsController < ApplicationController
     end
 
     def show
+        # TODO: what if we specific the user's spot's visit here
         visit = current_user.visits.find_by(id: params[:id])
         if visit
-            render json: visit, status: :ok
+            render json: visit
         else
             render json: { error: "Visit not found" }, status: :unauthorized
         end
     end
 
     def create
-        # byebug
         # TODO: associate the secret spot with the visit 
         # secret_spot = SecretSpot.find_by(name: params[:name])
-        visit = current_user.visits.create(visit_params)
-        if visit.valid?
-            render json: visit
-        else
-            render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
-        end
+
+        # METHOD 3: rescue at the top
+        visit = current_user.visits.create!(visit_params) #bang operator to raise exception to hit RecordInvalid
+        render json: visit, status: :accepted
+        # byebug
+
+        # METHOD 2: ActiveRecord::RecordInvalid
+    #     visit = current_user.visits.create!(visit_params) #bang operator to raise exception to hit RecordInvalid
+    #     render json: visit, status: :accepted
+    # rescue ActiveRecord::RecordInvalid => invalid #creating invalid param
+    #     byebug
+    #     render json: {error: invalid.record.errors}, status: :unprocessable_entity
+        
+        # METHOD 1: .invalid
+        # visit = current_user.visits.create(visit_params)
+        # byebug # run visit.valid visit.errors visit.full_messages
+        #     if visit.valid?
+        #     render json: visit, status: :accepted
+        # else
+        #     render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
+        # end
 
         # secret_spot = SecretSpot.find_by(name: params[:secret_spot])
         # visit = Visit.create(
@@ -64,6 +79,12 @@ class VisitsController < ApplicationController
     end
 
     private 
+
+    def render_unprocessable_entity(invalid) # pass in the invalid param
+        # byebug
+        render json: {error: invalid.record.errors}, status: :unprocessable_entity
+    end
+
 
     def current_user
         # byebug

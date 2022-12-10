@@ -44,7 +44,7 @@ const Auth = () => {
                 setErrorsList(errorItems) 
             } else {
                 signup(user)
-                navigate('/')
+                navigate('/home')
             }
         })
     }
