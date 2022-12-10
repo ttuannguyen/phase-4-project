@@ -9,8 +9,9 @@ class UsersController < ApplicationController
     def show 
         user = User.find_by(id: session[:user_id])
         if user
+            # render json: user
             render json: user, include: ['secret_spots', 'secret_spots.visits']
-            # overriding the 2-level deep nesting of AMS with :include
+            # if we want to override the 2-level deep nesting of AMS, use :include
         else 
             render json: { error: "Not authorized" }, status: :unauthorized
         end

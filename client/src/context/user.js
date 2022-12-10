@@ -88,6 +88,7 @@ const UserProvider = ({ children }) => {
         .then(newVisit => {
             // console.log(newSecretSpot)
             setVisits([...visits, newVisit])
+            fetchUserSecretSpots() // to immediately display changes
         })
     }
 
@@ -102,6 +103,8 @@ const UserProvider = ({ children }) => {
         // })
         const updatedVisits = visits.map(v => v.id === updatedVisit.id ? updatedVisit : v)
         setVisits(updatedVisits)
+        fetchUserSecretSpots() // to immediately display changes
+
     }
 
     const deleteVisit = (visit) => {
@@ -115,6 +118,8 @@ const UserProvider = ({ children }) => {
         })
         const updatedVisits = visits.filter(v => v.id !== visit.id) 
         setVisits(updatedVisits)
+        // TODO: Make associated spot disappear right away after the deleting the visit
+        fetchUserSecretSpots() // to immediately display changes
     }
 
     // helper functions for managing a user's session
@@ -143,7 +148,8 @@ const UserProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot, addVisit, updateVisit, deleteVisit}}>
+        <UserContext.Provider value={
+            {user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot, addVisit, updateVisit, deleteVisit}}>
             {children}
         </UserContext.Provider>
     )

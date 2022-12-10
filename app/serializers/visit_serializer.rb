@@ -2,6 +2,7 @@ class VisitSerializer < ActiveModel::Serializer
   # attributes :id, :date, :note
   attributes :id, :date, :note, :secret_spot, :user
 
+  
   # method to return only the name of the secret spot
   def secret_spot
     # byebug

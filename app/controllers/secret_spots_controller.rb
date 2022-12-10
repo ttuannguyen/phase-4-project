@@ -1,16 +1,20 @@
 class SecretSpotsController < ApplicationController
-
     before_action :authorize
-
-    # GET "/all"
-    def all 
-        render json: SecretSpot.all
-    end
     
+    # FOR USER IN QUESTION ONLY #
+    # TODO: show visits belong to the user in question only 
     # GET "/secret_spots"
     def index
         secret_spots = current_user.secret_spots
+        # byebug
         render json: secret_spots
+    end
+    
+    
+    # FOR ALL USERS #
+    # GET "/all"
+    def all 
+        render json: SecretSpot.all
     end
 
     # GET "/secret_spots/:id"
@@ -37,7 +41,6 @@ class SecretSpotsController < ApplicationController
 
 
     private 
-
     def current_user
         # byebug
         User.find_by(id: session[:user_id])

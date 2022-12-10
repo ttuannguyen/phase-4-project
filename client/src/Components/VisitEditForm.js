@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const VisitEditForm = () => {
 
-    const { visits, updateVisit } = useContext(UserContext);
+    const { visits, updateVisit, renderNewlyOwnedSpot } = useContext(UserContext);
     const params = useParams(); // accessing the id in the route/path 
     const [note, setNote] = useState('');
     const navigate = useNavigate('');
@@ -35,6 +35,7 @@ const VisitEditForm = () => {
         .then(res => res.json())
         .then(data => {
             updateVisit(data)
+            // renderNewlyOwnedSpot()
             navigate('/secret_spots')
         })
     }

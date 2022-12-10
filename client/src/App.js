@@ -5,7 +5,7 @@ import VisitAddForm from './components/VisitAddForm';
 import Home from './components/Home';
 import LogIn from './components/LogIn';
 import Navbar from './components/Navbar';
-import SecretSpotsContainer from './components/SecretSpotsContainer';
+import UserSecretSpots from './components/UserSecretSpots';
 import { UserProvider } from './context/user';
 import VisitEditForm from './components/VisitEditForm';
 import SecretSpotDetails from './components/SecretSpotDetails';
@@ -36,7 +36,7 @@ const App = () => {
           <Routes>
             <Route exact path="/visits/new" element={ <VisitAddForm /> }/>
             <Route exact path="/visits/:id/edit" element={ <VisitEditForm /> }/>
-            <Route exact path="/secret_spots" element={ <SecretSpotsContainer /> }/>
+            <Route exact path="/secret_spots" element={ <UserSecretSpots /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
             <Route exact path="/signup" element={ <Auth /> } />
             <Route exact path="/login" element={ <LogIn /> } />
