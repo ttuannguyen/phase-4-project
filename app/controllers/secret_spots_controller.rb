@@ -31,12 +31,23 @@ class SecretSpotsController < ApplicationController
 
     # POST "/secret_spots"
     def create
-        secret_spot = SecretSpot.create(secret_spot_params)
-        if secret_spot.valid?
-            render json: secret_spot, status: :created
-        else
-            render json: { errors: secret_spot.errors.full_messages }, status: :unprocessable_entity
-        end
+        
+        
+        # METHOD 2: ActiveRecord::RecordInvalid
+        secret_spot = SecretSpot.create!(secret_spot_params) #bang operator to raise exception to hit RecordInvalid
+        render json: secret_spot, status: :created
+    rescue ActiveRecord::RecordInvalid => invalid # creating invalid param
+        byebug
+        render json: { errors: secret_spot.errors.full_messages }, status: :unprocessable_entity
+
+        # METHOD 1: .invalid
+        # secret_spot = SecretSpot.create(secret_spot_params)
+        # byebug # run visit.valid visit.errors visit.full_messages
+        # if secret_spot.valid?
+        #     render json: secret_spot, status: :created
+        # else
+        #     render json: { errors: secret_spot.errors.full_messages }, status: :unprocessable_entity
+        # end
     end
 
 

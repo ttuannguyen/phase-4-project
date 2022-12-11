@@ -70,13 +70,13 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
         <h4>Add a Secret Spot</h4>
         <form onSubmit={handleSubmit}>
             <label>Name</label>
-            <input type="text" name='name' value={formData.name} onChange={handleChange} required /><br/>
+            <input type="text" name='name' value={formData.name} onChange={handleChange} /><br/>
             <label>Location</label>
-            <input type="text" name='location' value={formData.location} onChange={handleChange} required /><br/>
+            <input type="text" name='location' value={formData.location} onChange={handleChange} /><br/>
             <label>Description</label>
-            <textarea type="text" name='description' value={formData.description} onChange={handleChange} required /><br/>
+            <textarea type="text" name='description' value={formData.description} onChange={handleChange} /><br/>
             <label>Cost</label>
-            <input type="text" name='cost' value={formData.cost} onChange={handleChange} required/><br/>
+            <input type="text" name='cost' value={formData.cost} onChange={handleChange} /><br/>
             <button type="submit">Add!</button>
         </form>
   </>

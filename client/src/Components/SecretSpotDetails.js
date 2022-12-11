@@ -19,8 +19,8 @@ const SecretSpotDetails = () => {
 
     const afterAddVisit = () => setVisitFormToggle(false)
     // allSecretSpots.find(s => s.id == params.id);
-    console.log(params.id)
-    console.log(allSecretSpots)
+    // console.log(params.id)
+    // console.log(allSecretSpots)
     // console.log(secretSpot.id)
 
     return (

@@ -12,7 +12,7 @@ const Home = () => {
 
   // console.log(allSecretSpots)
 
-  // TODO: use Link here to get to the show page for each secret spot using the id
+
   const allSecretSpotsList = allSecretSpots.map(secretSpot => {
     return (
         <SecretSpot key={secretSpot.id} secretSpot={secretSpot} />

@@ -22,7 +22,7 @@ const UserProvider = ({ children }) => {
                 setLoggedIn(true)
                 fetchAllSecretSpots() // calling the function below
                 fetchUserSecretSpots() // calling the function below
-                fetchVisits() // calling the function below
+                // fetchVisits() // calling the function below
             }
             // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
@@ -65,14 +65,14 @@ const UserProvider = ({ children }) => {
     }
 
     /* Visit CRUD */
-    const fetchVisits = () => {
-        fetch('/visits')
-        .then(res => res.json())
-        .then(json => {
-        // console.log(json)
-        setVisits(json)
-        })
-    }
+    // const fetchVisits = () => {
+    //     fetch('/visits')
+    //     .then(res => res.json())
+    //     .then(json => {
+    //     // console.log(json)
+    //     setVisits(json)
+    //     })
+    // }
 
     
     const addVisit = (formData) => {
@@ -128,7 +128,7 @@ const UserProvider = ({ children }) => {
         setLoggedIn(true)
         fetchAllSecretSpots()
         fetchUserSecretSpots()
-        fetchVisits()
+        // fetchVisits()
     }
     
     const login = (user) => {
@@ -136,7 +136,7 @@ const UserProvider = ({ children }) => {
         setLoggedIn(true)
         fetchAllSecretSpots()
         fetchUserSecretSpots()
-        fetchVisits()
+        // fetchVisits()
     }
 
     const logout = () => {
