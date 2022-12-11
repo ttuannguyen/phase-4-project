@@ -22,34 +22,9 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
         # secret_spot = SecretSpot.find_by(name: params[:name])
 
         # METHOD 3: rescue at the top
-        visit = current_user.visits.create!(visit_params) #bang operator to raise exception to hit RecordInvalid
-        render json: visit, status: :accepted
-        # byebug
+        visit = current_user.visits.create!(visit_params) 
+        render json: visit, status: :created
 
-        # METHOD 2: ActiveRecord::RecordInvalid
-    #     visit = current_user.visits.create!(visit_params) #bang operator to raise exception to hit RecordInvalid
-    #     render json: visit, status: :accepted
-    # rescue ActiveRecord::RecordInvalid => invalid #creating invalid param
-    #     byebug
-    #     render json: {error: invalid.record.errors}, status: :unprocessable_entity
-        
-        # METHOD 1: .invalid
-        # visit = current_user.visits.create(visit_params)
-        # byebug # run visit.valid visit.errors visit.full_messages
-        #     if visit.valid?
-        #     render json: visit, status: :accepted
-        # else
-        #     render json: { errors: visit.errors.full_messages }, status: :unprocessable_entity
-        # end
-
-        # secret_spot = SecretSpot.find_by(name: params[:secret_spot])
-        # visit = Visit.create(
-        #     secret_spot_id: params[:secret_spot_id],
-        #     date: params[:date],
-        #     note: params[:note],
-        #     user_id: current_user[:id]
-        # )
-        # render json: visit
     end
 
     def update
@@ -82,7 +57,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     def render_unprocessable_entity(invalid) # pass in the invalid param
         # byebug
-        render json: {error: invalid.record.errors}, status: :unprocessable_entity
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
 

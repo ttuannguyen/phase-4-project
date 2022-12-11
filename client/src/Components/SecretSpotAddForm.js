@@ -3,7 +3,8 @@ import { UserContext } from '../context/user';
 
 const SecretSpotAddForm = ({afterAddSpot}) => {
 
-    const { addSecretSpot } = useContext(UserContext)
+    const { addSecretSpot } = useContext(UserContext);
+    const [errorsList, setErrorsList] = useState([]);
     // // other way: add a state var for each input
     // const [name, setName] = useState('');
     // const [location, setLocation] = useState('');
@@ -28,16 +29,57 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addSecretSpot(formData)
-        // reset form
+
+        // // reset form
         setFormData({
             name:'',
             location:'',   
             description:'',
             cost:'' 
         })
-        afterAddSpot() // calling this function to hide the form
+
+        fetch('/secret_spots',{
+            method:'POST',
+            headers:{'Content-Type': 'application/json'},
+            body:JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(json => {
+            // console.log(json.errors)
+            if (json.errors) {
+                const errorItems = json.errors.map(e => <li key={e.id}>{e}</li>)
+                setErrorsList(errorItems)
+            } else {
+                addSecretSpot(json)
+            }
+        })
+        
+        // addSecretSpot(formData)
+        // // reset form
+        // setFormData({
+        //     name:'',
+        //     location:'',   
+        //     description:'',
+        //     cost:'' 
+        // })
+        // afterAddSpot() // calling this function to hide the form
     }
+
+    /* const addSecretSpot = (formData) => {
+        fetch('/secret_spots', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(newSecretSpot => {
+            // console.log(newSecretSpot)
+            setAllSecretSpots([...allSecretSpots, newSecretSpot])
+        })
+    } */
+
     
     // const handleSubmit = (e) => {
     //     e.preventDefault()
@@ -79,6 +121,7 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
             <input type="text" name='cost' value={formData.cost} onChange={handleChange} /><br/>
             <button type="submit">Add!</button>
         </form>
+        {errorsList}
   </>
   )
 }

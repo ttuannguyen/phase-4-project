@@ -49,19 +49,9 @@ const UserProvider = ({ children }) => {
     }
 
     // add a spot
-    const addSecretSpot = (formData) => {
-        fetch('/secret_spots', {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(newSecretSpot => {
-            // console.log(newSecretSpot)
-            setAllSecretSpots([...allSecretSpots, newSecretSpot])
-        })
+    const addSecretSpot = (newSecretSpot) => {
+        console.log(newSecretSpot)
+        setAllSecretSpots([...allSecretSpots, newSecretSpot])
     }
 
     /* Visit CRUD */

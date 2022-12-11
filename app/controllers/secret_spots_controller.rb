@@ -1,4 +1,5 @@
 class SecretSpotsController < ApplicationController
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
     before_action :authorize
     
     # FOR USER IN QUESTION ONLY #
@@ -6,7 +7,6 @@ class SecretSpotsController < ApplicationController
     # GET "/secret_spots"
     def index
         secret_spots = current_user.secret_spots
-        # byebug
         render json: secret_spots
     end
     
@@ -31,14 +31,18 @@ class SecretSpotsController < ApplicationController
 
     # POST "/secret_spots"
     def create
-        
-        
-        # METHOD 2: ActiveRecord::RecordInvalid
+
+        # METHOD 3: rescue at the top
         secret_spot = SecretSpot.create!(secret_spot_params) #bang operator to raise exception to hit RecordInvalid
         render json: secret_spot, status: :created
-    rescue ActiveRecord::RecordInvalid => invalid # creating invalid param
-        byebug
-        render json: { errors: secret_spot.errors.full_messages }, status: :unprocessable_entity
+        # byebug        
+        
+        # METHOD 2: ActiveRecord::RecordInvalid
+    #     secret_spot = SecretSpot.create!(secret_spot_params) #bang operator to raise exception to hit RecordInvalid
+    #     render json: secret_spot, status: :created
+    # rescue ActiveRecord::RecordInvalid => invalid # creating invalid param
+    #     byebug
+    #     render json: { errors: secret_spot.errors.full_messages }, status: :unprocessable_entity
 
         # METHOD 1: .invalid
         # secret_spot = SecretSpot.create(secret_spot_params)
@@ -59,6 +63,11 @@ class SecretSpotsController < ApplicationController
 
     def secret_spot_params
         params.permit(:name, :location, :description, :cost)
+    end
+
+    def render_unprocessable_entity(invalid) # pass in the invalid param
+        # byebug
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 
     def authorize
