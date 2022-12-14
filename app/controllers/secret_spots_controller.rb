@@ -1,5 +1,5 @@
 class SecretSpotsController < ApplicationController
-rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+# rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
     before_action :authorize
     
     # FOR USER IN QUESTION ONLY #
@@ -65,10 +65,10 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
         params.permit(:name, :location, :description, :cost)
     end
 
-    def render_unprocessable_entity(invalid) # pass in the invalid param
-        # byebug
-        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
-    end
+    # def render_unprocessable_entity(invalid) # pass in the invalid param
+    #     # byebug
+    #     render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+    # end
 
     def authorize
         return render json: {error: "Not authorized"}, status: :unauthorized unless session.include? :user_id

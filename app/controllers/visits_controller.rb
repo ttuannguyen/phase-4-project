@@ -1,5 +1,5 @@
 class VisitsController < ApplicationController
-rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity     
+# rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity     
     before_action :authorize
 
     def index
@@ -53,10 +53,10 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     private 
 
-    def render_unprocessable_entity(invalid) # pass in the invalid param
-        # byebug
-        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
-    end
+    # def render_unprocessable_entity(invalid) # pass in the invalid param
+    #     # byebug
+    #     render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+    # end
 
     def current_user
         # byebug
