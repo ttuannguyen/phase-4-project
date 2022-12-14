@@ -7,11 +7,11 @@ class UsersController < ApplicationController
 
     # GET "/users/:id"
     def show 
-        user = User.find_by(id: session[:user_id])
+        user = current_user
         # byebug
         if user
-            # render json: user
-            render json: user, include: ['secret_spots', 'secret_spots.visits']
+            render json: user
+            # render json: user, include: ['secret_spots', 'secret_spots.visits']
             # if we want to override the 2-level deep nesting of AMS, use :include
         else 
             render json: { error: "Not authorized" }, status: :unauthorized
@@ -52,6 +52,12 @@ class UsersController < ApplicationController
 
     private 
 
+    def current_user
+        # byebug
+        User.find_by(id: session[:user_id])
+    end
+    
+    
     def user_params
         # params.permit(:name, :email, :password)
         params.permit(:name, :email, :password, :password_confirmation)

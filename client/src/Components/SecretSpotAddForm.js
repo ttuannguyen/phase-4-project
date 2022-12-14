@@ -5,13 +5,6 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
 
     const { addSecretSpot } = useContext(UserContext);
     const [errorsList, setErrorsList] = useState([]);
-    // // other way: add a state var for each input
-    // const [name, setName] = useState('');
-    // const [location, setLocation] = useState('');
-    // const [description, setDescription] = useState('');
-    // const [cost, setCost] = useState('');
-    // const navigate = useNavigate();
-
 
     const [formData, setFormData] = useState({
         name:'',
@@ -51,61 +44,11 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
                 setErrorsList(errorItems)
             } else {
                 addSecretSpot(json)
+                afterAddSpot() // calling this function to hide the form
             }
         })
-        
-        // addSecretSpot(formData)
-        // // reset form
-        // setFormData({
-        //     name:'',
-        //     location:'',   
-        //     description:'',
-        //     cost:'' 
-        // })
-        // afterAddSpot() // calling this function to hide the form
     }
 
-    /* const addSecretSpot = (formData) => {
-        fetch('/secret_spots', {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(newSecretSpot => {
-            // console.log(newSecretSpot)
-            setAllSecretSpots([...allSecretSpots, newSecretSpot])
-        })
-    } */
-
-    
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     // reset form
-    //     setFormData({
-    //         name:'',
-    //         location:'',   
-    //         description:'',
-    //         cost:'' 
-    //     })
-
-    //     fetch('/secret_spots', {
-    //         method: 'POST', 
-    //         headers: {
-    //         'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(formData)
-    //     })
-    //     .then(res => res.json())
-    //     .then(newSecretSpot => {
-    //         console.log(newSecretSpot)
-    //         // addSecretSpot(newSecretSpot)
-    //     })
-
-    //     navigate('/secret_spots');
-    // }
   
     return (
     <>

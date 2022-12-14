@@ -23,7 +23,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
         # secret_spot = current_user.secret_spots.find_by(id: params[:id])
         # render json: secret_spot
         if secret_spot
-            render json: secret_spot, status: :ok
+            render json: secret_spot.to_json, status: :ok
         else
             render json: { error: "Secret spot not found", status: :unauthorized}
         end

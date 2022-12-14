@@ -4,6 +4,7 @@ import { UserContext } from '../context/user';
 const VisitAddForm = ({secretSpot, afterAddVisit}) => {
 
   const { addVisit } = useContext(UserContext);
+  const [errorsList, setErrorsList] = useState([]);
   // console.log(secretSpot)
   // const navigate = useNavigate();
   
@@ -23,16 +24,28 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    addVisit(formData)
     // reset form
     setFormData({
       date:'',
       note:''
     })
 
-    afterAddVisit()
-
-    // render error after failed validations
+    fetch('/visits',{
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(json => {
+        // console.log(json.errors)
+        if (json.errors) {
+            const errorItems = json.errors.map(e => <li key={e.id}>{e}</li>)
+            setErrorsList(errorItems)
+        } else {
+            addVisit(json)
+            afterAddVisit() // calling this function to hide the form
+        }
+    })
 
     // fetch('/visits', {
     //   method: 'POST', 
@@ -55,12 +68,13 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
     <>
       <p>Add a Visit</p>
       <form onSubmit={handleSubmit}>
-      <label>Date</label>
-      <input type='text' name='date' value={formData.date} onChange={handleChange} /><br/>
-      <label>Note</label>
-      <textarea type="text" name='note' value={formData.note} onChange={handleChange} /><br/>
-      <button type="submit">Submit</button>
-    </form>
+        <label>Date</label>
+        <input type='text' name='date' value={formData.date} onChange={handleChange} /><br/>
+        <label>Note</label>
+        <textarea type="text" name='note' value={formData.note} onChange={handleChange} /><br/>
+        <button type="submit">Submit</button>
+      </form>
+      {errorsList}
     </>
   )
 }

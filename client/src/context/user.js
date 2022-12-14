@@ -14,19 +14,41 @@ const UserProvider = ({ children }) => {
         fetch('/me')
         .then(res => res.json())
         .then(json => {
-            // console.log(json)
-            setUser(json)
+            // console.log(json.visits)
             if (json.error) {
                 setLoggedIn(false)
             } else {
+                setUser(json)
+                setUserSecretSpots(json.secret_spots)
+                setVisits(json.visits)
                 setLoggedIn(true)
                 fetchAllSecretSpots() // calling the function below
-                fetchUserSecretSpots() // calling the function below
+                // fetchUserSecretSpots() // calling the function below
                 // fetchVisits() // calling the function below
             }
             // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
     }, [])
+
+    // useEffect(() => {
+    //     fetch('/me')
+    //     .then(res => res.json())
+    //     .then(json => {
+    //         // console.log(json.visits)
+    //         if (json.error) {
+    //             setLoggedIn(false)
+    //         } else {
+    //             setUser(json)
+    //             setUserSecretSpots(json.secret_spots)
+    //             setVisits(json.visits)
+    //             setLoggedIn(true)
+    //             fetchAllSecretSpots() // calling the function below
+    //             // fetchUserSecretSpots() // calling the function below
+    //             // fetchVisits() // calling the function below
+    //         }
+    //         // json.error ? setLoggedIn(false) : setLoggedIn(true)
+    //     })
+    // }, [])
 
     // get all spots
     const fetchAllSecretSpots = () => {
@@ -39,22 +61,23 @@ const UserProvider = ({ children }) => {
     }
     
     // get user's spots
-    const fetchUserSecretSpots = () => {
-        fetch('/secret_spots')
-        .then(res => res.json())
-        .then(json => {
-            // console.log(json)
-            setUserSecretSpots(json)
-        })
-    }
+    // const fetchUserSecretSpots = () => {
+    //     fetch('/secret_spots')
+    //     .then(res => res.json())
+    //     .then(json => {
+    //         // console.log(json)
+    //         setUserSecretSpots(json)
+    //     })
+    // }
 
     // add a spot
     const addSecretSpot = (newSecretSpot) => {
-        console.log(newSecretSpot)
+        // console.log(newSecretSpot)
         setAllSecretSpots([...allSecretSpots, newSecretSpot])
     }
 
     /* Visit CRUD */
+    // TODO: try to see if we can set visits to state somewhere else so we don't do this fetch
     // const fetchVisits = () => {
     //     fetch('/visits')
     //     .then(res => res.json())
@@ -63,25 +86,35 @@ const UserProvider = ({ children }) => {
     //     setVisits(json)
     //     })
     // }
-
     
-    const addVisit = (formData) => {
+    const addVisit = (newVisit) => {
         // console.log(formData)
-        fetch('/visits', {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData)
-        })
+        fetch('/visits')
         .then(res => res.json())
-        .then(newVisit => {
-            // console.log(newSecretSpot)
-            setVisits([...visits, newVisit])
-            fetchUserSecretSpots() // to immediately display changes
+        .then(json => {
+        // console.log(json)
+        setVisits(json)
         })
+        setVisits([...visits, newVisit])
+        // fetchUserSecretSpots() // to immediately display changes
+        
+        // fetch('/visits', {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify(formData)
+        // })
+        // .then(res => res.json())
+        // .then(newVisit => {
+        //     // console.log(newSecretSpot)
+        //     setVisits([...visits, newVisit])
+        //     fetchUserSecretSpots() // to immediately display changes
+        // })
     }
 
+    
+    
     const updateVisit = (updatedVisit) => {
         // console.log(updatedVisit.id)
         // const updatedVisits = visits.map(v => {
@@ -93,7 +126,7 @@ const UserProvider = ({ children }) => {
         // })
         const updatedVisits = visits.map(v => v.id === updatedVisit.id ? updatedVisit : v)
         setVisits(updatedVisits)
-        fetchUserSecretSpots() // to immediately display changes
+        // fetchUserSecretSpots() // to immediately display changes
 
     }
 
@@ -109,7 +142,7 @@ const UserProvider = ({ children }) => {
         const updatedVisits = visits.filter(v => v.id !== visit.id) 
         setVisits(updatedVisits)
         // TODO: Make associated spot disappear right away after the deleting the visit
-        fetchUserSecretSpots() // to immediately display changes
+        // fetchUserSecretSpots() // to immediately display changes
     }
 
     // helper functions for managing a user's session
@@ -117,7 +150,7 @@ const UserProvider = ({ children }) => {
         setUser(user)
         setLoggedIn(true)
         fetchAllSecretSpots()
-        fetchUserSecretSpots()
+        // fetchUserSecretSpots()
         // fetchVisits()
     }
     
@@ -125,7 +158,7 @@ const UserProvider = ({ children }) => {
         setUser(user)
         setLoggedIn(true)
         fetchAllSecretSpots()
-        fetchUserSecretSpots()
+        // fetchUserSecretSpots()
         // fetchVisits()
     }
 

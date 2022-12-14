@@ -3,7 +3,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
     before_action :authorize
 
     def index
-        visits = current_user.visits
+        visits = current_user.visits.order(:secret_spot_id)
         render json: visits
     end
 
@@ -20,8 +20,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
     def create
         # TODO: associate the secret spot with the visit 
         # secret_spot = SecretSpot.find_by(name: params[:name])
-
-        # METHOD 3: rescue at the top
         visit = current_user.visits.create!(visit_params) 
         render json: visit, status: :created
 
@@ -57,9 +55,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
     def render_unprocessable_entity(invalid) # pass in the invalid param
         # byebug
-        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
-
 
     def current_user
         # byebug

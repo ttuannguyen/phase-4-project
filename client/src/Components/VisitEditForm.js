@@ -45,7 +45,7 @@ const VisitEditForm = () => {
             Secret Spot: {secretSpot.secret_spot}<br/>
             <p>Date: {secretSpot.date}</p>
             <label>Note</label><br/>
-            <textarea type="text" name='note' value={note} onChange={e => setNote(e.target.value)} required /><br/>
+            <textarea type="text" name='note' value={note} onChange={e => setNote(e.target.value)} /><br/>
             <button type="submit">Submit</button>
         </form>
     )
