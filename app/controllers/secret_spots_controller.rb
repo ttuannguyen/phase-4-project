@@ -1,6 +1,7 @@
 class SecretSpotsController < ApplicationController
 # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-    before_action :authorize
+    # before_action :authorized
+    # before_action :authorize
     
     # FOR USER IN QUESTION ONLY #
     # TODO: show visits belong to the user in question only 
@@ -56,10 +57,10 @@ class SecretSpotsController < ApplicationController
 
 
     private 
-    def current_user
-        # byebug
-        User.find_by(id: session[:user_id])
-    end
+    # def current_user
+    #     # byebug
+    #     User.find_by(id: session[:user_id])
+    # end
 
     def secret_spot_params
         params.permit(:name, :location, :description, :cost)
@@ -70,8 +71,8 @@ class SecretSpotsController < ApplicationController
     #     render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     # end
 
-    def authorize
-        return render json: {error: "Not authorized"}, status: :unauthorized unless session.include? :user_id
-    end
+    # def authorize
+    #     return render json: {error: "Not authorized"}, status: :unauthorized unless session.include? :user_id
+    # end
 
 end

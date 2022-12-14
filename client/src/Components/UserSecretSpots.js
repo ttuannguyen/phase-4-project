@@ -6,6 +6,7 @@ import Visit from './Visit';
 const UserSecretSpots = () => {
 
   const { userSecretSpots, loggedIn } = useContext(UserContext);
+  console.log(userSecretSpots)
   
   // TODO: conditional to allow the fetch to be done
   const secretSpots = userSecretSpots.map(secretSpot => {

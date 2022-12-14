@@ -1,6 +1,6 @@
 class VisitSerializer < ActiveModel::Serializer
   # attributes :id, :date, :note
-  attributes :id, :date, :note, :secret_spot
+  attributes :id, :date, :note
   # belongs_to :user
   # belongs_to :secret_spot
 
