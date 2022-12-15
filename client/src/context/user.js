@@ -22,33 +22,40 @@ const UserProvider = ({ children }) => {
                 setUserSecretSpots(json.secret_spots)
                 setVisits(json.visits)
                 setLoggedIn(true)
-                fetchAllSecretSpots() // calling the function below
+                // fetchAllSecretSpots() // calling the function below
                 // fetchUserSecretSpots() // calling the function below
                 // fetchVisits() // calling the function below
             }
             // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
-    }, [])
+    },[])
 
-    // useEffect(() => {
-    //     fetch('/me')
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         // console.log(json.visits)
-    //         if (json.error) {
-    //             setLoggedIn(false)
-    //         } else {
-    //             setUser(json)
-    //             setUserSecretSpots(json.secret_spots)
-    //             setVisits(json.visits)
-    //             setLoggedIn(true)
-    //             fetchAllSecretSpots() // calling the function below
-    //             // fetchUserSecretSpots() // calling the function below
-    //             // fetchVisits() // calling the function below
-    //         }
-    //         // json.error ? setLoggedIn(false) : setLoggedIn(true)
-    //     })
-    // }, [])
+    console.log(user)
+    console.log(visits)
+    console.log(userSecretSpots)
+    console.log(loggedIn)
+
+
+    // fetch('/me')
+    // .then(res => res.json())
+    // .then(json => {
+    //     // console.log(json.visits)
+    //     if (json.error) {
+    //         setLoggedIn(false)
+    //     } else {
+    //         console.log(json.secret_spots)
+    //         setUser(json)
+    //         setUserSecretSpots(json.secret_spots)
+    //         setVisits(json.visits)
+    //         setLoggedIn(true)
+    //         // fetchAllSecretSpots() // calling the function below
+    //         // fetchUserSecretSpots() // calling the function below
+    //         // fetchVisits() // calling the function below
+    //     }
+    //     // json.error ? setLoggedIn(false) : setLoggedIn(true)
+    // })
+
+
 
     // get all spots
     const fetchAllSecretSpots = () => {
