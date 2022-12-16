@@ -5,21 +5,25 @@ import Visit from './Visit';
 
 const UserSecretSpots = () => {
 
-  const { userSecretSpots, loggedIn } = useContext(UserContext);
-  console.log(userSecretSpots)
+  const { secretSpots, loggedIn } = useContext(UserContext);
+  // console.log(user.secret_spots)
+
+
+  const filterUserSecretSpots = secretSpots.filter(s => s.user_visits.length > 0)
+  // console.log(filterUserSecretSpots)
   
-  // TODO: conditional to allow the fetch to be done
-  const secretSpots = userSecretSpots.map(secretSpot => {
+  const userSecretSpots = filterUserSecretSpots.map(s => {
     
-    const visits = secretSpot.user_visits.map(visit => {
+    const visits = s.user_visits.map(visit => {
+      // console.log(visit)
       return (
         <Visit key={visit.id} visit={visit} spot={visit.secret_spot} date={visit.date} note={visit.note} />
       )
     })
 
     return (
-      <div key={secretSpot.id}>
-        <h4>{secretSpot.name}</h4>
+      <div key={s.id}>
+        <h4>{s.name}</h4>
         {visits}
       </div>
     )
@@ -28,9 +32,9 @@ const UserSecretSpots = () => {
 
   if (loggedIn) {
     return (
-      <div>
+      <div >
         <h3>Here are your Secret Spots</h3>
-        {secretSpots}
+        {userSecretSpots}
       </div>
     )
   } else {

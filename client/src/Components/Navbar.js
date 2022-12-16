@@ -13,33 +13,33 @@ const Navbar = () => {
       headers: { 'Content-Type': 'application/json'}
     }) 
     .then(() => {
-      logout() //call logout over in context, setting loggedIn to false
       navigate('/')
+      logout() //call logout over in context, setting loggedIn to false
     })
   }
   
   if (loggedIn) {
     return (
-      <div>
+      <div className='nav-div'>
         <NavLink className='navlink' to='/home'>
-          <button>Home</button>
+          <button className='nav-btn'>Home</button>
         </NavLink>
         <NavLink className='navlink' to='/secret_spots'>
-          <button>Your Secret Spots</button>
+          <button className='nav-btn'>Your Secret Spots</button>
         </NavLink>
-        <button onClick={logoutUser}>Logout</button>
+        <button className='nav-btn' onClick={logoutUser}>Logout</button>
       </div>
     )
   } else {
     return (
-      <>
+      <div className='nav-div'>
         <NavLink className='navlink' to='/login'>
-          <button>Login</button>
+          <button className='nav-btn'>Login</button>
         </NavLink>
         <NavLink className='navlink' to='/signup'>
-          <button>Signup</button>
+          <button className='nav-btn'>Signup</button>
         </NavLink>
-      </>
+      </div>
     )
   }
 }

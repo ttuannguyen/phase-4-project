@@ -1,0 +1,66 @@
+h1, h2, h3, h4 {
+    font-family: "Tahoma";
+    /* font-size: 30px; */
+    color: #777778;
+    text-align: center;
+}
+
+p {
+    font-family: "Tahoma";
+    color: #777777;
+    text-align: center;
+}
+
+.home-div {
+    text-align: center;
+}
+
+
+div#login {
+    text-align: center;
+    padding-top: 22px;
+}
+
+
+div#signup {
+    text-align: center;
+    padding-top: 22px;
+}
+
+/* nav bar */
+.nav-div {
+    text-align: center;
+}
+
+.navlink {
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.nav-btn {
+    background-color: lightslategray;
+    color: white;
+}
+
+/* visits */
+
+.visit-div {
+    text-align: center;
+}
+
+.visit-add-btn {
+    background-color: royalblue;
+    color: white;
+}
+
+/* secret spots */
+
+.spot-link {
+    text-decoration: none;
+}
+
+.secret-spot-details-div {
+    text-align: center;
+}
+
+

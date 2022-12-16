@@ -4,7 +4,7 @@ import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
 
 const Home = () => {
-  const { user, loggedIn, allSecretSpots } = useContext(UserContext);
+  const { user, loggedIn, secretSpots } = useContext(UserContext);
   const [formToggle, setFormToggle] = useState(false); // to expose the secret spot add form
 
   // hide the form away after adding a spot
@@ -13,7 +13,7 @@ const Home = () => {
   // console.log(allSecretSpots)
 
 
-  const allSecretSpotsList = allSecretSpots.map(secretSpot => {
+  const allSecretSpotsList = secretSpots.map(secretSpot => {
     return (
         <SecretSpot key={secretSpot.id} secretSpot={secretSpot} />
         // <div key={spot.id}>
@@ -27,11 +27,11 @@ const Home = () => {
 
   if (loggedIn) {
     return (
-      <div>
-        <h2>Welcome to your Secret NYC, {user.name}</h2>
-        <h3>Secret spots in NYC</h3>
+      <div className='home-div'>
+        <h3>Welcome, {user.name}!</h3>
+        <p>Here are the secret spots in the Big Apple for you to explore</p>
         {allSecretSpotsList}
-        <p>Don't see one? Add a new spot!</p>
+        <p>Share a new secret spot with the community!</p>
         {formToggle ? <SecretSpotAddForm afterAddSpot={afterAddSpot}/> : <button onClick={() => setFormToggle(true)}>Add a Spot!</button>}
       </div>
     )

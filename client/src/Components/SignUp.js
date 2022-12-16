@@ -50,8 +50,8 @@ const Auth = () => {
     }
 
     return (
-        <> 
-          <h4>Signup</h4>
+        <div id='signup'> 
+          {/* <h4>Signup</h4> */}
           <form onSubmit={handleSubmit}>
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/><br/>
@@ -66,7 +66,7 @@ const Auth = () => {
         <ul>
             {errorsList}
         </ul>
-      </>
+      </div>
     )
 
 }

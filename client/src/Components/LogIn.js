@@ -40,17 +40,17 @@ function Login() {
   }
 
   return (
-      <> 
-        <h4>Login</h4>
-          <form onSubmit={handleSubmit}>
+      <div id='login'> 
+        {/* <h4>Login</h4> */}
+        <form onSubmit={handleSubmit}>
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} /><br/>
           <label>Password</label>
-          <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} /><br/>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} /><br/>
           <button type="submit">Login!</button>
         </form>
         <p>{error}</p>
-    </>
+    </div>
   )
 }
 

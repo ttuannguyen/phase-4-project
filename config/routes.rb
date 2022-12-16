@@ -4,9 +4,6 @@ Rails.application.routes.draw do
   resources :secret_spots, only:[:index, :show, :create]
   resources :users, only:[:index, :show, :create]
   resources :visits
-
-  # experimental get all global spots
-  get "/all", to: "secret_spots#all"
   
   
   # routes to handle user

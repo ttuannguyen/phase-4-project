@@ -3,20 +3,12 @@ class SecretSpotsController < ApplicationController
     # before_action :authorized
     # before_action :authorize
     
-    # FOR USER IN QUESTION ONLY #
-    # TODO: show visits belong to the user in question only 
+
     # GET "/secret_spots"
     def index
-        secret_spots = current_user.secret_spots
-        render json: secret_spots
-    end
-    
-    
-    # FOR ALL USERS #
-    # GET "/all"
-    def all 
         render json: SecretSpot.all
     end
+    
 
     # GET "/secret_spots/:id"
     def show

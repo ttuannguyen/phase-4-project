@@ -7,7 +7,7 @@ const Visit = ({visit}) => {
     // console.log(visit)
     
     return (
-        <div>
+        <div class='visit-div'>
             <p>Visit: {visit.date} | Note: {visit.note}</p>
             <Link to={`/visits/${visit.id}/edit`}>
                 <button>Edit</button>

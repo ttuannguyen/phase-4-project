@@ -6,81 +6,51 @@ const UserContext = React.createContext();
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState({}); 
     const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
-    const [allSecretSpots, setAllSecretSpots] = useState([]); // all the spots in db
-    const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
+    const [secretSpots, setSecretSpots] = useState([]); // all the spots in db
+    // const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
     const [visits, setVisits] = useState([]);
 
     useEffect(() => {
         fetch('/me')
         .then(res => res.json())
         .then(json => {
-            // console.log(json.visits)
             if (json.error) {
                 setLoggedIn(false)
             } else {
-                setUser(json)
-                setUserSecretSpots(json.secret_spots)
-                setVisits(json.visits)
+                // debugger
+                setUser(json) // React re-rendered only 1 time and hit this 
+                // setUserSecretSpots(json.secret_spots) // React did not re-render again to hit this
+                setVisits(json.visits) // React did not re-render again to hit this
                 setLoggedIn(true)
-                // fetchAllSecretSpots() // calling the function below
-                // fetchUserSecretSpots() // calling the function below
-                // fetchVisits() // calling the function below
+                fetchSecretSpots() // calling the function below
             }
             // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
     },[])
-
-    console.log(user)
-    console.log(visits)
-    console.log(userSecretSpots)
-    console.log(loggedIn)
-
-
-    // fetch('/me')
-    // .then(res => res.json())
-    // .then(json => {
-    //     // console.log(json.visits)
-    //     if (json.error) {
-    //         setLoggedIn(false)
-    //     } else {
-    //         console.log(json.secret_spots)
-    //         setUser(json)
-    //         setUserSecretSpots(json.secret_spots)
-    //         setVisits(json.visits)
-    //         setLoggedIn(true)
-    //         // fetchAllSecretSpots() // calling the function below
-    //         // fetchUserSecretSpots() // calling the function below
-    //         // fetchVisits() // calling the function below
-    //     }
-    //     // json.error ? setLoggedIn(false) : setLoggedIn(true)
-    // })
-
+    // console.log(user)
+    // console.log(user.secret_spots)
+    // console.log(userSecretSpots)
+    // console.log(visits)
 
 
     // get all spots
-    const fetchAllSecretSpots = () => {
-        fetch('/all')
+    const fetchSecretSpots = () => {
+        fetch('/secret_spots')
         .then(res => res.json())
         .then(json => {
             // console.log(json)
-            setAllSecretSpots(json)
+            setSecretSpots(json)
         })
     }
-    
-    // get user's spots
-    // const fetchUserSecretSpots = () => {
-    //     fetch('/secret_spots')
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         // console.log(json)
-    //         setUserSecretSpots(json)
-    //     })
-    // }
+    // de-nest some information, filter through to find the secret belong to the user 
+
+
+
 
     // add a spot
     const addSecretSpot = (newSecretSpot) => {
         // console.log(newSecretSpot)
-        setAllSecretSpots([...allSecretSpots, newSecretSpot])
+        setSecretSpots([...secretSpots, newSecretSpot])
     }
 
     /* Visit CRUD */
@@ -95,32 +65,9 @@ const UserProvider = ({ children }) => {
     // }
     
     const addVisit = (newVisit) => {
-        // console.log(formData)
-        fetch('/visits')
-        .then(res => res.json())
-        .then(json => {
-        // console.log(json)
-        setVisits(json)
-        })
         setVisits([...visits, newVisit])
-        // fetchUserSecretSpots() // to immediately display changes
-        
-        // fetch('/visits', {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(formData)
-        // })
-        // .then(res => res.json())
-        // .then(newVisit => {
-        //     // console.log(newSecretSpot)
-        //     setVisits([...visits, newVisit])
-        //     fetchUserSecretSpots() // to immediately display changes
-        // })
     }
 
-    
     
     const updateVisit = (updatedVisit) => {
         // console.log(updatedVisit.id)
@@ -156,30 +103,31 @@ const UserProvider = ({ children }) => {
     const signup = (user) => { 
         setUser(user)
         setLoggedIn(true)
-        fetchAllSecretSpots()
+        fetchSecretSpots()
         // fetchUserSecretSpots()
         // fetchVisits()
     }
     
     const login = (user) => {
         setUser(user)
+        // console.log(user)
         setLoggedIn(true)
-        fetchAllSecretSpots()
+        fetchSecretSpots()
         // fetchUserSecretSpots()
         // fetchVisits()
     }
 
     const logout = () => {
-        setUser({})
-        setAllSecretSpots([])
-        setUserSecretSpots([])
-        setVisits([])
         setLoggedIn(false)
+        setUser({})
+        setSecretSpots([])
+        // setUserSecretSpots([])
+        setVisits([])
     }
 
     return (
         <UserContext.Provider value={
-            {user, login, logout, signup, loggedIn, allSecretSpots, userSecretSpots, visits, addSecretSpot, addVisit, updateVisit, deleteVisit}}>
+            {user, login, logout, signup, loggedIn, secretSpots, visits, addSecretSpot, addVisit, updateVisit, deleteVisit}}>
             {children}
         </UserContext.Provider>
     )

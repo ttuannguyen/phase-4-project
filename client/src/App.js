@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from './components/SignUp';
 import VisitAddForm from './components/VisitAddForm';
@@ -30,8 +30,8 @@ const App = () => {
     <>
       <UserProvider>
         <Router>
-          <h1>NYC Adventures</h1>
-          <p>Discover the secret spots in NYC like a true New Yorker!</p>
+          <h1>Secret NYC</h1>
+          <p>Discover secret spots in NYC like a true New Yorker!</p>
           <Navbar />
           <Routes>
             <Route exact path="/visits/new" element={ <VisitAddForm /> }/>

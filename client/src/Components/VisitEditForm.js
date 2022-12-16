@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const VisitEditForm = () => {
 
-    const { visits, allSecretSpots, updateVisit, renderNewlyOwnedSpot } = useContext(UserContext);
+    const { user, visits, allSecretSpots, updateVisit, renderNewlyOwnedSpot } = useContext(UserContext);
     const params = useParams(); // accessing the id in the route/path 
     const [note, setNote] = useState('');
     const navigate = useNavigate('');
@@ -17,7 +17,7 @@ const VisitEditForm = () => {
     // const result = visits.find(isVisit)
     // console.log(result)
 
-    const visitFound = visits.find(v => v.id == params.id); // updated from ===
+    const visitFound = user.visits.find(v => v.id == params.id); // updated from ===
     // console.log(visitFound)  
     const secretSpot = allSecretSpots.find(s => s.id == visitFound.secret_spot_id); // updated from ===
     // console.log(secretSpot)
