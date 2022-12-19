@@ -25,10 +25,9 @@ class VisitsController < ApplicationController
     end
 
     def update
-        # TODO: add condition logic for error handling 
         visit = current_user.visits.find_by(id: params[:id])
         if visit 
-            visit.update(visit_params)
+            visit.update!(visit_params)
             render json: visit, status: :accepted
         else
             render json: {error: "Unable to update"}, status: :not_found
@@ -36,19 +35,27 @@ class VisitsController < ApplicationController
     end
 
     def destroy
-        # TODO: add condition logic for error handling 
         visit = current_user.visits.find_by(id: params[:id])
         visit.destroy
-        head :no_content # indicating a successful request
-        
-        # if visit 
-        #     visit.destroy
-        #     head :no_content # indicating a successful request
-        # else
-        #     render json: {error: "visit not found"}, status: :not_found
-        # end
-
+        head :no_content
     end
+    
+    
+    
+    # def destroy
+    #     # TODO: add condition logic for error handling 
+    #     visit = current_user.visits.find_by(id: params[:id])
+    #     visit.destroy
+    #     head :no_content # indicating a successful request
+        
+    #     # if visit 
+    #     #     visit.destroy
+    #     #     head :no_content # indicating a successful request
+    #     # else
+    #     #     render json: {error: "visit not found"}, status: :not_found
+    #     # end
+
+    # end
 
     private 
 

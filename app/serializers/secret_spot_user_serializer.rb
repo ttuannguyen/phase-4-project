@@ -1,3 +1,3 @@
 class SecretSpotUserSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :username
 end

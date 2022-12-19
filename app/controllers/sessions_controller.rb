@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
     # logging in
     def login 
-        user = User.find_by(name: params[:name])
+        user = User.find_by(username: params[:username])
         
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     private 
 
     def user_params
-        params.permit(:name, :password)
+        params.permit(:username, :password)
     end
 
 end

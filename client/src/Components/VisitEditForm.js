@@ -4,27 +4,21 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const VisitEditForm = () => {
 
-    const { user, visits, allSecretSpots, updateVisit, renderNewlyOwnedSpot } = useContext(UserContext);
+    const { user, secretSpots, updateVisit, fetchSecretSpots } = useContext(UserContext);
     const params = useParams(); // accessing the id in the route/path 
     const [note, setNote] = useState('');
     const navigate = useNavigate('');
 
     // console.log(params.id)
-    
-    // const isVisit = (visit) => {
-    //     return visit.id == params.id
-    // }
-    // const result = visits.find(isVisit)
-    // console.log(result)
 
     const visitFound = user.visits.find(v => v.id == params.id); // updated from ===
     // console.log(visitFound)  
-    const secretSpot = allSecretSpots.find(s => s.id == visitFound.secret_spot_id); // updated from ===
+    const secretSpot = secretSpots.find(s => s.id == visitFound.secret_spot_id); // updated from ===
     // console.log(secretSpot)
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`/visits/${params.id}`, {
+        fetch(`/users/${user.id}/visits/${params.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,6 +30,7 @@ const VisitEditForm = () => {
         .then(res => res.json())
         .then(data => {
             updateVisit(data)
+            fetchSecretSpots()
             // renderNewlyOwnedSpot()
             navigate('/secret_spots')
         })

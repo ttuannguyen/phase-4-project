@@ -12,15 +12,15 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    const user = {
-        name: username,
+    const userObj = {
+        username,
         password
     }
   
     fetch('/login',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
-      body:JSON.stringify(user)
+      body:JSON.stringify(userObj)
     })
     .then(res => res.json())
     .then(user => {
@@ -29,9 +29,6 @@ function Login() {
           // // reset
           setUsername('')
           setPassword('')
-          // 
-          // const errorItems = user.errors.map(e => <li key={e.id}>{e}</li>) 
-          // setErrorsList(errorItems) 
       } else {
           login(user)
           navigate('/home')

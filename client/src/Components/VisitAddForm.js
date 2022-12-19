@@ -3,10 +3,12 @@ import { UserContext } from '../context/user';
 
 const VisitAddForm = ({secretSpot, afterAddVisit}) => {
 
-  const { addVisit } = useContext(UserContext);
+  const { user, addVisit, fetchSecretSpots } = useContext(UserContext);
   const [errorsList, setErrorsList] = useState([]);
   // console.log(secretSpot)
   // const navigate = useNavigate();
+
+  console.log(user)
   
   // TODO: fix form data 
   const [formData, setFormData] = useState({
@@ -30,7 +32,7 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
       note:''
     })
 
-    fetch('/visits',{
+    fetch(`/users/${user.id}/visits`,{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify(formData)
@@ -44,6 +46,7 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
         } else {
             addVisit(json)
             afterAddVisit() // calling this function to hide the form
+            fetchSecretSpots()
         }
     })
 

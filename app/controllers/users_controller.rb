@@ -15,6 +15,19 @@ class UsersController < ApplicationController
         # end
     end
 
+    # GET "/users/:user_id/visits"
+    def visits_index
+        # user = User.find_by(id: session[:user_id])
+        visits = current_user.visits
+        render json: visits
+    end
+
+    def visits_index_visit
+        visits = current_user.visits
+        visit = visits.find_by(id: params[:visit_id])
+        render json: visit
+    end
+
     # POST "/users"
     def create
         # session[:user_id] = user.id # to login a user, take the user id and make it persist 
@@ -59,8 +72,8 @@ class UsersController < ApplicationController
     
     
     def user_params
-        # params.permit(:name, :email, :password)
-        params.permit(:name, :email, :password, :password_confirmation)
+        # params.permit(:name, :email, :password, :password_confirmation)
+        params.permit(:name, :password, :password_confirmation)
     end
 
 end

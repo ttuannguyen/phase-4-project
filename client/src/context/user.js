@@ -10,6 +10,18 @@ const UserProvider = ({ children }) => {
     // const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
     const [visits, setVisits] = useState([]);
 
+    // const getCurrentUser = () => {
+    //     fetch('/me')
+    //     .then(res => res.json())
+    //     .then(json => {
+    //         if (json.error) {
+    //             setLoggedIn(false)
+    //         } else (
+    //             setLoggedIn(true)
+    //         )
+    //     })
+    // }
+    
     useEffect(() => {
         fetch('/me')
         .then(res => res.json())
@@ -20,17 +32,13 @@ const UserProvider = ({ children }) => {
                 // debugger
                 setUser(json) // React re-rendered only 1 time and hit this 
                 // setUserSecretSpots(json.secret_spots) // React did not re-render again to hit this
-                setVisits(json.visits) // React did not re-render again to hit this
+                // setVisits(json.visits) // React did not re-render again to hit this
                 setLoggedIn(true)
                 fetchSecretSpots() // calling the function below
             }
             // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
     },[])
-    // console.log(user)
-    // console.log(user.secret_spots)
-    // console.log(userSecretSpots)
-    // console.log(visits)
 
 
     // get all spots
@@ -43,8 +51,6 @@ const UserProvider = ({ children }) => {
         })
     }
     // de-nest some information, filter through to find the secret belong to the user 
-
-
 
 
     // add a spot
@@ -65,9 +71,11 @@ const UserProvider = ({ children }) => {
     // }
     
     const addVisit = (newVisit) => {
-        setVisits([...visits, newVisit])
+        // setVisits([...visits, newVisit])
+        const newVisits = [...user.visits, newVisit]
+        user.visits = newVisits
+        return user
     }
-
     
     const updateVisit = (updatedVisit) => {
         // console.log(updatedVisit.id)
@@ -78,23 +86,28 @@ const UserProvider = ({ children }) => {
         //         return v;
         //     }
         // })
-        const updatedVisits = visits.map(v => v.id === updatedVisit.id ? updatedVisit : v)
-        setVisits(updatedVisits)
+        // console.log(updatedVisit)
+        const updatedVisits = user.visits.map(v => v.id === updatedVisit.id ? updatedVisit : v)
+        user.visits = updatedVisits
+        return user
+        // setVisits(updatedVisits)
         // fetchUserSecretSpots() // to immediately display changes
 
     }
 
     const deleteVisit = (visit) => {
         // console.log("hitting delete in user context")
-        // console.log(visit.id)
-        fetch(`/visits/${visit.id}`, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            }
-        })
-        const updatedVisits = visits.filter(v => v.id !== visit.id) 
-        setVisits(updatedVisits)
+        console.log(visit)
+        // fetch(`/visits/${visit.id}`, {
+        //     method: "DELETE",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     }
+        // })
+        // const updatedVisits = user.visits.filter(v => v.id !== visit.id) 
+        // user.visits = updatedVisits
+        // return user
+        // setVisits(updatedVisits)
         // TODO: Make associated spot disappear right away after the deleting the visit
         // fetchUserSecretSpots() // to immediately display changes
     }
@@ -109,12 +122,9 @@ const UserProvider = ({ children }) => {
     }
     
     const login = (user) => {
-        setUser(user)
-        // console.log(user)
-        setLoggedIn(true)
+        setUser(user) //
+        setLoggedIn(true) //
         fetchSecretSpots()
-        // fetchUserSecretSpots()
-        // fetchVisits()
     }
 
     const logout = () => {
@@ -127,7 +137,7 @@ const UserProvider = ({ children }) => {
 
     return (
         <UserContext.Provider value={
-            {user, login, logout, signup, loggedIn, secretSpots, visits, addSecretSpot, addVisit, updateVisit, deleteVisit}}>
+            {user, login, logout, signup, loggedIn, secretSpots, visits, addSecretSpot, addVisit, updateVisit, deleteVisit, fetchSecretSpots}}>
             {children}
         </UserContext.Provider>
     )

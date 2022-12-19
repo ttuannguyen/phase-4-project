@@ -3,7 +3,7 @@ class SecretSpotVisitSerializer < ActiveModel::Serializer
 
   #TODO: consider removing this serializer or the user attribute
   def user
-    object.user.name
+    object.user.username
   end
 
 end

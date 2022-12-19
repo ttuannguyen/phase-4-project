@@ -6,15 +6,16 @@ import VisitAddForm from './VisitAddForm';
 const SecretSpotDetails = () => {
     
     const params = useParams();
-    const { allSecretSpots } = useContext(UserContext);
+    const { secretSpots, fetchSecretSpots } = useContext(UserContext);
     const [visitFormToggle, setVisitFormToggle] = useState(false); // to expose the visit add form
     
     // Conditional to allow the fetch to be done
+    fetchSecretSpots()
     let secretSpot = {}
-    if (allSecretSpots.length == 0) {
+    if (secretSpot.length == 0) {
         secretSpot = {id: params.id, name: "", location: "", description: "", cost: ""}    
     } else {
-        secretSpot = allSecretSpots.find(s => s.id == params.id); 
+        secretSpot = secretSpots.find(s => s.id == params.id); 
     }
 
     const afterAddVisit = () => setVisitFormToggle(false)

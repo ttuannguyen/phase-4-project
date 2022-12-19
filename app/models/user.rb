@@ -6,9 +6,8 @@ class User < ApplicationRecord
     has_many :secret_spots, -> { distinct }, through: :visits
 
     
-    validates :name, presence: true, uniqueness: true # TODO: create name vs username; 
-    validates :email, presence: true, uniqueness: true # TODO: validate email type for email
-    validates :password, presence: true # TODO: requirements for password
+    validates :username, presence: true, uniqueness: true
+    # validates :password, presence: true # TODO: requirements for password
     validates :password, :password_confirmation, presence: true
     
 end

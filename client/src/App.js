@@ -9,6 +9,7 @@ import UserSecretSpots from './components/UserSecretSpots';
 import { UserProvider } from './context/user';
 import VisitEditForm from './components/VisitEditForm';
 import SecretSpotDetails from './components/SecretSpotDetails';
+import { useEffect } from 'react';
 // import { UserProvider } from './context/user';
 
 const App = () => {

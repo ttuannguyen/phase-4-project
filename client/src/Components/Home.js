@@ -28,7 +28,7 @@ const Home = () => {
   if (loggedIn) {
     return (
       <div className='home-div'>
-        <h3>Welcome, {user.name}!</h3>
+        <h3>Welcome, {user.username}!</h3>
         <p>Here are the secret spots in the Big Apple for you to explore</p>
         {allSecretSpotsList}
         <p>Share a new secret spot with the community!</p>

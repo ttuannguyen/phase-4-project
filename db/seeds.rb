@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u1 = User.create(name: "Jace", email: "jace@gmail.com", password: "abc")
-u2 = User.create(name: "Luke", email: "luke@gmail.com", password: "abc")
-u3 = User.create(name: "Baela", email: "baela@gmail.com", password: "abc")
+u1 = User.create(username: "jace", password: "abc")
+u2 = User.create(username: "luke", password: "abc")
+u3 = User.create(username: "baela", password: "abc")
 
 
 s1 = SecretSpot.create(name: "The floating map on Green street", location: "110 Greene Street", description: "A work of art by Belgian artist and architect Françoise Schein", cost: 0.00)
