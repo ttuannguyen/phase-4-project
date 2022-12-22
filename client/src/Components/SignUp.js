@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
 
-    const [username, setUsername] = useState('')
+    const [username, setUsername] = useState('');
     // const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [password, setPassword] = useState('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
     // const [login, setLogin] = useState('')
-    const [errorsList, setErrorsList] = useState([])
-    const { signup } = useContext(UserContext)
-    const navigate = useNavigate()
+    const [errorsList, setErrorsList] = useState([]);
+    const { signup } = useContext(UserContext);
+    const navigate = useNavigate();
 
 
     const handleSubmit = (e) => {

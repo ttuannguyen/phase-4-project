@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/users/:user_id/visits/:visit_id", to: "users#visits_index_visit"
 
 
+
    # visits CRUD
   post "/users/:user_id/visits", to: "visits#create"
   patch "/users/:user_id/visits/:id", to: "visits#update"

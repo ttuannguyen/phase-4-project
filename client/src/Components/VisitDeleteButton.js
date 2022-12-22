@@ -4,7 +4,7 @@ import { UserContext } from '../context/user';
 const VisitDeleteButton = ({visit}) => {
 
     const { user, deleteVisit, fetchSecretSpots } = useContext(UserContext);
-    console.log(visit.id)
+    // console.log(visit.id)
     // console.log(visit)
 
     // TODO: Make associated spot disappear right away after the deleting the visit

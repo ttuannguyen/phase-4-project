@@ -1,27 +1,40 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../context/user';
 import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
+import SecretSpotLink from './SecretSpotLink';
 
 const Home = () => {
-  const { user, loggedIn, secretSpots } = useContext(UserContext);
+  const { user, loggedIn, secretSpots, fetchSecretSpots } = useContext(UserContext);
   const [formToggle, setFormToggle] = useState(false); // to expose the secret spot add form
+  console.log(secretSpots)
 
-  // hide the form away after adding a spot
+
+  useEffect(() => {
+    fetchSecretSpots()
+  }, [])
+  // const [secretSpots, setSecretSpots] = useState([]);
+  
   const afterAddSpot = () => setFormToggle(false)
 
-  // console.log(allSecretSpots)
+
+  // useEffect(() => {
+  //   fetch('/secret_spots')
+  //   .then(res => res.json())
+  //   .then(json => setSecretSpots(json))
+  // }, [])
+  
+//   const addSecretSpot = (newSecretSpot) => {
+//     // console.log(newSecretSpot)
+//     setSecretSpots([...secretSpots, newSecretSpot])
+// }
+  
+  // hide the form away after adding a spot
 
 
   const allSecretSpotsList = secretSpots.map(secretSpot => {
     return (
-        <SecretSpot key={secretSpot.id} secretSpot={secretSpot} />
-        // <div key={spot.id}>
-        //   <h4>{spot.name}</h4> */}
-        //   {/* <VisitAddForm spot={spot}/> */}
-        //   {/* <Link>{spot.name}</Link> */}
-        //   {/* {visitFormToggle ? <VisitAddForm spot={spot} /> : <button onClick={() => setVisitFormToggle(true)}>Add a Visit!</button>} 
-        // </div>
+        <SecretSpotLink key={secretSpot.id} secretSpot={secretSpot} />
     )
   })
 
@@ -29,7 +42,7 @@ const Home = () => {
     return (
       <div className='home-div'>
         <h3>Welcome, {user.username}!</h3>
-        <p>Here are the secret spots in the Big Apple for you to explore</p>
+        <p>Please see Listings for the various secret spots in the Big Apple for you to explore</p>
         {allSecretSpotsList}
         <p>Share a new secret spot with the community!</p>
         {formToggle ? <SecretSpotAddForm afterAddSpot={afterAddSpot}/> : <button onClick={() => setFormToggle(true)}>Add a Spot!</button>}
@@ -39,16 +52,6 @@ const Home = () => {
     return (<h4>Please login or create an Account</h4>)
   } 
   
-  // if (!user || user.error ) {
-  //   return (<p>Please Login or Create an Account</p>)
-  // } else {
-  //   return (
-  //     // This section is no longer needed as we have the "if (user)" logic in Navbar
-  //     <div>
-  //       <h4>This is {user.name}'s Home Page</h4>
-  //     </div>
-  //   ) 
-  // }
 }
 
 export default Home

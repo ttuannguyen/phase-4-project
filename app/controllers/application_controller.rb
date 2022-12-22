@@ -3,12 +3,6 @@ class ApplicationController < ActionController::API
   before_action :authorized
 
   include ActionController::Cookies
-  # before_action :authorized
-  # rescue_from listener
-
-  # def current_user
-  #   @current_user ||= User.find(session[:current_user]) if session[:user_id] # with find we don't have to include a bang operator for the exception to be raised
-  # end
 
   def current_user
     # byebug
@@ -26,7 +20,13 @@ class ApplicationController < ActionController::API
     # byebug
     render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
   end
-  
 
 
 end
+
+  # before_action :authorized
+  # rescue_from listener
+
+  # def current_user
+  #   @current_user ||= User.find(session[:current_user]) if session[:user_id] # with find we don't have to include a bang operator for the exception to be raised
+  # end

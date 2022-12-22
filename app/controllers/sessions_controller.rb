@@ -2,14 +2,10 @@ class SessionsController < ApplicationController
     skip_before_action :authorized, only: [:login]
     # add action to handle login
 
-    # logging in
     def login 
         user = User.find_by(username: params[:username])
-        
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
-            # byebug
-            # session[:current_user] = user.id
             render json: user, status: :ok
         else
             render json: { error: "Invalid username or password!"}, status: :unauthorized

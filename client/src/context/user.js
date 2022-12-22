@@ -9,18 +9,6 @@ const UserProvider = ({ children }) => {
     const [secretSpots, setSecretSpots] = useState([]); // all the spots in db
     // const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
     const [visits, setVisits] = useState([]);
-
-    // const getCurrentUser = () => {
-    //     fetch('/me')
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         if (json.error) {
-    //             setLoggedIn(false)
-    //         } else (
-    //             setLoggedIn(true)
-    //         )
-    //     })
-    // }
     
     useEffect(() => {
         fetch('/me')
@@ -31,17 +19,29 @@ const UserProvider = ({ children }) => {
             } else {
                 // debugger
                 setUser(json) // React re-rendered only 1 time and hit this 
-                // setUserSecretSpots(json.secret_spots) // React did not re-render again to hit this
-                // setVisits(json.visits) // React did not re-render again to hit this
                 setLoggedIn(true)
-                fetchSecretSpots() // calling the function below
+                // setSecretSpots(json.secret_spots) // React did not re-render again to hit this
+                // setVisits(json.visits) // React did not re-render again to hit this
+                // fetchSecretSpots() // calling the function below
             }
             // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
-    },[])
+    }, [])
+
+    useEffect(() => {
+        if (user.id) {
+            setVisits(user.visits) 
+        } else {
+            setVisits([])
+        }
+    }, [user])
 
 
-    // get all spots
+    console.log(user)
+    console.log(visits)
+
+
+    // get all spots => moved to a component
     const fetchSecretSpots = () => {
         fetch('/secret_spots')
         .then(res => res.json())
@@ -50,12 +50,10 @@ const UserProvider = ({ children }) => {
             setSecretSpots(json)
         })
     }
-    // de-nest some information, filter through to find the secret belong to the user 
-
 
     // add a spot
     const addSecretSpot = (newSecretSpot) => {
-        // console.log(newSecretSpot)
+        console.log(newSecretSpot)
         setSecretSpots([...secretSpots, newSecretSpot])
     }
 
@@ -97,7 +95,7 @@ const UserProvider = ({ children }) => {
 
     const deleteVisit = (visit) => {
         // console.log("hitting delete in user context")
-        console.log(visit)
+        // console.log(visit)
         // fetch(`/visits/${visit.id}`, {
         //     method: "DELETE",
         //     headers: {
@@ -130,14 +128,28 @@ const UserProvider = ({ children }) => {
     const logout = () => {
         setLoggedIn(false)
         setUser({})
-        setSecretSpots([])
+        // setSecretSpots([])
         // setUserSecretSpots([])
         setVisits([])
     }
 
     return (
         <UserContext.Provider value={
-            {user, login, logout, signup, loggedIn, secretSpots, visits, addSecretSpot, addVisit, updateVisit, deleteVisit, fetchSecretSpots}}>
+            {
+                user, 
+                login, 
+                logout, 
+                signup, 
+                loggedIn, 
+                visits, 
+                secretSpots,
+                addSecretSpot, 
+                addVisit, 
+                updateVisit, 
+                deleteVisit,
+                fetchSecretSpots,
+                setVisits
+            }}>
             {children}
         </UserContext.Provider>
     )

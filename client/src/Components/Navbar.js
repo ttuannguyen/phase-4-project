@@ -24,7 +24,10 @@ const Navbar = () => {
         <NavLink className='navlink' to='/home'>
           <button className='nav-btn'>Home</button>
         </NavLink>
-        <NavLink className='navlink' to='/secret_spots'>
+        {/* <NavLink className='navlink' to='/secret_spots'>
+          <button className='nav-btn'>Listings</button>
+        </NavLink> */}
+        <NavLink className='navlink' to='/my_secret_spots'>
           <button className='nav-btn'>Your Secret Spots</button>
         </NavLink>
         <button className='nav-btn' onClick={logoutUser}>Logout</button>

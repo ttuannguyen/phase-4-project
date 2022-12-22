@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from './components/SignUp';
 import VisitAddForm from './components/VisitAddForm';
@@ -9,10 +10,34 @@ import UserSecretSpots from './components/UserSecretSpots';
 import { UserProvider } from './context/user';
 import VisitEditForm from './components/VisitEditForm';
 import SecretSpotDetails from './components/SecretSpotDetails';
-import { useEffect } from 'react';
 // import { UserProvider } from './context/user';
 
 const App = () => {
+
+  const [secretSpots, setSecretSpots] = useState([]);
+  const [visits, setVisits] = useState([]);
+
+
+  // useEffect(() => {
+  //   fetch('/secret_spots')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setSecretSpots(data)
+  //   })
+  //   // fetch('/visits')
+  //   // .then(res => res.json())
+  //   // .then(data => {
+  //   //   setVisits(data)
+  //   // })
+  // }, [])
+
+
+  const addSecretSpot = (newSecretSpot) => {
+    // console.log(newSecretSpot)
+    setSecretSpots([...secretSpots, newSecretSpot])
+  }
+
+
 
   
   // const addVisit = () => {
@@ -37,11 +62,11 @@ const App = () => {
           <Routes>
             <Route exact path="/visits/new" element={ <VisitAddForm /> }/>
             <Route exact path="/visits/:id/edit" element={ <VisitEditForm /> }/>
-            <Route exact path="/secret_spots" element={ <UserSecretSpots /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
+            <Route exact path="/my_secret_spots" element={ <UserSecretSpots secretSpots={secretSpots} addSecretSpot={addSecretSpot} /> }/>
             <Route exact path="/signup" element={ <SignUp /> } />
             <Route exact path="/login" element={ <LogIn /> } />
-            <Route exact path="/home" element={ <Home /> } />
+            <Route exact path="/home" element={ <Home secretSpots={secretSpots} /> } />
           </Routes>
         </Router>
       </UserProvider>

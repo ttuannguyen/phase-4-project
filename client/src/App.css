@@ -63,4 +63,12 @@ div#signup {
     text-align: center;
 }
 
+div.secret-spot-div {
+    text-align: center;
+}
+
+.visit-edit-div {
+    text-align: center;
+    padding-top: 22px;
+}
 
