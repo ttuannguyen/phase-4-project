@@ -15,7 +15,7 @@ const VisitDeleteButton = ({visit}) => {
               "Content-Type": "application/json",
             }
         })
-        deleteVisit(visit)
+        // deleteVisit(visit)
         fetchSecretSpots()
     }
     

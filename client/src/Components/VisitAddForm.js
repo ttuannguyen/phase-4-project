@@ -3,7 +3,7 @@ import { UserContext } from '../context/user';
 
 const VisitAddForm = ({secretSpot, afterAddVisit}) => {
 
-  const { user, fetchSecretSpots } = useContext(UserContext);
+  const { user, addVisit, fetchSecretSpots } = useContext(UserContext);
   const [errorsList, setErrorsList] = useState([]);
   // console.log(secretSpot)
   // const navigate = useNavigate();
@@ -44,7 +44,7 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
             const errorItems = json.errors.map(e => <li key={e.id}>{e}</li>)
             setErrorsList(errorItems)
         } else {
-            // addVisit(json)
+            addVisit(json)
             afterAddVisit() // calling this function to hide the form
             fetchSecretSpots()
         }

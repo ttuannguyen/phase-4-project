@@ -12,15 +12,6 @@ const SecretSpot = ({secretSpot}) => {
   const [spotObject, setSpotObject] = useState(null)
   const [visits, setVisits] = useState([])
 
-  // useEffect(() => {
-  //   if (!secretSpot) {
-  //     fetch(`/secret_spots/${id}`)
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       set
-  //     })
-  //   }
-  // })
 
 
   return (

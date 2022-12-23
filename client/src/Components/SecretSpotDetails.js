@@ -21,15 +21,6 @@ const SecretSpotDetails = () => {
     
     // Conditional to allow the fetch to be done
 
-    // useEffect(() => {
-    //     // fetch(`/secret_spots/${params.id}`)
-    //     // .then(res => res.json())
-    //     // .then(json => {
-    //     //     console.log(json)
-    //     //     // setSecretSpots(json)
-    //     // })
-    //   }, [])
-
     // let secretSpot = {}
     // if (secretSpot.length == 0) {
     //     secretSpot = {id: params.id, name: "", location: "", description: "", cost: ""}    
@@ -40,7 +31,6 @@ const SecretSpotDetails = () => {
     const afterAddVisit = () => setVisitFormToggle(false)
     // allSecretSpots.find(s => s.id == params.id);
     // console.log(params.id)
-    // console.log(allSecretSpots)
     // console.log(secretSpot.id)
 
     return (

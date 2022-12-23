@@ -8,13 +8,35 @@ const VisitEditForm = () => {
     const params = useParams(); // accessing the id in the route/path 
     const [note, setNote] = useState('');
     const navigate = useNavigate('');
+    const [visitFound, setVisitFound] = useState({});
+    // const [visitFound, setVisitFound] = useState(
+    //     {
+    //     secret_spot: {
+    //         name: ''
+    //     }}
+    //  );
+
+    // useEffect(() => {
+    //     fetchSecretSpots()
+    //   }, [])
 
     // console.log(params.id)
-    // console.log(visits)
+    console.log(visits)
+    if (!visitFound.id) {
+        const vf = user.visits.find(v => v.id == params.id); // updated from ===
+        // const ss = secretSpots.find(s => s.id == visitFound.secret_spot_id); // updated from ===
+        setVisitFound(vf)
+    }
+    console.log(visitFound)
 
-    const visitFound = visits.find(v => v.id == params.id); // updated from ===
-    console.log(visitFound)  
-    const secretSpot = secretSpots.find(s => s.id == visitFound.secret_spot_id); // updated from ===
+    console.log(secretSpots)
+    let ss = secretSpots.find(s => s.id == visitFound.secret_spot_id)
+    console.log(ss)
+
+    // const visitFound = user.visits.find(v => v.id == params.id); // updated from ===
+    // // debugger
+    // console.log(visitFound)  
+    // const secretSpot = secretSpots.find(s => s.id == visitFound.secret_spot_id); // updated from ===
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,8 +61,10 @@ const VisitEditForm = () => {
     return (
         <div class='visit-edit-div'>
             <form onSubmit={handleSubmit}>
-                Secret Spot: {secretSpot.name}<br/>
+                {/* Secret Spot: {ss.name} */}
                 {/* <p>Date: {secretSpot.date}</p> */}
+                {visitFound.date}
+                <br/>
                 <label>Note:</label><br/>
                 <textarea type="text" name='note' value={note} onChange={e => setNote(e.target.value)} /><br/>
                 <button type="submit">Submit</button>

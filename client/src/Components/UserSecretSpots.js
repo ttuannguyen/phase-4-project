@@ -11,13 +11,10 @@ const UserSecretSpots = () => {
     fetchSecretSpots()
   }, [])
 
-  // console.log(user)
-  // console.log(user.secret_spots)
   
 
 
   const filterUserSecretSpots = secretSpots.filter(s => s.user_visits.length > 0)
-  // console.log(filterUserSecretSpots)
   
   const userSecretSpots = filterUserSecretSpots.map(s => {
     

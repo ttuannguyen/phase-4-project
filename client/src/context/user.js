@@ -58,57 +58,24 @@ const UserProvider = ({ children }) => {
     }
 
     /* Visit CRUD */
-    // TODO: try to see if we can set visits to state somewhere else so we don't do this fetch
-    // const fetchVisits = () => {
-    //     fetch('/visits')
-    //     .then(res => res.json())
-    //     .then(json => {
-    //     // console.log(json)
-    //     setVisits(json)
-    //     })
-    // }
     
     const addVisit = (newVisit) => {
         // setVisits([...visits, newVisit])
         const newVisits = [...user.visits, newVisit]
-        user.visits = newVisits
-        return user
+        setUser({...user, visits: newVisits })
+        // user.visits = newVisits
+        // return user
     }
     
     const updateVisit = (updatedVisit) => {
-        // console.log(updatedVisit.id)
-        // const updatedVisits = visits.map(v => {
-        //     if (v.id === updatedVisit.id) {
-        //         return updatedVisit;
-        //     } else {
-        //         return v;
-        //     }
-        // })
-        // console.log(updatedVisit)
         const updatedVisits = user.visits.map(v => v.id === updatedVisit.id ? updatedVisit : v)
-        user.visits = updatedVisits
-        return user
-        // setVisits(updatedVisits)
-        // fetchUserSecretSpots() // to immediately display changes
-
-    }
-
-    const deleteVisit = (visit) => {
-        // console.log("hitting delete in user context")
-        // console.log(visit)
-        // fetch(`/visits/${visit.id}`, {
-        //     method: "DELETE",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     }
-        // })
-        // const updatedVisits = user.visits.filter(v => v.id !== visit.id) 
         // user.visits = updatedVisits
         // return user
-        // setVisits(updatedVisits)
-        // TODO: Make associated spot disappear right away after the deleting the visit
-        // fetchUserSecretSpots() // to immediately display changes
+        setUser({...user, visits: updatedVisits })
     }
+
+    // const deleteVisit = (visit) => {
+    // }
 
     // helper functions for managing a user's session
     const signup = (user) => { 
@@ -145,8 +112,7 @@ const UserProvider = ({ children }) => {
                 secretSpots,
                 addSecretSpot, 
                 addVisit, 
-                updateVisit, 
-                deleteVisit,
+                updateVisit,
                 fetchSecretSpots,
                 setVisits
             }}>

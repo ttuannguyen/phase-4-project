@@ -26,7 +26,6 @@ function Login() {
     .then(user => {
         if(user.error) {
           setError(user.error)
-          // // reset
           setUsername('')
           setPassword('')
       } else {

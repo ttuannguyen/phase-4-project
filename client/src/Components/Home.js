@@ -15,21 +15,7 @@ const Home = () => {
   }, [])
   // const [secretSpots, setSecretSpots] = useState([]);
   
-  const afterAddSpot = () => setFormToggle(false)
-
-
-  // useEffect(() => {
-  //   fetch('/secret_spots')
-  //   .then(res => res.json())
-  //   .then(json => setSecretSpots(json))
-  // }, [])
-  
-//   const addSecretSpot = (newSecretSpot) => {
-//     // console.log(newSecretSpot)
-//     setSecretSpots([...secretSpots, newSecretSpot])
-// }
-  
-  // hide the form away after adding a spot
+  const afterAddSpot = () => setFormToggle(false) // hide the form away after adding a spot
 
 
   const allSecretSpotsList = secretSpots.map(secretSpot => {

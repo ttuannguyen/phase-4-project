@@ -18,39 +18,11 @@ const App = () => {
   const [visits, setVisits] = useState([]);
 
 
-  // useEffect(() => {
-  //   fetch('/secret_spots')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     setSecretSpots(data)
-  //   })
-  //   // fetch('/visits')
-  //   // .then(res => res.json())
-  //   // .then(data => {
-  //   //   setVisits(data)
-  //   // })
-  // }, [])
-
 
   const addSecretSpot = (newSecretSpot) => {
-    // console.log(newSecretSpot)
     setSecretSpots([...secretSpots, newSecretSpot])
   }
-
-
-
   
-  // const addVisit = () => {
-  //   fetch('/visits', {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify()
-  //   })
-  //   .then(res => res.json())
-  //   .then(json => console.log(json))
-  // }
   
   return (
     <>
