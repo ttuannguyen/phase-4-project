@@ -2,8 +2,7 @@
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Render.
+Secret NYC is an app where users can share secret spots with the app's community. 
 
 The MVP of this application includes the following feature:
 - Sign up for a new account
