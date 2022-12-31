@@ -1,6 +1,7 @@
+
+
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../context/user';
-import SecretSpot from './SecretSpot';
 import SecretSpotAddForm from './SecretSpotAddForm';
 import SecretSpotLink from './SecretSpotLink';
 

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
 import { useNavigate } from 'react-router-dom';
 
-const Auth = () => {
+const SignUp = () => {
 
     const [username, setUsername] = useState('');
     // const [email, setEmail] = useState('')
@@ -71,4 +71,4 @@ const Auth = () => {
 
 }
 
-export default Auth
+export default SignUp

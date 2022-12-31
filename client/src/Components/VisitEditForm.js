@@ -9,22 +9,12 @@ const VisitEditForm = () => {
     const [note, setNote] = useState('');
     const navigate = useNavigate('');
     const [visitFound, setVisitFound] = useState({});
-    // const [visitFound, setVisitFound] = useState(
-    //     {
-    //     secret_spot: {
-    //         name: ''
-    //     }}
-    //  );
 
-    // useEffect(() => {
-    //     fetchSecretSpots()
-    //   }, [])
 
     // console.log(params.id)
     console.log(visits)
     if (!visitFound.id) {
         const vf = user.visits.find(v => v.id == params.id); // updated from ===
-        // const ss = secretSpots.find(s => s.id == visitFound.secret_spot_id); // updated from ===
         setVisitFound(vf)
     }
     console.log(visitFound)
