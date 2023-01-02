@@ -17,16 +17,30 @@ const UserProvider = ({ children }) => {
             if (json.error) {
                 setLoggedIn(false)
             } else {
-                // debugger
-                setUser(json) // React re-rendered only 1 time and hit this 
+                setUser(json) 
                 setLoggedIn(true)
-                // setSecretSpots(json.secret_spots) // React did not re-render again to hit this
-                // setVisits(json.visits) // React did not re-render again to hit this
-                // fetchSecretSpots() // calling the function below
+  
             }
-            // json.error ? setLoggedIn(false) : setLoggedIn(true)
         })
     }, [])
+
+    // useEffect(() => {
+    //     fetch('/me')
+    //     .then(res => res.json())
+    //     .then(json => {
+    //         if (json.error) {
+    //             setLoggedIn(false)
+    //         } else {
+    //             // debugger
+    //             setUser(json) // React re-rendered only 1 time and hit this 
+    //             setLoggedIn(true)
+    //             // setSecretSpots(json.secret_spots) // React did not re-render again to hit this
+    //             // setVisits(json.visits) // React did not re-render again to hit this
+    //             // fetchSecretSpots() // calling the function below
+    //         }
+    //         // json.error ? setLoggedIn(false) : setLoggedIn(true)
+    //     })
+    // }, [])
 
     useEffect(() => {
         if (user.id) {
@@ -35,10 +49,6 @@ const UserProvider = ({ children }) => {
             setVisits([])
         }
     }, [user])
-
-
-    console.log(user)
-    console.log(visits)
 
 
     // get all spots => moved to a component
@@ -99,6 +109,8 @@ const UserProvider = ({ children }) => {
         // setUserSecretSpots([])
         setVisits([])
     }
+
+    console.log(loggedIn)
 
     return (
         <UserContext.Provider value={

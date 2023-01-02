@@ -15,6 +15,7 @@ s1 = SecretSpot.create(name: "The floating map on Green street", location: "110 
 s2 = SecretSpot.create(name: "Freedom Tunnel", location: "St. Claire Place west to the Hudson Parkway off-ramp", description: "the graffiti artist Chris 'Freedom' Pape used the tunnel walls to create some of his most notable artwork", cost: 0.00)
 s3 = SecretSpot.create(name: "Chinese Scholar Garden", location: "Staten Island", description: "Beautiful garden!", cost: 13.99)
 
+
 v1 = Visit.create(date: "11/30/2022", note: "First visit.", secret_spot: s1, user: u1)
 v2 = Visit.create(date: "12/1/2022", note: "Active train track.", secret_spot: s2, user: u1)
 v3 = Visit.create(date: "12/2/2022", note: "Exciting!", secret_spot: s2, user: u2)

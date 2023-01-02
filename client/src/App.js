@@ -10,14 +10,10 @@ import UserSecretSpots from './components/UserSecretSpots';
 import { UserProvider } from './context/user';
 import VisitEditForm from './components/VisitEditForm';
 import SecretSpotDetails from './components/SecretSpotDetails';
-// import { UserProvider } from './context/user';
 
 const App = () => {
 
   const [secretSpots, setSecretSpots] = useState([]);
-  const [visits, setVisits] = useState([]);
-
-
 
   const addSecretSpot = (newSecretSpot) => {
     setSecretSpots([...secretSpots, newSecretSpot])

@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :visits
 
   # for testing
-  get "/users/:user_id/visits", to: "users#visits_index"
-  get "/users/:user_id/visits/:visit_id", to: "users#visits_index_visit"
+  # get "/users/:user_id/visits", to: "users#visits_index"
+  # get "/users/:user_id/visits/:visit_id", to: "users#visits_index_visit"
 
 
 
