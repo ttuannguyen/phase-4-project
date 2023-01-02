@@ -1,15 +1,22 @@
-# Project Template: React/Rails API
+# Phase 4 Project using React/Rails API
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+Secret NYC is an app where users can share secret spots with the app's community. 
+
+The MVP of this application includes the following feature:
+- Sign up for a new account
+- Log in and log out of the site
+- View a list of secret spots 
+- Create a visit (with date and comment)
+- Modify or delete the revist 
+
 
 ## Requirements
 
 - Ruby 2.7.4
 - NodeJS (v16), and npm
-- Heroku CLI
+- Render account
 - Postgresql
 
 See Environment Setup below for instructions on installing these tools if you
