@@ -6,15 +6,12 @@ import Visit from './Visit';
 const UserSecretSpots = () => {
 
   const { user, loggedIn, userSecretSpots } = useContext(UserContext);
-  console.log(userSecretSpots)
-
 
   // ISSUE: CRUD actions don't display changes right away until after page refresh
   
   // METHOD 1: Based on global data in user context
   const userDataToDisplay = userSecretSpots.map(s => {
     const visits = s.user_visits.map(visit => {
-      console.log(visit.date)
       return (
         <Visit key={visit.id} visit={visit} />
       )

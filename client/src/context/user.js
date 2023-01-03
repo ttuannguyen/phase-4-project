@@ -4,7 +4,13 @@ const UserContext = React.createContext();
 
 //any child hooked to the global will have access to the stateful variable(s); in our case we have user in state
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState({}); 
+
+    const [user, setUser] = useState({
+        id: null,
+        username: "",
+        secret_spots: [],
+        visits: []
+    }); 
     const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
     const [secretSpots, setSecretSpots] = useState([]); // all the spots in db
     const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
@@ -19,7 +25,6 @@ const UserProvider = ({ children }) => {
             } else {
                 setUser(json) 
                 setLoggedIn(true)
-                fetchSecretSpots()
             }
         })
     }, [])
@@ -34,8 +39,7 @@ const UserProvider = ({ children }) => {
         }
     }, [user])
 
-    console.log(userSecretSpots)
-    console.log(visits)
+
 
     // get all spots => moved to a component
     const fetchSecretSpots = () => {
@@ -96,8 +100,6 @@ const UserProvider = ({ children }) => {
         // setUserSecretSpots([])
         setVisits([])
     }
-
-    console.log(loggedIn)
 
     return (
         <UserContext.Provider value={
