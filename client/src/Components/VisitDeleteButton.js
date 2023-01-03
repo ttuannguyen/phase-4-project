@@ -3,11 +3,8 @@ import { UserContext } from '../context/user';
 
 const VisitDeleteButton = ({visit}) => {
 
-    const { user, deleteVisit, fetchSecretSpots } = useContext(UserContext);
-    // console.log(visit.id)
-    // console.log(visit)
+    const { user, fetchSecretSpots } = useContext(UserContext);
 
-    // TODO: Make associated spot disappear right away after the deleting the visit
     const handleClick = () => {
         fetch(`/users/${user.id}/visits/${visit.id}`, {
             method: "DELETE",
@@ -15,8 +12,6 @@ const VisitDeleteButton = ({visit}) => {
               "Content-Type": "application/json",
             }
         })
-        // deleteVisit(visit)
-        fetchSecretSpots()
     }
     
     return (

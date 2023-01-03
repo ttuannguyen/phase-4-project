@@ -2,14 +2,22 @@
 
 ## Description
 
-Secret NYC is an app where users can share secret spots with the app's community. 
 
-The MVP of this application includes the following feature:
+I love exploring places in New York City, where I call home. Thus, I came up with the concept of Secret NYC, a webpage where users can share their secret spots in NYC with the user community. I built this fullstack application created with React.js for the frontend and Ruby on Rails for the backend. 
+
+The MVP of this application includes the following features:
 - Sign up for a new account
 - Log in and log out of the site
-- View a list of secret spots 
+- View a list of secret spots shared by the community
 - Create a visit (with date and comment)
-- Modify or delete the revist 
+- Modify or delete the created visits
+
+First, the user has the option to sign up for an account or login to the account they created. Once logged in, the user will see a list of secret spots shared by users of the app. They can click onto a secret spot link to view more details. They can plan or track a visit by clicking the "Visit" button. They can navigate to their own page where they would see a list of visited secret spots and visit details. They can modify or delete a visit. Once the user is finshed with the app, they can log themselves out by clicking the Logout button.
+
+## Challenges
+1. Displaying the user's nested data 
+2. Building CRUD actions for the Visits
+
 
 
 ## Requirements
@@ -332,3 +340,12 @@ For additional support, check out these guides on Heroku:
 [postgres downloads page]: https://postgresapp.com/downloads.html
 [heroku rails deploying guide]: https://devcenter.heroku.com/articles/getting-started-with-rails6
 [troubleshooting guide on heroku]: https://devcenter.heroku.com/articles/getting-started-with-rails6#troubleshooting
+
+
+Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+License
+MIT
