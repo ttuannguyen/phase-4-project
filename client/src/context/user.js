@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const UserContext = React.createContext();
 
-//any child hooked to the global will have access to the stateful variable(s); in our case we have user in state
 const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState({
@@ -11,10 +10,9 @@ const UserProvider = ({ children }) => {
         secret_spots: [],
         visits: []
     }); 
-    const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
+    const [loggedIn, setLoggedIn] = useState(false); 
     const [secretSpots, setSecretSpots] = useState([]); 
-    // all the spots in db
-    const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
+    const [userSecretSpots, setUserSecretSpots] = useState([]); 
     const [visits, setVisits] = useState([]);
     
     useEffect(() => {
@@ -42,20 +40,15 @@ const UserProvider = ({ children }) => {
     }, [user, user.visits])
 
 
-
-    // get all spots => moved to a component
     const fetchSecretSpots = () => {
         fetch('/secret_spots')
         .then(res => res.json())
         .then(json => {
-            // console.log(json)
             setSecretSpots(json)
         })
     }
 
-    // add a spot
     const addSecretSpot = (newSecretSpot) => {
-        // console.log(newSecretSpot)
         setSecretSpots([...secretSpots, newSecretSpot])
         fetchSecretSpots()
     }
@@ -70,34 +63,25 @@ const UserProvider = ({ children }) => {
     
     const updateVisit = (updatedVisit) => {
         const updatedVisits = user.visits.map(v => v.id === updatedVisit.id ? updatedVisit : v)
-        // user.visits = updatedVisits
-        // return user
         setUser({...user, visits: updatedVisits })
     }
 
-    // const deleteVisit = (visit) => {
-    // }
 
-    // helper functions for managing a user's session
     const signup = (user) => { 
         setUser(user)
         setLoggedIn(true)
         fetchSecretSpots()
-        // fetchUserSecretSpots()
-        // fetchVisits()
     }
     
     const login = (user) => {
-        setUser(user) //
-        setLoggedIn(true) //
+        setUser(user) 
+        setLoggedIn(true) 
         fetchSecretSpots()
     }
 
     const logout = () => {
         setLoggedIn(false)
         setUser({})
-        // setSecretSpots([])
-        // setUserSecretSpots([])
         setVisits([])
     }
 

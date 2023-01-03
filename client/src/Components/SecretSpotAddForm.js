@@ -17,13 +17,11 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
         setFormData(formData => {
             return {...formData, [e.target.name]:e.target.value}
         })
-        // console.log(formData)
     };
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        // // reset form
         setFormData({
             name:'',
             location:'',   
@@ -38,13 +36,12 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
         })
         .then(res => res.json())
         .then(json => {
-            // console.log(json.errors)
             if (json.errors) {
                 const errorItems = json.errors.map(e => <li key={e.id}>{e}</li>)
                 setErrorsList(errorItems)
             } else {
                 addSecretSpot(json)
-                afterAddSpot() // calling this function to hide the form
+                afterAddSpot() 
             }
         })
     }

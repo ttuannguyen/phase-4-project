@@ -6,9 +6,7 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
 
   const { user, addVisit } = useContext(UserContext);
   const [errorsList, setErrorsList] = useState([]);
-  
-  // ISSUE: New visit don't display right away until after page refresh
-  
+    
   const [formData, setFormData] = useState({
     secret_spot_id: secretSpot.id,
     date:'',
@@ -23,7 +21,6 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    // reset form
     setFormData({
       date:'',
       note:''
@@ -36,14 +33,12 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
     })
     .then(res => res.json())
     .then(json => {
-        // console.log(json.errors)
         if (json.errors) {
             const errorItems = json.errors.map(e => <li key={e.id}>{e}</li>)
             setErrorsList(errorItems)
         } else {
             addVisit(json)
-            afterAddVisit() // calling this function to hide the form
-            // fetchSecretSpots()
+            afterAddVisit()
         }
     })
   }

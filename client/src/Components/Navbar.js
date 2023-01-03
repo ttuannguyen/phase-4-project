@@ -14,7 +14,7 @@ const Navbar = () => {
     }) 
     .then(() => {
       navigate('/')
-      logout() //call logout over in context, setting loggedIn to false
+      logout() 
     })
   }
   
@@ -24,9 +24,6 @@ const Navbar = () => {
         <NavLink className='navlink' to='/home'>
           <button className='nav-btn'>Home</button>
         </NavLink>
-        {/* <NavLink className='navlink' to='/secret_spots'>
-          <button className='nav-btn'>Listings</button>
-        </NavLink> */}
         <NavLink className='navlink' to='/my_secret_spots'>
           <button className='nav-btn'>My Secret Spots</button>
         </NavLink>

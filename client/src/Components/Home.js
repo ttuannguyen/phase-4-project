@@ -7,19 +7,12 @@ import SecretSpotLink from './SecretSpotLink';
 
 const Home = () => {
   const { user, loggedIn, secretSpots } = useContext(UserContext);
-  const [formToggle, setFormToggle] = useState(false); // to expose the secret spot add form
-  console.log(secretSpots)
+  const [formToggle, setFormToggle] = useState(false); 
 
   
-  // useEffect(() => {
-  //   fetchSecretSpots()
-  // }, [])
-  // const [secretSpots, setSecretSpots] = useState([]);
-  
-  const afterAddSpot = () => setFormToggle(false) // hide the form away after adding a spot
+  const afterAddSpot = () => setFormToggle(false) 
 
   if (loggedIn) {
-
     const allSecretSpotsList = secretSpots.map(secretSpot => {
       return (
           <SecretSpotLink key={secretSpot.id} secretSpot={secretSpot} />
@@ -37,7 +30,7 @@ const Home = () => {
       </div>
     )
   } else {
-    return (<h4>Please login or create an Account</h4>)
+      return (<h4>Please login or create an Account</h4>)
   } 
   
 }

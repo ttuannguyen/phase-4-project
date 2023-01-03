@@ -7,7 +7,7 @@ const SecretSpotDetails = () => {
     
     const params = useParams();
     const { loggedIn, secretSpots } = useContext(UserContext);
-    const [visitFormToggle, setVisitFormToggle] = useState(false); // to expose the visit add form
+    const [visitFormToggle, setVisitFormToggle] = useState(false);
     const [secretSpot, setSecretSpot] = useState({}); 
 
     
