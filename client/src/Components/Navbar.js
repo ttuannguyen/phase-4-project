@@ -28,7 +28,7 @@ const Navbar = () => {
           <button className='nav-btn'>Listings</button>
         </NavLink> */}
         <NavLink className='navlink' to='/my_secret_spots'>
-          <button className='nav-btn'>Your Secret Spots</button>
+          <button className='nav-btn'>My Secret Spots</button>
         </NavLink>
         <button className='nav-btn' onClick={logoutUser}>Logout</button>
       </div>

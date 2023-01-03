@@ -7,7 +7,7 @@ const UserProvider = ({ children }) => {
     const [user, setUser] = useState({}); 
     const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
     const [secretSpots, setSecretSpots] = useState([]); // all the spots in db
-    // const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
+    const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
     const [visits, setVisits] = useState([]);
     
     useEffect(() => {
@@ -19,37 +19,23 @@ const UserProvider = ({ children }) => {
             } else {
                 setUser(json) 
                 setLoggedIn(true)
-  
+                fetchSecretSpots()
             }
         })
     }, [])
 
-    // useEffect(() => {
-    //     fetch('/me')
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         if (json.error) {
-    //             setLoggedIn(false)
-    //         } else {
-    //             // debugger
-    //             setUser(json) // React re-rendered only 1 time and hit this 
-    //             setLoggedIn(true)
-    //             // setSecretSpots(json.secret_spots) // React did not re-render again to hit this
-    //             // setVisits(json.visits) // React did not re-render again to hit this
-    //             // fetchSecretSpots() // calling the function below
-    //         }
-    //         // json.error ? setLoggedIn(false) : setLoggedIn(true)
-    //     })
-    // }, [])
-
     useEffect(() => {
         if (user.id) {
+            setUserSecretSpots(user.secret_spots)
             setVisits(user.visits) 
         } else {
+            setUserSecretSpots([])
             setVisits([])
         }
     }, [user])
 
+    console.log(userSecretSpots)
+    console.log(visits)
 
     // get all spots => moved to a component
     const fetchSecretSpots = () => {
@@ -63,8 +49,9 @@ const UserProvider = ({ children }) => {
 
     // add a spot
     const addSecretSpot = (newSecretSpot) => {
-        console.log(newSecretSpot)
+        // console.log(newSecretSpot)
         setSecretSpots([...secretSpots, newSecretSpot])
+        fetchSecretSpots()
     }
 
     /* Visit CRUD */
@@ -121,6 +108,7 @@ const UserProvider = ({ children }) => {
                 signup, 
                 loggedIn, 
                 visits, 
+                userSecretSpots,
                 secretSpots,
                 addSecretSpot, 
                 addVisit, 

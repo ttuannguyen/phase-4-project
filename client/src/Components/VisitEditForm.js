@@ -4,29 +4,36 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const VisitEditForm = () => {
 
-    const { user, secretSpots, updateVisit, fetchSecretSpots, visits, setVisits } = useContext(UserContext);
+    const { user, userSecretSpots, updateVisit, fetchSecretSpots, visits, setVisits } = useContext(UserContext);
     const params = useParams(); // accessing the id in the route/path 
     const [note, setNote] = useState('');
     const navigate = useNavigate('');
     const [visitFound, setVisitFound] = useState({});
+    const [visit, setVisit] = useState({});
+    
+    
 
 
-    // console.log(params.id)
-    console.log(visits)
+    // METHOD 1: Based on global data in user context
+    // ISSUE: This breaks after refreshing
     if (!visitFound.id) {
         const vf = user.visits.find(v => v.id == params.id); // updated from ===
         setVisitFound(vf)
     }
-    console.log(visitFound)
+    // let ss = userSecretSpots.find(s => s.id == visitFound.secret_spot_id)
 
-    console.log(secretSpots)
-    let ss = secretSpots.find(s => s.id == visitFound.secret_spot_id)
-    console.log(ss)
 
-    // const visitFound = user.visits.find(v => v.id == params.id); // updated from ===
-    // // debugger
-    // console.log(visitFound)  
-    // const secretSpot = secretSpots.find(s => s.id == visitFound.secret_spot_id); // updated from ===
+    // BACKUP METHOD: fetch to /visits
+    // useEffect(() => {
+    //     fetch(`/visits/${params.id}`)
+    //     .then(res => res.json())
+    //     .then(json => setVisit(json))
+    // }, [])
+
+    // console.log(visits)
+    // console.log(userSecretSpots)
+
+
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,7 +49,7 @@ const VisitEditForm = () => {
         .then(res => res.json())
         .then(data => {
             updateVisit(data)
-            fetchSecretSpots()
+            // fetchSecretSpots()
             // renderNewlyOwnedSpot()
             navigate('/my_secret_spots')
         })
@@ -51,9 +58,12 @@ const VisitEditForm = () => {
     return (
         <div class='visit-edit-div'>
             <form onSubmit={handleSubmit}>
-                {/* Secret Spot: {ss.name} */}
-                {/* <p>Date: {secretSpot.date}</p> */}
-                {visitFound.date}
+                {/* with method 1 */}
+                <h4>{visitFound.secret_spot}</h4>
+                <p>Date: {visitFound.date}</p>
+                {/* with backup */}
+                {/* <h4>{visit.secret_spot}</h4>
+                <p>Date: {visit.date}</p> */}
                 <br/>
                 <label>Note:</label><br/>
                 <textarea type="text" name='note' value={note} onChange={e => setNote(e.target.value)} /><br/>

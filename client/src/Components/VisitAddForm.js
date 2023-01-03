@@ -1,22 +1,19 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
 
+
 const VisitAddForm = ({secretSpot, afterAddVisit}) => {
 
-  const { user, addVisit, fetchSecretSpots } = useContext(UserContext);
+  const { user, addVisit } = useContext(UserContext);
   const [errorsList, setErrorsList] = useState([]);
-  // console.log(secretSpot)
-  // const navigate = useNavigate();
-
-  console.log(user)
   
-  // TODO: fix form data 
+  // ISSUE: New visit don't display right away until after page refresh
+  
   const [formData, setFormData] = useState({
     secret_spot_id: secretSpot.id,
     date:'',
     note:'',   
   });
-  // console.log(formData)
 
   const handleChange = (e) => {
     setFormData(formData => {
@@ -46,11 +43,10 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
         } else {
             addVisit(json)
             afterAddVisit() // calling this function to hide the form
-            fetchSecretSpots()
+            // fetchSecretSpots()
         }
     })
   }
-
   
   return (
     <>

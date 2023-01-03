@@ -5,46 +5,37 @@ import Visit from './Visit';
 
 const UserSecretSpots = () => {
 
-  const { user, secretSpots, loggedIn, fetchSecretSpots } = useContext(UserContext);
+  const { user, loggedIn, userSecretSpots } = useContext(UserContext);
+  console.log(userSecretSpots)
 
-  useEffect(() => {
-    fetchSecretSpots()
-  }, [])
 
+  // ISSUE: CRUD actions don't display changes right away until after page refresh
   
-
-
-  const filterUserSecretSpots = secretSpots.filter(s => s.user_visits.length > 0)
-  
-  const userSecretSpots = filterUserSecretSpots.map(s => {
-    
+  // METHOD 1: Based on global data in user context
+  const userDataToDisplay = userSecretSpots.map(s => {
     const visits = s.user_visits.map(visit => {
-      // console.log(visit)
+      console.log(visit.date)
       return (
-        <Visit key={visit.id} visit={visit} spot={visit.secret_spot} date={visit.date} note={visit.note} />
+        <Visit key={visit.id} visit={visit} />
       )
     })
-
-    return (
-      <div key={s.id}>
-        <h4>{s.name}</h4>
-        {visits}
-      </div>
+   
+      return (
+        <div key={s.id}>
+          <h4>{s.name}</h4>
+          {visits}
+        </div>
     )
   })
 
-
+  // METHOD 2: Based on the fetch in App.js; need to receive secretSpots as prop
   // const filterUserSecretSpots = secretSpots.filter(s => s.user_visits.length > 0)
-  // // console.log(filterUserSecretSpots)
-  
   // const userSecretSpots = filterUserSecretSpots.map(s => {
-    
-  //   const visits = s.user_visits.map(visit => {
-  //     // console.log(visit)
-  //     return (
-  //       <Visit key={visit.id} visit={visit} spot={visit.secret_spot} date={visit.date} note={visit.note} />
-  //     )
-  //   })
+    // const visits = s.user_visits.map(visit => {
+    //   return (
+    //     <Visit key={visit.id} visit={visit} spot={visit.secret_spot} date={visit.date} note={visit.note} />
+    //   )
+    // })
 
   //   return (
   //     <div key={s.id}>
@@ -54,12 +45,11 @@ const UserSecretSpots = () => {
   //   )
   // })
 
-
   if (loggedIn) {
     return (
       <div >
         <h3>Here are your Secret Spots</h3>
-        {userSecretSpots}
+        {userDataToDisplay}
       </div>
     )
   } else {

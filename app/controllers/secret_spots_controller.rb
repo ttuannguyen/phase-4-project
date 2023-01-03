@@ -1,8 +1,6 @@
 class SecretSpotsController < ApplicationController
 # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-    # before_action :authorized
-    # before_action :authorize
-    
+    skip_before_action :authorized, only: [:index]    
 
     # GET "/secret_spots"
     def index

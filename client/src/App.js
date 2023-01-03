@@ -15,10 +15,19 @@ const App = () => {
 
   const [secretSpots, setSecretSpots] = useState([]);
 
+  // get all spots => moved to a component
+  useEffect(() => {
+    fetch('/secret_spots')
+    .then(res => res.json())
+    .then(json => setSecretSpots(json))
+  }, [])
+
+  console.log(secretSpots)
+
+
   const addSecretSpot = (newSecretSpot) => {
     setSecretSpots([...secretSpots, newSecretSpot])
   }
-  
   
   return (
     <>
@@ -28,8 +37,8 @@ const App = () => {
           <p>Discover secret spots in NYC like a true New Yorker!</p>
           <Navbar />
           <Routes>
-            <Route exact path="/visits/new" element={ <VisitAddForm /> }/>
-            <Route exact path="/visits/:id/edit" element={ <VisitEditForm /> }/>
+            {/* <Route exact path="/visits/new" element={ <VisitAddForm /> }/> */}
+            <Route path="/visits/:id/edit" element={ <VisitEditForm /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
             <Route exact path="/my_secret_spots" element={ <UserSecretSpots secretSpots={secretSpots} addSecretSpot={addSecretSpot} /> }/>
             <Route exact path="/signup" element={ <SignUp /> } />
