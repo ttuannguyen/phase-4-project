@@ -12,7 +12,8 @@ const UserProvider = ({ children }) => {
         visits: []
     }); 
     const [loggedIn, setLoggedIn] = useState(false); // false = initial state is not logged in
-    const [secretSpots, setSecretSpots] = useState([]); // all the spots in db
+    const [secretSpots, setSecretSpots] = useState([]); 
+    // all the spots in db
     const [userSecretSpots, setUserSecretSpots] = useState([]); // user's spots in db
     const [visits, setVisits] = useState([]);
     
@@ -25,6 +26,7 @@ const UserProvider = ({ children }) => {
             } else {
                 setUser(json) 
                 setLoggedIn(true)
+                fetchSecretSpots()
             }
         })
     }, [])
@@ -37,7 +39,7 @@ const UserProvider = ({ children }) => {
             setUserSecretSpots([])
             setVisits([])
         }
-    }, [user])
+    }, [user, user.visits])
 
 
 
@@ -61,11 +63,9 @@ const UserProvider = ({ children }) => {
     /* Visit CRUD */
     
     const addVisit = (newVisit) => {
-        // setVisits([...visits, newVisit])
         const newVisits = [...user.visits, newVisit]
         setUser({...user, visits: newVisits })
-        // user.visits = newVisits
-        // return user
+   
     }
     
     const updateVisit = (updatedVisit) => {

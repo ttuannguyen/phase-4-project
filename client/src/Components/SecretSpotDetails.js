@@ -6,39 +6,15 @@ import VisitAddForm from './VisitAddForm';
 const SecretSpotDetails = () => {
     
     const params = useParams();
-    const { user, loggedIn, secretSpots, fetchSecretSpots } = useContext(UserContext);
+    const { loggedIn, secretSpots } = useContext(UserContext);
     const [visitFormToggle, setVisitFormToggle] = useState(false); // to expose the visit add form
-    const [secretSpot, setSecretSpot] = useState([]); // for backup method
+    const [secretSpot, setSecretSpot] = useState({}); 
 
     
-    // METHOD 1: via data from context
-    // ISSUE: breaks when after refreshing the page
-    // Conditional to allow the fetch to be done
-    // let secretSpot = {}
-    // if (secretSpot.length == 0) {
-    //     secretSpot = {}    
-    //     // secretSpot = {id: params.id, name: "", location: "", description: "", cost: ""}    
-    // } else {
-    //     secretSpot = secretSpots.find(s => s.id == params.id); 
-    // }
-    // console.log(secretSpot)
-
-    // METHOD 2 - BACKUP: fetch to /secret_spots/:id
-    useEffect(() => {
-        fetch(`/secret_spots/${params.id}`)
-        .then(res => res.json())
-        .then(json => setSecretSpot(json))
-    }, [])
-
-    // ATTEMPT
-    // useEffect(() => {
-    //     if (!secretSpots) {
-    //         setSecretSpotsToRender([]) 
-    //     } else {
-    //         setSecretSpotsToRender([secretSpots]) 
-    //     }
-    // }, [secretSpots])
-
+    if (!secretSpot.id && secretSpots.length !==0 ) {
+        const s = secretSpots.find(s => s.id == params.id); 
+        setSecretSpot(s)
+    }
 
     const afterAddVisit = () => setVisitFormToggle(false)
 
