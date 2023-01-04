@@ -4,7 +4,7 @@ import { UserContext } from '../context/user';
 
 const VisitAddForm = ({secretSpot, afterAddVisit}) => {
 
-  const { user, addVisit } = useContext(UserContext);
+  const { user, addVisit, toggle, setToggle } = useContext(UserContext);
   const [errorsList, setErrorsList] = useState([]);
     
   const [formData, setFormData] = useState({
@@ -39,6 +39,7 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
         } else {
             addVisit(json)
             afterAddVisit()
+            setToggle(!toggle)
         }
     })
   }

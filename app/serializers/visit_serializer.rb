@@ -1,23 +1,10 @@
 class VisitSerializer < ActiveModel::Serializer
-  # attributes :id, :date, :note
-  attributes :id, :date, :note, :secret_spot_id, :secret_spot
-  # belongs_to :user
-  belongs_to :secret_spot
-
+  attributes :id, :date, :note, :secret_spot_id, :secret_spot, :user_id
+  # belongs_to :secret_spot
   
   # method to return only the name of the secret spot
   def secret_spot
     object.secret_spot.name
   end
-
-  # method to return only the name of the user
-  # def user
-  #   # byebug
-  #   object.user.name
-  # end
-  
-  # def date
-  #   "Date of visit: #{object.date}"
-  # end
 
 end

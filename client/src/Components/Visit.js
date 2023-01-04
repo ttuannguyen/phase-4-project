@@ -5,7 +5,7 @@ import VisitDeleteButton from './VisitDeleteButton'
 const Visit = ({visit}) => {
         
     return (
-        <div class='visit-div'>
+        <div className='visit-div'>
             <p>Visit: {visit.date} | Note: {visit.note}</p>
             <Link to={`/visits/${visit.id}/edit`}>
                 <button>Edit</button>

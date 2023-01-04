@@ -3,7 +3,7 @@ import { UserContext } from '../context/user';
 
 const VisitDeleteButton = ({visit}) => {
 
-    const { user, fetchSecretSpots } = useContext(UserContext);
+    const { user, toggle, setToggle } = useContext(UserContext);
 
     const handleClick = () => {
         fetch(`/users/${user.id}/visits/${visit.id}`, {
@@ -12,6 +12,7 @@ const VisitDeleteButton = ({visit}) => {
               "Content-Type": "application/json",
             }
         })
+        setToggle(!toggle)
     }
     
     return (

@@ -14,6 +14,7 @@ const UserProvider = ({ children }) => {
     const [secretSpots, setSecretSpots] = useState([]); 
     const [userSecretSpots, setUserSecretSpots] = useState([]); 
     const [visits, setVisits] = useState([]);
+    const [toggle, setToggle] = useState(false);
     
     useEffect(() => {
         fetch('/me')
@@ -27,17 +28,17 @@ const UserProvider = ({ children }) => {
                 fetchSecretSpots()
             }
         })
-    }, [])
+    }, [toggle])
 
     useEffect(() => {
         if (user.id) {
             setUserSecretSpots(user.secret_spots)
-            setVisits(user.visits) 
+            setVisits(user.visits)
         } else {
             setUserSecretSpots([])
             setVisits([])
         }
-    }, [user, user.visits])
+    }, [user])
 
 
     const fetchSecretSpots = () => {
@@ -54,7 +55,6 @@ const UserProvider = ({ children }) => {
     }
 
     /* Visit CRUD */
-    
     const addVisit = (newVisit) => {
         const newVisits = [...user.visits, newVisit]
         setUser({...user, visits: newVisits })
@@ -100,7 +100,9 @@ const UserProvider = ({ children }) => {
                 addVisit, 
                 updateVisit,
                 fetchSecretSpots,
-                setVisits
+                setVisits,
+                toggle,
+                setToggle
             }}>
             {children}
         </UserContext.Provider>
