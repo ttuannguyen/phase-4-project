@@ -4,14 +4,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const VisitEditForm = () => {
 
-    const { user, updateVisit, loggedIn } = useContext(UserContext);
+    const { user, updateVisit, loggedIn, toggle, setToggle } = useContext(UserContext);
     const params = useParams(); 
     const [note, setNote] = useState('');
     const navigate = useNavigate('');
     const [visitFound, setVisitFound] = useState({});
 
     if (!visitFound.id && user.id) {
-        const vf = user.visits.find(v => v.id == params.id); 
+        const vf = user.visits.find(v => v.id == params.id); // updated from ===
         setVisitFound(vf)
     }
 
@@ -30,12 +30,13 @@ const VisitEditForm = () => {
         .then(data => {
             updateVisit(data)
             navigate('/my_secret_spots')
+            setToggle(!toggle)
         })
     }
 
     if (loggedIn) {
         return (
-            <div class='visit-edit-div'>
+            <div className='visit-edit-div'>
                 <form onSubmit={handleSubmit}>
                     <h4>{visitFound.secret_spot}</h4>
                     <p>Date: {visitFound.date}</p>

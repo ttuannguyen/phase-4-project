@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 // import { Route, useParams } from 'react-router-dom';
 import { UserContext  } from '../context/user';
 import Visit from './Visit';
-import VisitEditForm from './VisitEditForm';
 
 const UserSecretSpots = () => {
 
@@ -11,7 +10,7 @@ const UserSecretSpots = () => {
   const userDataToDisplay = userSecretSpots.map(s => {
     const visits = s.user_visits.map(visit => {
       return (
-        <div>
+        <div key={visit.id}>
           <Visit key={visit.id} visit={visit} />
         </div>
       )

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from './components/SignUp';
 import Home from './components/Home';

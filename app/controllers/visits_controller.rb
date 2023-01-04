@@ -7,7 +7,6 @@ class VisitsController < ApplicationController
     end
 
     def show
-        # TODO: what if we specific the user's spot's visit here
         visit = current_user.visits.find_by(id: params[:id])
         if visit
             render json: visit
@@ -17,8 +16,6 @@ class VisitsController < ApplicationController
     end
 
     def create
-        # TODO: associate the secret spot with the visit 
-        # secret_spot = SecretSpot.find_by(name: params[:name])
         visit = current_user.visits.create!(visit_params) 
         render json: visit, status: :created
 
@@ -40,22 +37,9 @@ class VisitsController < ApplicationController
         head :no_content
     end
     
-    
-
     private 
-
-    # def render_unprocessable_entity(invalid) # pass in the invalid param
-    #     # byebug
-    #     render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
-    # end
-
-    # def current_user
-    #     # byebug
-    #     User.find_by(id: session[:user_id])
-    # end
-    
     def visit_params
-        params.permit(:date, :note, :secret_spot_id)
+        params.permit(:date, :note, :secret_spot_id, :user_id, :id, :visit)
     end
 
 end
