@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ const VisitEditForm = () => {
     const [visitFound, setVisitFound] = useState({});
 
     if (!visitFound.id && user.id) {
-        const vf = user.visits.find(v => v.id == params.id); // updated from ===
+        const vf = user.visits.find(v => v.id === parseInt(params.id)); 
         setVisitFound(vf)
     }
 

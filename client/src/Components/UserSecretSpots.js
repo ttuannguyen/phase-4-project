@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 // import { Route, useParams } from 'react-router-dom';
 import { UserContext  } from '../context/user';
 import Visit from './Visit';

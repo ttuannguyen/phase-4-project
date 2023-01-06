@@ -12,7 +12,7 @@ const SecretSpotDetails = () => {
 
     
     if (!secretSpot.id && secretSpots.length !==0 ) {
-        const s = secretSpots.find(s => s.id == params.id); 
+        const s = secretSpots.find(s => s.id === parseInt(params.id)); 
         setSecretSpot(s)
     }
 
