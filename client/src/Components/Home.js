@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
 import SecretSpotAddForm from './SecretSpotAddForm';
 import SecretSpotLink from './SecretSpotLink';
+import SecretSpotCard from './SecretSpotCard';
 
 const Home = () => {
   const { user, loggedIn, secretSpots } = useContext(UserContext);
@@ -12,9 +13,15 @@ const Home = () => {
   if (loggedIn) {
     const allSecretSpotsList = secretSpots.map(secretSpot => {
       return (
-          <SecretSpotLink key={secretSpot.id} secretSpot={secretSpot} />
+        <SecretSpotCard key={secretSpot.id} secretSpot={secretSpot} />
       )
     })
+
+    // const allSecretSpotsList = secretSpots.map(secretSpot => {
+    //   return (
+    //       <SecretSpotLink key={secretSpot.id} secretSpot={secretSpot} />
+    //   )
+    // })
 
 
     return (

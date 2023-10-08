@@ -1,5 +1,6 @@
 class SecretSpotsController < ApplicationController
     # GET "/secret_spots"
+    
     def index
         render json: SecretSpot.all
     end

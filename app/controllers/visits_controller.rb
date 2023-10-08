@@ -1,5 +1,24 @@
 class VisitsController < ApplicationController
-# rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity     
+# rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity    
+    skip_before_action :authorized
+    # skip_before_action :authorized, only: [:solution]
+
+    # def solution
+    #     # byebug
+    #     # render json: "solution"
+    #     solution = Visit.all.select do |v|
+    #         v.note.include?(params[:note])
+    #     end
+
+    #     ss = solution.map do |v|
+    #         v.secret_spot
+    #     end
+
+    #     if ss 
+    #         render json: ss 
+    #     else
+    #         render json     
+    # end
 
     def index
         visits = current_user.visits.order(:secret_spot_id)
@@ -18,7 +37,6 @@ class VisitsController < ApplicationController
     def create
         visit = current_user.visits.create!(visit_params) 
         render json: visit, status: :created
-
     end
 
     def update

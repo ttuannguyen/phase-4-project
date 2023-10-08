@@ -349,3 +349,7 @@ Please make sure to update tests as appropriate.
 
 License
 MIT
+
+Create a custom route that sends a parameter to the back end and uses that parameter (a string - no spaces) that searches all the visits and finds any visit with that word in the note field. 
+
+The action will render json of all the secret_spots for which that word appeared in any note associated with that secret_spot. If no secret_spots are found that meet the criteria render a message that says so.

@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   
 
-  resources :secret_spots, only:[:index, :show, :create]
+  resources :secret_spots, only:[:index, :show, :create, :solution]
   resources :users, only:[:index, :show, :create]
   resources :visits
+
+
 
   # for testing
   # get "/users/:user_id/visits", to: "users#visits_index"
   # get "/users/:user_id/visits/:visit_id", to: "users#visits_index_visit"
-
-
 
    # visits CRUD
   post "/users/:user_id/visits", to: "visits#create"
@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   # get a secret
   get "/users/:user_id/visits", to: "users#visits_index"
+
+  post "/solution", to: "visits#solution"
 
 
   # routes to handle user

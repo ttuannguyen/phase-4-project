@@ -4,5 +4,5 @@ class SecretSpot < ApplicationRecord
 
     validates :name, presence: true, uniqueness: true
     validates :location, :description, :cost, presence: true
-    
+
 end

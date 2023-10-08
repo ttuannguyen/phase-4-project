@@ -15,6 +15,10 @@ const UserProvider = ({ children }) => {
     const [userSecretSpots, setUserSecretSpots] = useState([]); 
     const [visits, setVisits] = useState([]);
     const [toggle, setToggle] = useState(false);
+
+    // console.log(userSecretSpots)
+    // console.log(visits)
+
     
     useEffect(() => {
         fetch('/me')
@@ -51,7 +55,7 @@ const UserProvider = ({ children }) => {
 
     const addSecretSpot = (newSecretSpot) => {
         setSecretSpots([...secretSpots, newSecretSpot])
-        fetchSecretSpots()
+        // fetchSecretSpots()
     }
 
     /* Visit CRUD */

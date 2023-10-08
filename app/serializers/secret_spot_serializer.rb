@@ -1,8 +1,8 @@
 class SecretSpotSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :description, :cost, :user_visits
-  has_many :visits
+  attributes :id, :name, :location, :description, :cost, :visits
+  # has_many :visits
 
-  def user_visits
+  def visits
     user_visits = current_user.visits.where('secret_spot_id = ?', object.id)
   end
   

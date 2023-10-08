@@ -23,6 +23,7 @@ const App = () => {
           <Routes>
             <Route path="/visits/:id/edit" element={ <VisitEditForm /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
+            <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
             <Route exact path="/my_secret_spots" element={ <UserSecretSpots /> }/>
             <Route exact path="/signup" element={ <SignUp /> } />
             <Route exact path="/login" element={ <LogIn /> } />
