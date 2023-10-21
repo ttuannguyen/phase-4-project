@@ -5,23 +5,22 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from './Components/SignUp';
 import Home from './Components/Home';
 import LogIn from './Components/LogIn';
-import Navbar from './Components/Navbar';
+import NavBar from './Components/NavBar';
 import UserSecretSpots from './Components/UserSecretSpots';
 import { UserProvider } from './context/user';
 import VisitEditForm from './Components/VisitEditForm';
 import SecretSpotDetails from './Components/SecretSpotDetails';
-// import Header from './components/Header';
+import Header from './Components/Header';
 
 const App = () => {
 
   
   return (
-    <Container>
       <UserProvider>
         <Router>
-            <h1>Secret NYC</h1>
+          <Header />
             <p>Discover secret spots in NYC like a true New Yorker!</p>
-            <Navbar />
+            {/* <NavBar /> */}
           <Routes>
             <Route path="/visits/:id/edit" element={ <VisitEditForm /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
@@ -33,7 +32,6 @@ const App = () => {
           </Routes>
         </Router>
       </UserProvider>
-    </Container>
   );
 }
 
