@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from './components/SignUp';
 import Home from './components/Home';
@@ -9,6 +10,7 @@ import UserSecretSpots from './components/UserSecretSpots';
 import { UserProvider } from './context/user';
 import VisitEditForm from './components/VisitEditForm';
 import SecretSpotDetails from './components/SecretSpotDetails';
+import Header from './components/Header';
 
 const App = () => {
 
@@ -17,9 +19,11 @@ const App = () => {
     <>
       <UserProvider>
         <Router>
-          <h1>Secret NYC</h1>
-          <p>Discover secret spots in NYC like a true New Yorker!</p>
-          <Navbar />
+          <Container>
+            <h1>Secret NYC</h1>
+            <p>Discover secret spots in NYC like a true New Yorker!</p>
+            <Navbar />
+          </Container>
           <Routes>
             <Route path="/visits/:id/edit" element={ <VisitEditForm /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
