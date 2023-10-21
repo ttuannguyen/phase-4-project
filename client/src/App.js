@@ -16,14 +16,12 @@ const App = () => {
 
   
   return (
-    <>
+    <Container>
       <UserProvider>
         <Router>
-          <Container>
             <h1>Secret NYC</h1>
             <p>Discover secret spots in NYC like a true New Yorker!</p>
             <Navbar />
-          </Container>
           <Routes>
             <Route path="/visits/:id/edit" element={ <VisitEditForm /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
@@ -35,7 +33,7 @@ const App = () => {
           </Routes>
         </Router>
       </UserProvider>
-    </>
+    </Container>
   );
 }
 
