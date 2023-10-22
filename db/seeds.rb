@@ -11,9 +11,9 @@ u2 = User.create(username: "luke", password: "abc")
 u3 = User.create(username: "baela", password: "abc")
 
 
-s1 = SecretSpot.create(name: "The floating map on Green street", location: "110 Greene Street", description: "A work of art by Belgian artist and architect Françoise Schein", cost: 0.00)
-s2 = SecretSpot.create(name: "Freedom Tunnel", location: "St. Claire Place west to the Hudson Parkway off-ramp", description: "the graffiti artist Chris 'Freedom' Pape used the tunnel walls to create some of his most notable artwork", cost: 0.00)
-s3 = SecretSpot.create(name: "Chinese Scholar Garden", location: "Staten Island", description: "Beautiful garden!", cost: 13.99)
+s1 = SecretSpot.create(name: "The floating map on Green street", location: "110 Greene Street", description: "A work of art by Belgian artist and architect Françoise Schein", cost: 0.00, image_url: "https://untappedcities.com/wp-content/uploads/2015/08/Francoise-Schein-Manhattan-Subway-Map-Floating-on-NYC-Sidewalk-Soho-Greene-Street-NYC-2.jpg")
+s2 = SecretSpot.create(name: "Freedom Tunnel", location: "St. Claire Place west to the Hudson Parkway off-ramp", description: "the graffiti artist Chris 'Freedom' Pape used the tunnel walls to create some of his most notable artwork", cost: 0.00, image_url: "https://hyperallergic-newspack.s3.amazonaws.com/uploads/2011/07/freedomtunnel_600.jpg")
+s3 = SecretSpot.create(name: "Chinese Scholar Garden", location: "Staten Island", description: "Beautiful garden!", cost: 13.99, image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/New_York_Chinese_Scholar%27s_Garden.JPG/1280px-New_York_Chinese_Scholar%27s_Garden.JPG")
 
 
 v1 = Visit.create(date: "11/30/2022", note: "First visit.", secret_spot: s1, user: u1)
