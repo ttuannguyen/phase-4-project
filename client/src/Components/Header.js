@@ -34,19 +34,15 @@ const Header = () => {
             <Nav className="mr-auto">
   
                 <LinkContainer to='/home'>
-                  <Nav.Link>Home</Nav.Link>
+                  <Nav.Link><i className="fa fa-house"></i> Home</Nav.Link>
                 </LinkContainer>
   
                 <LinkContainer to='/my_secret_spots'>
-                  <Nav.Link>My Secret Spots</Nav.Link>
+                  <Nav.Link><i className="fa-solid fa-map-location"></i> My Secret Spots</Nav.Link>
                 </LinkContainer>
   
-                {/* <LinkContainer to='/login'>
-                  <Nav.Link><i className="fas fa-user"></i>Login</Nav.Link>
-                </LinkContainer> */}
-  
                 <LinkContainer to='/logout'>
-                  <Nav.Link onClick={logoutUser}><i className="fas fa-user"></i>Logout</Nav.Link>
+                  <Nav.Link onClick={logoutUser}><i className="fas fa-user"></i> Logout</Nav.Link>
                 </LinkContainer>
   
             </Nav>
@@ -69,11 +65,11 @@ const Header = () => {
             <Nav className="mr-auto">
 
                 <LinkContainer to='/login'>
-                  <Nav.Link><i className="fas fa-user"></i>Login</Nav.Link>
+                  <Nav.Link><i className="fas fa-user"></i> Login</Nav.Link>
                 </LinkContainer>
   
                 <LinkContainer to='/signup'>
-                  <Nav.Link><i className="fas fa-user"></i>Signup</Nav.Link>
+                  <Nav.Link><i className="fas fa-user"></i> Signup</Nav.Link>
                 </LinkContainer>
   
             </Nav>
