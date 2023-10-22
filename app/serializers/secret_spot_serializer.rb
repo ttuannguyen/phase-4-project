@@ -1,5 +1,5 @@
 class SecretSpotSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :description, :cost, :visits
+  attributes :id, :name, :location, :description, :cost, :visits, :image_url
   # has_many :visits
 
   def visits

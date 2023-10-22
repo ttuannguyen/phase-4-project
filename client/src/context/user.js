@@ -24,7 +24,7 @@ const UserProvider = ({ children }) => {
         fetch('/me')
         .then(res => res.json())
         .then(json => {
-            if (json.error) {
+            if (!json || json.error) {
                 setLoggedIn(false)
             } else {
                 setUser(json) 
