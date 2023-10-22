@@ -19,8 +19,7 @@ const App = () => {
       <UserProvider>
         <Router>
           <Header />
-            <p>Discover secret spots in NYC like a true New Yorker!</p>
-            {/* <NavBar /> */}
+
           <Routes>
             <Route path="/visits/:id/edit" element={ <VisitEditForm /> }/>
             <Route path="/secret_spots/:id" element={ <SecretSpotDetails /> }/>
