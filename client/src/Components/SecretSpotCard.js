@@ -1,16 +1,22 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+
 
 const SecretSpotCard = ({secretSpot}) => {
 
   return (
-    <div>
-        <h3>{secretSpot.name}</h3>
-        <img src={secretSpot.image_url} alt={secretSpot.name} />
-        <p>Description: {secretSpot.description}</p>
-        <p>Location: {secretSpot.location}</p>
-        <p>Cost: {secretSpot.cost}</p>
-    </div>
+    <Card className='my-3 p-3 rounded'>
+        <a href={`/secret_spots/${secretSpot.id}`}>
+          <Card.Img src={secretSpot.image_url} alt={secretSpot.name} />
+        </a>
+        <Card.Body>
+          <a href={`/secret_spots/${secretSpot.id}`}>
+            <Card.Title as="div">
+              <strong>{secretSpot.name}</strong>
+            </Card.Title>
+          </a>
+        </Card.Body>
+    </Card>
   )
 }
 
