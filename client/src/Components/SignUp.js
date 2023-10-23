@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../context/user';
 import { useNavigate } from 'react-router-dom';
+import { Button, Form } from 'react-bootstrap';
 
 const SignUp = () => {
 
@@ -43,15 +44,29 @@ const SignUp = () => {
 
     return (
         <div id='signup'> 
-          <form onSubmit={handleSubmit}>
-          <label>Username</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/><br/>
-          <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/><br/>
-          <label>Password Confirmation</label>
-          <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/><br/>
-          <button type="submit">Sign up!</button>
-        </form>
+
+            <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username" />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" />
+            </Form.Group>
+
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password Confirmation</Form.Label>
+                <Form.Control type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} placeholder="Enter password confirmation" />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
+            </Form>
+            
         <ul>
             {errorsList}
         </ul>

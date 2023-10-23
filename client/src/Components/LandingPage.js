@@ -1,42 +1,42 @@
 import React from 'react'
-import { Carousel, ExampleCarouselImage } from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap'
 
 const LandingPage = () => {
   return (
-    <Carousel data-bs-theme="dark">
+    <Carousel data-bs-theme="dark" className='my-4'>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=f5f5f5"
+          src="https://media.cntraveler.com/photos/63483e15ef943eff59de603a/16:9/w_1280%2Cc_limit/New%2520York%2520City_GettyImages-1347979016.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          {/* <h5>First slide label</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=eee"
+          src="https://www.ganyc.org/sites/default/files/uploads/styles/watermark/public/new_york_random_images/Brooklyn%20Botanic%20Japanese%2005A.jpg?itok=U9wgWaLJ"
           alt="Second slide"
         />
         <Carousel.Caption>
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          {/* <h5>Second slide label</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=e5e5e5"
+          src="https://yourbrooklynguide.com/wp-content/uploads/2021/04/Bushwick-Collective-mural-in-Brooklyn-862x575.jpg"
           alt="Third slide"
         />
         <Carousel.Caption>
-          <h5>Third slide label</h5>
+          {/* <h5>Third slide label</h5>
           <p>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          </p> */}
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
