@@ -22,10 +22,12 @@ const UserSecretSpots = () => {
     })
 
     return (
-      <Card key={s.id}>
+      <>
+        <Card key={s.id}>
         <h4>{s.name}</h4>
         {visits}
-      </Card>
+        </Card>
+      </>
   )
   })
 

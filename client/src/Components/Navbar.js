@@ -30,7 +30,8 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link 
+            href="/home">Home</Nav.Link>
             <Nav.Link href="/my_secret_spots">My Secret Spots</Nav.Link>
             <button className='nav-btn' onClick={logoutUser}>Logout</button>
           </Nav>

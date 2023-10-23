@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
+import { Button, Form } from 'react-bootstrap';
 
 
 const VisitAddForm = ({secretSpot, afterAddVisit}) => {
@@ -46,14 +47,23 @@ const VisitAddForm = ({secretSpot, afterAddVisit}) => {
   
   return (
     <>
-      <p>Add a Visit</p>
-      <form onSubmit={handleSubmit}>
-        <label>Date</label>
-        <input type='text' name='date' value={formData.date} onChange={handleChange} /><br/>
-        <label>Note</label>
-        <textarea type="text" name='note' value={formData.note} onChange={handleChange} /><br/>
-        <button type="submit">Submit</button>
-      </form>
+        <h4>Add a Visit</h4>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Date</Form.Label>
+            <Form.Control type='text' name='date' value={formData.date} onChange={handleChange} placeholder="Enter a date of visit" />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Note</Form.Label>
+            <Form.Control type="text" name='note' value={formData.note} onChange={handleChange} placeholder="Enter a note" />
+          </Form.Group>
+
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      
       {errorsList}
     </>
   )
