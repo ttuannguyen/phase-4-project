@@ -3,7 +3,7 @@ import { UserContext } from '../context/user';
 import SecretSpotAddForm from './SecretSpotAddForm';
 import SecretSpotLink from './SecretSpotLink';
 import SecretSpotCard from './SecretSpotCard';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const Home = () => {
   const { user, loggedIn, secretSpots } = useContext(UserContext);
@@ -32,12 +32,16 @@ const Home = () => {
         <h3>Welcome, {user.username}!</h3>
         <p>Please see the following listings for various secret spots in the Big Apple for you to explore.</p>
         <Container>
-          <Row>
-            {allSecretSpotsList}
-          </Row>
+        <Row>
+          {allSecretSpotsList}
+        </Row>
         </Container>
         <p>Share a new secret spot with the community!</p>
-        {formToggle ? <SecretSpotAddForm afterAddSpot={afterAddSpot}/> : <button onClick={() => setFormToggle(true)}>Add a Spot!</button>}
+        {formToggle ? 
+          <SecretSpotAddForm afterAddSpot={afterAddSpot}/> 
+          : 
+          <Button variant='light' onClick={() => setFormToggle(true)}>Add a Spot!</Button>
+        }
       </div>
     )
   } else {
