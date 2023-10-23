@@ -26,16 +26,13 @@ const Home = () => {
     //   )
     // })
 
-
     return (
-      <div className='home-div'>
+      <div>
         <h3>Welcome, {user.username}!</h3>
         <p>Please see the following listings for various secret spots in the Big Apple for you to explore.</p>
-        <Container>
         <Row>
           {allSecretSpotsList}
         </Row>
-        </Container>
         <p>Share a new secret spot with the community!</p>
         {formToggle ? 
           <SecretSpotAddForm afterAddSpot={afterAddSpot}/> 

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 // import { Route, useParams } from 'react-router-dom';
 import { UserContext  } from '../context/user';
 import Visit from './Visit';
+import { Card } from 'react-bootstrap';
 
 const UserSecretSpots = () => {
 
@@ -21,10 +22,10 @@ const UserSecretSpots = () => {
     })
 
     return (
-      <div key={s.id}>
+      <Card key={s.id}>
         <h4>{s.name}</h4>
         {visits}
-      </div>
+      </Card>
   )
   })
 

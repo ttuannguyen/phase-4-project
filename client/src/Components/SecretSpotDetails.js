@@ -44,8 +44,6 @@ const SecretSpotDetails = () => {
                         </ListGroup>
                     </Col>
                 </Row>
-            
-            
             </div>
         )
     } else {
