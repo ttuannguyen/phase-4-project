@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_many :visits
     has_many :secret_spots, -> { distinct }, through: :visits
     
-    # validates :username, presence: true, uniqueness: true
-    # validates :password, :password_confirmation, presence: true
+    validates :username, presence: true, uniqueness: true
+    validates :password, :password_confirmation, presence: true
     
 end
