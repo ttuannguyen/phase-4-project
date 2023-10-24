@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../context/user';
+import { Button } from 'react-bootstrap';
 
 const VisitDeleteButton = ({visit}) => {
 
@@ -16,7 +17,9 @@ const VisitDeleteButton = ({visit}) => {
     }
     
     return (
-        <button onClick={handleClick}>Delete</button>
+        <Button variant='light' size='sm' onClick={handleClick}>
+            Delete
+        </Button>
     )
 }
 

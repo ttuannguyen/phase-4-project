@@ -22,12 +22,12 @@ const UserSecretSpots = () => {
     })
 
     return (
-      <>
-        <Card key={s.id}>
-        <h4>{s.name}</h4>
+      <Card key={s.id} className='my-3 py-3 rounded'>
+        <Card.Title>
+          <strong>{s.name}</strong>
+        </Card.Title>
         {visits}
-        </Card>
-      </>
+      </Card>
   )
   })
 
