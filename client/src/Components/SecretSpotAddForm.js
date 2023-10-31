@@ -11,7 +11,8 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
         name:'',
         location:'',   
         description:'',
-        cost:''   
+        cost:'',
+        image_url:''  
     });
 
     const handleChange = (e) => {
@@ -27,7 +28,8 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
             name:'',
             location:'',   
             description:'',
-            cost:'' 
+            cost:'',
+            image_url:'' 
         })
 
         fetch('/secret_spots',{
@@ -71,6 +73,11 @@ const SecretSpotAddForm = ({afterAddSpot}) => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Cost</Form.Label>
             <Form.Control type="text" name='cost' value={formData.cost} onChange={handleChange} />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Image URL</Form.Label>
+            <Form.Control type="text" name='image_url' value={formData.image_url} onChange={handleChange} />
           </Form.Group>
 
           <Button variant="primary" type="submit">

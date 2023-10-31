@@ -11,19 +11,18 @@ const LandingPage = () => {
           alt="First slide"
         />
         <Carousel.Caption>
-          {/* <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+          <h5 style={{ color: 'white' }}>Discover Exciting Hidden Gems in The Big Apple</h5>
+          {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://www.ganyc.org/sites/default/files/uploads/styles/watermark/public/new_york_random_images/Brooklyn%20Botanic%20Japanese%2005A.jpg?itok=U9wgWaLJ"
+          src="https://i0.wp.com/urbnexplorer.com/wp-content/uploads/2019/08/2019-08-07-nyc-waterfall-03.jpg?w=1200&ssl=1"
           alt="Second slide"
         />
         <Carousel.Caption>
-          {/* <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+          <h5 style={{ color: 'white' }}>Share A Secret Spot With The Community</h5>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -33,10 +32,7 @@ const LandingPage = () => {
           alt="Third slide"
         />
         <Carousel.Caption>
-          {/* <h5>Third slide label</h5>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p> */}
+          <h5 style={{ color: 'white' }}>Have Fun On Your Adventures</h5>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

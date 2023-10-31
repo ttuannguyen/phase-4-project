@@ -31,7 +31,7 @@ function Login() {
           setPassword('')
       } else {
           login(user)
-          navigate('/')
+          navigate('/home')
       }
     })
   }

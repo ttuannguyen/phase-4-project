@@ -24,7 +24,7 @@ class SecretSpotsController < ApplicationController
 
     private 
     def secret_spot_params
-        params.permit(:name, :location, :description, :cost)
+        params.permit(:name, :location, :description, :cost, :image_url)
     end
 
 end

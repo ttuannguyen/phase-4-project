@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 const SecretSpotCard = ({secretSpot}) => {
 
+  // TODO: Handle broken image icon in absence of an image url
+
   return (
     <Card className='my-3 p-3 rounded'>
         <Link to={`/secret_spots/${secretSpot.id}`}>
