@@ -42,7 +42,7 @@ const VisitEditForm = () => {
                     <p>Date: {visitFound.date}</p>
                     <br/>
                     <label>Note:</label><br/>
-                    <textarea type="text" name='note' value={note} onChange={e => setNote(e.target.value)} /><br/>
+                    <textarea placeholder={visitFound.note} type="text" name='note' value={note} onChange={e => setNote(e.target.value)} /><br/>
                     <button type="submit">Submit</button>
                 </form>
             </div>
